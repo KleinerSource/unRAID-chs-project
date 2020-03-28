@@ -125,7 +125,7 @@ Time Machine 卷大小限制:
 > 共享的访问权限进行读/写 (或没有访问权限)
 
 &nbsp;
-: <input type="submit" name="changeShareSecurityAFP" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareSecurityAFP" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?if ($sec_afp[$name]['security'] == 'secure'):?>
@@ -173,7 +173,7 @@ foreach ($rows as $row)echo $row;
 <?input_secure_users($sec_afp);?>
 
 &nbsp;
-: <input type="submit" name="changeShareAccessAFP" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareAccessAFP" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?elseif ($sec_afp[$name]['security'] == 'private'):?>
@@ -221,7 +221,7 @@ foreach($rows as $row) echo $row;
 <?input_private_users($sec_afp);?>
 
 &nbsp;
-: <input type="submit" name="changeShareAccessAFP" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareAccessAFP" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 <?endif;?>
 

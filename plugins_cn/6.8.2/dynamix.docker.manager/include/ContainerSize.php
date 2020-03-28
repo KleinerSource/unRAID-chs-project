@@ -54,6 +54,6 @@ $(function(){
 <body style='margin:20px'>
 <div class="spinner"></div>
 <pre id="data"></pre>
-<div class="button"><input type="button" value="Done" onclick="top.Shadowbox.close()"></div>
+<div class="button"><input type="button" value="完成" onclick="top.Shadowbox.close()"></div>
 </body>
 </html>

@@ -33,7 +33,7 @@ foreach (glob("/tmp/plugins/*.plg", GLOB_NOSORT) as $file) {
   $min = plugin('min',$file) ?: $current['version'];
   // silently suppress bad download of PLG file
   if ( (strcmp($new, $old) > 0) && ! version_compare($min,$current['version'],">") ) {
-    exec("$notify -e ".escapeshellarg("Plugin - $name [$new]")." -s ".escapeshellarg("Notice [$server] - Version update $new")." -d ".escapeshellarg("A new version of $name is available")." -i ".escapeshellarg("normal $output")." -x");
+    exec("$notify -e ".escapeshellarg("Plugin - $name [$new]")." -s ".escapeshellarg("通知 [$server] - 版本更新 $new")." -d ".escapeshellarg("新版本的 $name 可用")." -i ".escapeshellarg("normal $output")." -x");
   }
 }
 exit(0);

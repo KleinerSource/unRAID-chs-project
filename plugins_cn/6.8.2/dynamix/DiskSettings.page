@@ -240,7 +240,7 @@ function setIndex(form) {
 > A value of zero will disable the critical threshold (including notifications).
 
 &nbsp;
-: <input type="submit" name="changeDisk" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeDisk" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <div id="title"><span class="left"><i class="title fa fa-plus-square"></i>全局 SMART 设置</span></div>
@@ -314,5 +314,5 @@ function setIndex(form) {
 > This section is used to set the global settings for all disks. It is possible to adjust settings for individual disks.
 
 <input type="submit" name="#default" value="Default">
-: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>

@@ -20,13 +20,13 @@ function his_plus($val, $word, $last) {
   return $val>0 ? (($val||$last)?($val.' '.$word.($last?'':', ')):'') : '';
 }
 function his_duration($time) {
-  if (!$time) return 'Unavailable';
+  if (!$time) return '不可用';
   $days = floor($time/86400);
   $hmss = $time-$days*86400;
   $hour = floor($hmss/3600);
   $mins = $hmss/60%60;
   $secs = $hmss%60;
-  return his_plus($days,'day',($hour|$mins|$secs)==0).his_plus($hour,'hr',($mins|$secs)==0).his_plus($mins,'min',$secs==0).his_plus($secs,'sec',true);
+  return his_plus($days,'天',($hour|$mins|$secs)==0).his_plus($hour,'小时',($mins|$secs)==0).his_plus($mins,'分',$secs==0).his_plus($secs,'秒',true);
 }
 ?>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ if (file_exists($log)) {
   $handle = fopen($log, 'r');
   while (($line = fgets($handle)) !== false) {
     list($date,$duration,$speed,$status,$error) = explode('|',$line);
-    if ($speed==0) $speed = 'Unavailable';
+    if ($speed==0) $speed = '不可用';
     $date = str_replace(' ',', ',strtr(str_replace('  ',' 0',$date),$month));
     if ($duration>0||$status<>0) $list[] = "<tr><td>$date</td><td>".his_duration($duration)."</td><td>$speed</td><td>".($status==0?'OK':($status==-4?'已取消':$status))."</td><td>$error</td></tr>";
   }
@@ -57,6 +57,6 @@ else
   echo "<tr><td colspan='5' style='text-align:center;padding-top:12px'>不存在奇偶校验历史记录!</td></tr>";
 ?>
 </tbody></table>
-<div style="text-align:center;margin-top:12px"><input type="button" value="Done" onclick="top.Shadowbox.close()"></div>
+<div style="text-align:center;margin-top:12px"><input type="button" value="完成" onclick="top.Shadowbox.close()"></div>
 </body>
 </html>

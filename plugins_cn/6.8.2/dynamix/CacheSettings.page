@@ -60,5 +60,5 @@ $(check_cache_settings);
 > **2000000** => 2,048,000,000 bytes
 
 &nbsp;
-: <input type="submit" name="changeShare" value="Apply" disabled><input type="button" value="Done" onclick="done()"><?if ($disabled):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
+: <input type="submit" name="changeShare" value="Apply" disabled><input type="button" value="完成" onclick="done()"><?if ($disabled):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
 </form>

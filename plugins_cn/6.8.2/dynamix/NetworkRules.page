@@ -99,7 +99,7 @@ $(function(){
 <?endforeach;?>
 
 &nbsp;
-: <input type="submit" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 > The interface assignment rules can be changed here and might be necessary to set the preferred interface for managing Unraid - *use with care, usually there is no need to change*.

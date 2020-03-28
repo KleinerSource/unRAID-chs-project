@@ -21,7 +21,7 @@ Tag="icon-cpu"
 <thead><tr><th><i class="fa fa-list"></i> 容器</th><?create()?></tr></thead>
 <tbody id="table-ct"><?=$spinner?></tbody>
 </table>
-<input type="button" value="Apply" onclick="apply(this.form)" disabled><input type="button" value="Done" onclick="done()"><span id="wait-ct" class="red-text" style="display:none"><i class="fa fa-spinner fa-spin"></i> 请稍候...</span>
+<input type="button" value="Apply" onclick="apply(this.form)" disabled><input type="button" value="完成" onclick="done()"><span id="wait-ct" class="red-text" style="display:none"><i class="fa fa-spinner fa-spin"></i> 请稍候...</span>
 </form>
 <?else:?>
 <div class="notice">没有可用的 CPU 绑定. 必须先启动 Docker 服务</div>

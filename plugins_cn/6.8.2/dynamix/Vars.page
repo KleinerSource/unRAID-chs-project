@@ -36,4 +36,4 @@ ksort($GLOBALS);
 if (isset($GLOBALS['_SERVER']['PHP_AUTH_PW'])) $GLOBALS['_SERVER']['PHP_AUTH_PW'] = "***";
 echo ($display['resize'] ? "<pre class='up' style='display:none'>" : "<pre class='up'>").htmlspecialchars(print_r($GLOBALS,true))."</pre>";
 ?>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">

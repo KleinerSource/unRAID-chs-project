@@ -111,7 +111,7 @@ Time Machine 卷大小限制:
 > 只读访问权限.
 
 &nbsp;
-: <input type="submit" name="changeShareSecurity" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareSecurity" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?if ($sec[$name]['security'] == 'secure'):?>
@@ -159,7 +159,7 @@ foreach ($rows as $row) echo $row;
 <?input_secure_users($sec);?>
 
 &nbsp;
-: <input type="submit" name="changeShareAccess" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareAccess" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?elseif ($sec[$name]['security'] == 'private'):?>
@@ -207,7 +207,7 @@ foreach ($rows as $row) echo $row;
 <?input_private_users($sec);?>
 
 &nbsp;
-: <input type="submit" name="changeShareAccess" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareAccess" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 <?endif;?>
 

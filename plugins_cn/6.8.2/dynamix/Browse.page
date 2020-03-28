@@ -38,4 +38,4 @@ $(function(){
  <thead><tr><th>类型</th><th class='sorter-text'>名称</th><th>大小</th><th>最后修改</th><th>位置</th></tr></thead>
  <tbody><tr><td colspan="5"><div class="spinner"></div></td></tr></tbody>
 </table>
-<input type="button" value="Done" onclick="done('Browse')">
+<input type="button" value="完成" onclick="done('Browse')">

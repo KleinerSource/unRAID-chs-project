@@ -381,7 +381,7 @@ if ($method == "checkall") {
     if ($installed_plugin_file === false) continue;
     if (plugin("pluginURL", $installed_plugin_file, $error) === false) continue;
     $plugin = basename($installed_plugin_file);
-    echo "plugin: checking $plugin ...\n";
+    echo "插件: 检查中 $plugin ...\n";
     exec(realpath($argv[0]) . " check $plugin", $output, $retval);
   }
   exit(0);
@@ -403,7 +403,7 @@ if ($method == "updateall") {
     $latest = plugin("version", "/tmp/plugins/$plugin", $error);
     // update only when newer
     if (strcmp($latest,$version) > 0) {
-      echo "plugin: updating $plugin ...\n";
+      echo "插件: 更新中 $plugin ...\n";
       exec(realpath($argv[0]) . " update $plugin", $output, $retval);
     }
   }
@@ -420,7 +420,7 @@ if ($method == "checkos") {
     if ($installed_plugin_file === false) continue;
     if (plugin("pluginURL", $installed_plugin_file, $error) === false) continue;
     $plugin = basename($installed_plugin_file);
-    echo "plugin: checking $plugin ...\n";
+    echo "插件: 检查中 $plugin ...\n";
     exec(realpath($argv[0]) . " check $plugin", $output, $retval);
   }
   exit(0);
@@ -440,14 +440,14 @@ if ($argc < 3) {
 $unraid = parse_ini_file('/etc/unraid-version');
 if ($method == "install") {
   $argv[2] = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $argv[2]);
-  echo "plugin: installing: $argv[2]\n";
+  echo "插件: 安装中: $argv[2]\n";
   // check for URL
   if ((strpos($argv[2], "http://") === 0) || (strpos($argv[2], "https://") === 0)) {
     $pluginURL = $argv[2];
-    echo "plugin: downloading $pluginURL\n";
+    echo "插件: 下载中 $pluginURL\n";
     $plugin_file = "/tmp/plugins/".basename($pluginURL);
     if (!download($pluginURL, $plugin_file, $error)) {
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       @unlink($plugin_file);
       exit(1);
     }
@@ -456,14 +456,14 @@ if ($method == "install") {
   // bergware - check Unraid version dependency (if present)
   $min = plugin("min", $plugin_file, $error);
   if ($min && version_compare($unraid['version'],$min,'<')) {
-    echo "plugin: installed Unraid version is too low, require at least version $min\n";
+    echo "插件: 当前 Unraid 版本太低, 至少需要 $min 版本\n";
     exit(1);
   }
   $max = plugin("max", $plugin_file, $error);
   if (empty($max))
     $max = plugin("Unraid", $plugin_file, $error);
   if ($max && version_compare($unraid['version'],$max,'>')) {
-    echo "plugin: installed Unraid version is too high, require at most version $max\n";
+    echo "插件: 当前 Unraid 版本太高, 最高只兼容 $max 版本\n";
     exit(1);
   }
   $plugin = basename($plugin_file);

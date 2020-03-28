@@ -60,4 +60,4 @@ $(function(){
 > 请注意, Linux 将 ATA, SATA 和 SAS 设备与真正的 SCSI 设备进行分组.
 
 <pre><table id='t4' class='pre'><tr><td><div class="spinner"></div></td></tr></table></pre>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">

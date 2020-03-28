@@ -25,5 +25,5 @@ ksort($users);
 <?endforeach;?>
 <div style='clear:both'></div>
 <form method="POST" action="<?=$path?>/UserAdd">
-<input type="submit" value="添加用户"><?if ($submenu):?><input type="button" value="Done" onclick="done()"><?endif;?>
+<input type="submit" value="添加用户"><?if ($submenu):?><input type="button" value="完成" onclick="done()"><?endif;?>
 </form>

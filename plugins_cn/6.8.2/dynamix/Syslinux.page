@@ -185,8 +185,8 @@ $(function(){
   }
   $('.advancedview').switchButton({
     labels_placement: 'left',
-    off_label: 'Menu View',
-    on_label: 'Raw View',
+    off_label: '菜单视图',
+    on_label: '文本视图',
     checked: $.cookie('syslinux_viewmode')=='advanced'
   });
   $('.advancedview').change(function() {
@@ -233,7 +233,7 @@ Syslinux 配置:
 : *使用 UEFI 模式启动系统. 请检查系统设置是否支持使用 UEFI 模式启动.*
 
 <input type="button" value="Default" onclick="setDefault(this.form)">
-: <input type="submit" value="Apply"><input type="button" value="Done" onclick="done()">
+: <input type="submit" value="Apply"><input type="button" value="完成" onclick="done()">
 
 > 点击 **默认** 按钮将恢复出厂设置
 > 你仍然需要点击 **应用** 才能

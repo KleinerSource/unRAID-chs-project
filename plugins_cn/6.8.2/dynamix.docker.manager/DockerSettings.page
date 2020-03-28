@@ -526,7 +526,7 @@ list($range6,$size6) = explode('/',$dockercfg["DOCKER_RANGE6_$port"]);
 <?endif;?>
 
 &nbsp;
-: <input id="applyBtn" type="button" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input id="applyBtn" type="button" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <form id="removeForm" method="POST" action="/update.php" target="progressFrame">

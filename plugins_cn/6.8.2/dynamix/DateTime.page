@@ -68,7 +68,7 @@ NTP 服务器 4:
 > 输入当前时间. 使用格式 YYYY-MM-DD HH:MM:SS. 使用 NTP 时显示为灰色.
 
 &nbsp;
-: <input type="submit" name="setDateTime" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="setDateTime" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <script>

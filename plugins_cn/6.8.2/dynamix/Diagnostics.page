@@ -84,4 +84,4 @@ to the system log.*
 
 *Use* **Anonymize diagnostics** *when publishing the diagnostics file in the public forum. In private communication with Limetech it is recommended to uncheck this setting and capture all information unaltered.*
 
-<input type="button" value="Download" onclick="diagnostics(zipfile())"><input type="button" value="Done" onclick="done()"><input type="checkbox" id="anonymize" checked>Anonymize diagnostics
+<input type="button" value="Download" onclick="diagnostics(zipfile())"><input type="button" value="完成" onclick="done()"><input type="checkbox" id="anonymize" checked>Anonymize diagnostics

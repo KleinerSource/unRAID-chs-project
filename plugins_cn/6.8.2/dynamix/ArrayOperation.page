@@ -184,7 +184,7 @@ function parityStatus() {
   });
 }
 function stopArray(form) {
-  $(form).append('<input type="hidden" name="cmdStop" value="停止">');
+  $(form).append('<input type="hidden" name="cmdStop" value="Stop">');
 <?if ($confirm['stop']):?>
   swal({title:'继续?',text:'这将停止阵列',type:'warning',showCancelButton:true},function(p){if (p) form.submit(); else $('input[name="cmdStop"]').remove();});
 <?else:?>
@@ -192,7 +192,7 @@ function stopArray(form) {
 <?endif;?>
 }
 function stopParity(form,text) {
-  $(form).append('<input type="hidden" name="cmdNoCheck" value="取消">');
+  $(form).append('<input type="hidden" name="cmdNoCheck" value="Cancel">');
 <?if ($confirm['stop']):?>
   swal({title:'继续?',text:'这将停止运行'+text+' operation',type:'warning',showCancelButton:true},function(p){if (p) form.submit(); else $('input[name="cmdNoCheck"]').remove();});
 <?else:?>
@@ -200,12 +200,12 @@ function stopParity(form,text) {
 <?endif;?>
 }
 function pauseParity(form) {
-  $(form).append('<input type="hidden" name="cmdNoCheck" value="暂停">');
+  $(form).append('<input type="hidden" name="cmdNoCheck" value="Pause">');
   $('#pauseButton').val('Resume').prop('onclick',null).off('click').click(function(){resumeParity(form);});
   form.submit();
 }
 function resumeParity(form) {
-  $(form).append('<input type="hidden" name="cmdCheck" value="恢复">');
+  $(form).append('<input type="hidden" name="cmdCheck" value="Resume">');
   $('#pauseButton').val('Pause').prop('onclick',null).off('click').click(function(){pauseParity(form);});
   form.submit();
 }
@@ -286,20 +286,20 @@ function formatWarning(val) {
       echo "<span class='blue-text'>".my_disk($disk['name'])."</span> &bullet; ".my_id($disk['id'])." (".$disk['device'].")<br>";?>
       </td><td><input type="submit" id="btnFormat" name="cmdFormat" value="格式化" disabled><input type="hidden" name="unmountable_mask" value="<?=$var['fsUnmountableMask']?>"></td>
       <td>点击 <strong>格式化</strong> 将在所有 <strong>不可卸载的</strong> 磁盘中创建文件系统.<br>
-      <a class="info none img nohand"><input type="checkbox" name="confirmFormat" value="OFF" onclick="formatWarning(this.checked),$('#btnFormat').prop('disabled',!arrayOps.confirmFormat.checked)">
+      <a class="info none img nohand"><input type="checkbox" name="confirmFormat" value="关" onclick="formatWarning(this.checked),$('#btnFormat').prop('disabled',!arrayOps.confirmFormat.checked)">
      <small>是的, 我想这样做</small></a>
       </td></tr>
 <?  endif;
     if (!$var['mdResyncPos']):
       if (strstr($var['mdResyncAction'],"recon")):?>
-        <tr><td></td><td><input type="submit" name="cmdCheck" value="同步"></td><td>点击 <strong>同步</strong> 将启动 <strong>奇偶同步</strong> 和/或 <strong>数据重建</strong>.</td></tr>
+        <tr><td></td><td><input type="submit" name="cmdCheck" value="Sync"></td><td>点击 <strong>同步</strong> 将启动 <strong>奇偶同步</strong> 和/或 <strong>数据重建</strong>.</td></tr>
 <?    elseif (strstr($var['mdResyncAction'],"clear")):?>
-        <tr><td></td><td><input type="submit" name="cmdCheck" value="清除"></td><td>点击 <strong>清除</strong> 将启动 <strong>清理</strong> 新的数据磁盘.</td></tr>
+        <tr><td></td><td><input type="submit" name="cmdCheck" value="Clear"></td><td>点击 <strong>清除</strong> 将启动 <strong>清理</strong> 新的数据磁盘.</td></tr>
 <?    else:
         if ($var['mdResyncAction']=="check"):?>
-          <tr><td></td><td><input type="submit" name="cmdCheck" value="检查"></td><td>点击 <strong>检查</strong> 将在所有阵列上启动 <strong>读取检查</strong>.</td></tr>
+          <tr><td></td><td><input type="submit" name="cmdCheck" value="Check"></td><td>点击 <strong>检查</strong> 将在所有阵列上启动 <strong>读取检查</strong>.</td></tr>
 <?      elseif (strstr($var['mdResyncAction'],"check")):?>
-          <tr><td>奇偶校验有效.</td><td><input type="submit" name="cmdCheck" value="检查"></td><td>点击 <strong>检查</strong> 将启动 <strong>奇偶校验</strong>.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab1',{path:'/'})"<?endif;?>>(计划)</a>
+          <tr><td>奇偶校验有效.</td><td><input type="submit" name="cmdCheck" value="Check"></td><td>点击 <strong>检查</strong> 将启动 <strong>奇偶校验</strong>.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab1',{path:'/'})"<?endif;?>>(计划)</a>
           <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶校验写入修正</small></td></tr>
 <?      endif;?>
         <tr><td></td><td><input type="button" value="历史" onclick="openBox('/webGui/include/ParityHistory.php','奇偶校验/读取检查 历史记录',600,900,false)"></td>
@@ -334,24 +334,24 @@ function formatWarning(val) {
     else:
       if ($var['mdResyncAction']=="check"):?>
         <tr><td>读取检查进行中.</td><td>
-        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="暂停" onclick="pauseParity(this.form)"<?else:?> value="恢复" onclick="resumeParity(this.form)"<?endif;?>>
-        <input type="button" id="cancelButton" value="取消" onclick="stopParity(this.form,'Read-Check')"></td>
+        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="Pause" onclick="pauseParity(this.form)"<?else:?> value="Resume" onclick="resumeParity(this.form)"<?endif;?>>
+        <input type="button" id="cancelButton" value="Cancel" onclick="stopParity(this.form,'Read-Check')"></td>
         <td id="cancelText">点击 <strong>取消</strong> 将停止读取检查.</td></tr>
 <?    elseif (strstr($var['mdResyncAction'],"check")):?>
         <tr><td>奇偶校验进行中.</td><td>
-        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="暂停" onclick="pauseParity(this.form)"<?else:?> value="恢复" onclick="resumeParity(this.form)"<?endif;?>>
-        <input type="button" id="cancelButton" value="取消" onclick="stopParity(this.form,'Parity-Check')"></td>
+        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="Pause" onclick="pauseParity(this.form)"<?else:?> value="Resume" onclick="resumeParity(this.form)"<?endif;?>>
+        <input type="button" id="cancelButton" value="Cancel" onclick="stopParity(this.form,'Parity-Check')"></td>
         <td id="cancelText">点击 <strong>取消</strong> 将停止就检查.</td></tr>
 <?    elseif (strstr($var['mdResyncAction'],"recon")):?>
         <tr><td>奇偶同步/数据重建 进行中.</td><td>
-        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="暂停" onclick="pauseParity(this.form)"<?else:?> value="恢复" onclick="resumeParity(this.form)"<?endif;?>>
-        <input type="button" id="cancelButton" value="取消" onclick="stopParity(this.form,'Parity-Sync/Data-Rebuild')"></td>
+        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="Pause" onclick="pauseParity(this.form)"<?else:?> value="Resume" onclick="resumeParity(this.form)"<?endif;?>>
+        <input type="button" id="cancelButton" value="Cancel" onclick="stopParity(this.form,'Parity-Sync/Data-Rebuild')"></td>
         <td id="cancelText">点击 <strong>取消</strong> 将停止奇偶同步/数据重建.
         <br>警告: 取消该操作可能会导致阵列不受保护!</td></tr>
 <?    elseif (strstr($var['mdResyncAction'],"clear")):?>
         <tr><td>清理进行中.</td><td>
-        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="暂停" onclick="pauseParity(this.form)"<?else:?> value="恢复" onclick="resumeParity(this.form)"<?endif;?>>
-        <input type="button" id="cancelButton" value="取消" onclick="stopParity(this.form,'Clearing')"></td>
+        <input type="button" id="pauseButton"<?if ($var['mdResync']):?> value="Pause" onclick="pauseParity(this.form)"<?else:?> value="Resume" onclick="resumeParity(this.form)"<?endif;?>>
+        <input type="button" id="cancelButton" value="Cancel" onclick="stopParity(this.form,'Clearing')"></td>
         <td id="cancelText">点击 <strong>取消</strong> 将停止清理.</td></tr>
 <?    endif;?>
       <tr><td></td><td><input type="button" value="历史" onclick="openBox('/webGui/include/ParityHistory.php','奇偶/读取检查 历史记录',600,900,false)"></td><td>当前操作 <?if ($var['mdResync']):?>已开始<?else:?>已暂停<?endif;?> 于 <strong><?=my_time($var['sbUpdated'])?></strong></td></tr>
@@ -372,10 +372,10 @@ function formatWarning(val) {
     <tr><td><?status_indicator()?><span class="strong big">已启动, 正在格式化...</span></td><td><input type="submit" name="cmdStop" value="停止" disabled></td><td></td></tr>
 <?  break;
   case "Copying":?>
-    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在复制, <?=$var['fsCopyPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoCopy" value="取消"></td><td></td></tr>
+    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在复制, <?=$var['fsCopyPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoCopy" value="Cancel"></td><td></td></tr>
 <?  break;
   case "Clearing":?>
-    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在清理, <?=$var['fsClearPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoClear" value="取消"></td><td></td></tr>
+    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在清理, <?=$var['fsClearPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoClear" value="Cancel"></td><td></td></tr>
 <?  break;
   case "Stopping":?>
     <tr><td><?status_indicator()?><span class="strong big">正在停止...</span></td><td><input type="submit" name="cmdStop" value="停止" disabled></td><td></td></tr>
@@ -423,7 +423,7 @@ function formatWarning(val) {
       case "NEW_ARRAY":
         if (strpos($disks['parity']['status'],"DISK_NP")===0 && strpos($disks['parity2']['status'],"DISK_NP")===0):?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
-          <td>点击 <strong>启动</strong> 将记录所有磁盘信息并且启动阵列。
+          <td>点击 <strong>启动</strong> 将记录所有磁盘信息并且启动阵列.
           <br>该阵列将启动, 但由于尚未配置 <em>奇偶校验</em>, 因此 <strong>未受保护</strong>.</td></tr>
 <?      else:?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="parityWarning(this.form)"></td>
@@ -493,16 +493,16 @@ function formatWarning(val) {
 <input type="hidden" name="#file" value="unused">
 <input type="hidden" name="#include" value="webGui/include/KeyUpload.php">
 <table class="array_status noshift">
-<tr><td></td><td><input type="submit" name="#apply" value="Delete" disabled></td><td><strong>删除</strong> will delete the encryption keyfile.
+<tr><td></td><td><input type="submit" name="#apply" value="Delete" disabled></td><td>点击 <strong>删除</strong> 将删除加密密钥文件.
 <br><input type="checkbox" onchange="toggleApply(this.checked)"><small>Yes I want to do this</small></td></tr>
 <tr><td></td><td class="line" colspan="2"></td></tr>
 </table>
 </form>
 <?endif;?><!-- markdown fix -->
 <table class="array_status noshift">
- <tr><td></td><td><input type="button" id="button-down" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('down')" value="Spin Down"<?=$parity?' disabled':''?>><input type="button" id="button-up" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('up')" value="Spin Up"<?=$parity?' disabled':''?>></td>
- <td><strong>Spin Down</strong> will immediately spin down all disks.<br><strong>Spin Up</strong> will immediately spin up all disks.</td></tr>
- <tr><td></td><td><input type="button" value="Clear Statistics" onclick="toggle_state('Clear')"></td><td><strong>Clear Statistics</strong> will immediately clear all disk statistics.</td></tr>
+ <tr><td></td><td><input type="button" id="button-down" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('down')" value="挂起"<?=$parity?' disabled':''?>><input type="button" id="button-up" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('up')" value="唤醒"<?=$parity?' disabled':''?>></td>
+ <td>点击 <strong>挂起</strong> 将立即挂起所有磁盘<br><strong>唤醒</strong> 将立即唤醒所有磁盘.</td></tr>
+ <tr><td></td><td><input type="button" value="清理统计" onclick="toggle_state('Clear')"></td><td>点击 <strong>清理统计</strong> 将立即清除所有磁盘统计信息.</td></tr>
  <tr><td></td><td class="line" colspan="2"></td></tr>
 </table>
 <?if ($var['shareCacheEnabled']=="yes" && is_dir("/mnt/cache")):?>
@@ -512,7 +512,7 @@ function formatWarning(val) {
 <?if ($mover):?>
  <td><input type="submit" name="cmdStartMover" value="Move now" disabled></td><td>已禁用 - Mover 正在运行.</td>
 <?else:?>
- <td><input type="submit" name="cmdStartMover" value="Move now"></td><td><strong>Move now</strong> 将立即调用 Mover.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab2',{path:'/'})"<?endif;?>>(计划)</a></td>
+ <td><input type="submit" name="cmdStartMover" value="Move now"></td><td>点击 <strong>Move now</strong> 将立即调用 Mover.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab2',{path:'/'})"<?endif;?>>(计划)</a></td>
 <?endif;?>
  </tr>
 </table>
@@ -523,7 +523,7 @@ function formatWarning(val) {
 <input type="hidden" name="#file" value="unused">
 <input type="hidden" name="#include" value="webGui/include/KeyUpload.php">
 <table class="array_status noshift">
- <tr><td></td><td><input type="submit" name="#apply" value="删除"></td><td><strong>删除</strong> 将删除加密密钥文件.</td></tr>
+ <tr><td></td><td><input type="submit" name="#apply" value="Delete"></td><td>点击 <strong>删除</strong> 将删除加密密钥文件.</td></tr>
  <tr><td></td><td class="line" colspan="2"></td></tr>
 </table>
 </form>

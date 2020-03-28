@@ -75,7 +75,7 @@ foreach ($rows as $row) echo $row;
   </select>
 
 &nbsp;
-: <input type="submit" name="changeShareSecurityNFS" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareSecurityNFS" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?if ($sec_nfs[$name]['security']=="private"):?>
@@ -85,7 +85,7 @@ foreach ($rows as $row) echo $row;
 : <input type="text" name="shareHostListNFS" maxlength="256" value="<?=htmlspecialchars($sec_nfs[$name]['hostList'])?>">
 
 &nbsp;
-: <input type="submit" name="changeShareAccessNFS" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeShareAccessNFS" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 <?endif;?>
 

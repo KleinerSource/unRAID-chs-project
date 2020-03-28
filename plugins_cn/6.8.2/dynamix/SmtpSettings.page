@@ -185,6 +185,6 @@ TLS 证书位置:
 > 输入用户名和密码以登录到您的 Email 帐户. 请注意, 密码明文存储在电子邮件配置文件中.
 
 &nbsp;
-: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="完成" onclick="done()">
   <span id="testresult"><input type="button" id="testbutton" value="Test"<?if ($incomplete):?> disabled<?endif;?>></span>
 </form>

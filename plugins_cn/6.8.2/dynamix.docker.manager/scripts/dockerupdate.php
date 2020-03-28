@@ -52,7 +52,7 @@ if (!isset($check)) {
       $new = str_replace('sha256:', '', $updateStatus[$image]['remote']);
       $new = substr($new, 0, 4).'..'.substr($new, -4, 4);
       if ( ! isset($nonotify) ) {
-        exec("$notify -e ".escapeshellarg("Docker - $name [$new]")." -s ".escapeshellarg("Notice [$server] - Docker update $new")." -d ".escapeshellarg("A new version of $name is available")." -i ".escapeshellarg("normal $output")." -x");
+        exec("$notify -e ".escapeshellarg("Docker - $name [$new]")." -s ".escapeshellarg("通知 [$server] - Docker 更新 $new")." -d ".escapeshellarg("新版本的 $name 可用")." -i ".escapeshellarg("normal $output")." -x");
       }
     }
   }

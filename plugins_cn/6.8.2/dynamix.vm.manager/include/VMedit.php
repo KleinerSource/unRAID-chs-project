@@ -41,7 +41,7 @@ if (!empty($_GET['uuid'])) {
 	$res = $lv->domain_get_domain_by_uuid($_GET['uuid']);
 
 	if ($res === false) {
-		echo "<p class='notice'>编辑的虚拟机无效.</p><input type='button' value='Done' onclick='done()'>";
+		echo "<p class='notice'>编辑的虚拟机无效.</p><input type='button' value='完成' onclick='done()'>";
 		return;
 	}
 

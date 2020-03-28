@@ -26,7 +26,7 @@ $(function() {
 <thead><td style="width:40px">#</td><td>属性名称</td><td>Flag</td><td>值</td><td>最差</td><td>阈值</td><td>类型</td><td>更新</td><td>失败</td><td style="width:145px">RAW</td></thead>
 <tbody id="disk_attributes"><tr><td colspan='10'><div class="spinner"></div></td></tr></tbody>
 </table>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">
 
 > 此列表显示此磁盘支持的 SMART 属性. 有关每个 SMART 属性的更多信息, 建议使用在线搜索.
 >

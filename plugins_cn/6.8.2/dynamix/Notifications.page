@@ -266,5 +266,5 @@ Docker 更新通知:
 > 为每个分类选择要通知的方式.
 
 <input type="submit" name="#default" value="Default">
-: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="Done" onclick="done()"></td>
+: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="完成" onclick="done()"></td>
 </form>

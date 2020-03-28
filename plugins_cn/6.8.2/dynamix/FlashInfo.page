@@ -62,11 +62,11 @@ Flash GUID:
 <?else:?>
 
 &nbsp;
-: [Registration Key Manager](/Tools/Registration)
+: [注册 Key 管理](/Tools/Registration)
 
 <?endif;?>
 
 > 使用 *Flash backup* 创建 Flash 设备当前内容备份的一个 zip 文件, 并将其本地存储在计算机上.
 
 &nbsp;
-: <input type="button" value="Flash backup" onclick="backup()"><input type="button" value="Done" onclick="done()">
+: <input type="button" value="Flash backup" onclick="backup()"><input type="button" value="完成" onclick="done()">

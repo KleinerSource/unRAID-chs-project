@@ -34,7 +34,7 @@ if ($name == "") {
   $share = $shares[$name];
 } else {
   /* handle share deleted case */
-  echo "<p class='notice'>共享 ".htmlspecialchars($name)." 已被删除.</p><input type='button' value='Done' onclick='done()'>";
+  echo "<p class='notice'>共享 ".htmlspecialchars($name)." 已被删除.</p><input type='button' value='完成' onclick='done()'>";
   return;
 }
 
@@ -242,7 +242,7 @@ foreach ($rows as $row) echo $row;
 
 <?if (!$name):?>
 &nbsp;
-: <input type="submit" name="cmdEditShare" value="Add Share"><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="cmdEditShare" value="Add Share"><input type="button" value="完成" onclick="done()">
 <?elseif (shareEmpty($name)):?>
 共享状态:
 : <span class="big">共享为空</span>
@@ -250,7 +250,7 @@ foreach ($rows as $row) echo $row;
 > Share does *not* contain any data and may be deleted if not needed any longer.
 
 删除<input type="checkbox" name="confirmDelete" onchange="chkDelete(this.form, this.form.cmdEditShare);">
-: <input type="submit" name="cmdEditShare" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="cmdEditShare" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 <?else:?>
 共享状态:
 : <span class="big">共享容器数据</span>
@@ -258,7 +258,7 @@ foreach ($rows as $row) echo $row;
 > Share can *not* be deleted as long as it contains data. Be aware that some data can be hidden. See also [SMB Settings](/Settings/SMB) -> Hide "dot" files.
 
 &nbsp;
-: <input type="submit" name="cmdEditShare" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="cmdEditShare" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 <?endif;?>
 </form>
 <script>

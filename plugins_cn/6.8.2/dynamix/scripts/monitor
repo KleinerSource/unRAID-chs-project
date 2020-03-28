@@ -279,7 +279,7 @@ if ($warn>0) {
   }
 } else {
   if ($last) {
-    exec("$notify -e \"Unraid 阵列错误\" -s ".escapeshellarg("Notice [$server] - 阵列恢复正常")." -d ".escapeshellarg("$info"));
+    exec("$notify -e \"Unraid 阵列错误\" -s ".escapeshellarg("通知 [$server] - 阵列恢复正常")." -d ".escapeshellarg("$info"));
     unset($saved[$item][$name]);
   }
 }

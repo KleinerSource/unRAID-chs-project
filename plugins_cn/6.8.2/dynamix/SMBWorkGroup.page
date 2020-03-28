@@ -31,5 +31,5 @@ Cond="($var['shareSMBEnabled']=='yes')"
 > 其他服务器, 通常将成为本地主浏览器.
 
 &nbsp;
-: <input type="submit" name="changeShare" value="Apply" disabled><input type="button" value="Done" onclick="done()"><?if ($var['fsState']=="Started"):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
+: <input type="submit" name="changeShare" value="Apply" disabled><input type="button" value="完成" onclick="done()"><?if ($var['fsState']=="Started"):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
 </form>

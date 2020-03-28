@@ -38,7 +38,7 @@ function spindownDelay() {
 : <input type='button' value='Download' onclick='saveSMART()'>
 
 SMART 自检历史:
-: <input type="button" value="Show" id="toggle_log" onclick="selftestLog()" disabled>
+: <input type="button" value="显示" id="toggle_log" onclick="selftestLog()" disabled>
 
 > 点击 **显示** 以查看磁盘上保存的自检历史记录.
 > 仅当磁盘处于活动模式时, 此功能才可用.
@@ -46,7 +46,7 @@ SMART 自检历史:
 <pre id="selftest" style="display:none"></pre>
 
 SMART 错误日志:
-: <input type="button" value="Show" id="toggle_error" onclick="errorLog()" disabled>
+: <input type="button" value="显示" id="toggle_error" onclick="errorLog()" disabled>
 
 > 点击 **显示** 以查看错误报告, 该报告保留在磁盘本身上.
 > 仅当磁盘处于活动模式时，此功能才可用。
@@ -54,7 +54,7 @@ SMART 错误日志:
 <pre id="errorlog" style="display:none"></pre>
 
 SMART 简短的自检:
-: <input type='button' value='Start' id='short_test' onclick="startShortTest()" disabled>
+: <input type='button' value='开始' id='short_test' onclick="startShortTest()" disabled>
 
 > 开始 *简短的* SMART自检, 可以在 *功能* 部分下查看预计的持续时间. 这通常是几分钟.
 >
@@ -109,8 +109,8 @@ function testUpdate(init) {
       if (!init) timers.testUpdate = setTimeout(testUpdate, 3000);
     } else {
       if ($('#smart_selftest').length) $('#smart_selftest').html('');
-      $('#short_test').val('Start');
-      $('#long_test').val('Start');
+      $('#short_test').val('开始');
+      $('#long_test').val('开始');
 <?if ($live):?>
       $('#short_test').removeAttr('disabled');
       $('#long_test').removeAttr('disabled');
@@ -137,8 +137,8 @@ function errorLog() {
   $('#toggle_error').val(text);
 }
 function startShortTest() {
-  if ($('#short_test').val()=='Start') {
-    $('#short_test').val('Stop');
+  if ($('#short_test').val()=='开始') {
+    $('#short_test').val('停止');
     $('#long_test').attr('disabled','disabled');
     $.cookie('test.<?=addslashes(htmlspecialchars($dev))?>','short',{path:'/',expires:365});
     $.post('/webGui/include/SmartInfo.php',{cmd:'short',port:'<?=addslashes(htmlspecialchars($dev))?>',name:'<?=addslashes(htmlspecialchars($name))?>'},function(){timers.testUpdate = setTimeout(testUpdate,0);});
@@ -158,8 +158,8 @@ function startShortTest() {
   }
 }
 function startLongTest() {
-  if ($('#long_test').val()=='Start') {
-    $('#long_test').val('Stop');
+  if ($('#long_test').val()=='开始') {
+    $('#long_test').val('停止');
     $('#short_test').attr('disabled','disabled');
     $.cookie('test.<?=addslashes(htmlspecialchars($dev))?>','long',{path:'/',expires:365});
     $.post('/webGui/include/SmartInfo.php',{cmd:'long',port:'<?=addslashes(htmlspecialchars($dev))?>',name:'<?=addslashes(htmlspecialchars($name))?>'},function(){timers.testUpdate = setTimeout(testUpdate,0);});
@@ -181,7 +181,7 @@ function startLongTest() {
 $(function() {
   var smarttest = $.cookie('test.<?=addslashes(htmlspecialchars($dev))?>');
   testUpdate(smarttest===undefined);
-  if (smarttest !== undefined) $('#'+smarttest+'_test').val('Stop').removeAttr('disabled');
+  if (smarttest !== undefined) $('#'+smarttest+'_test').val('停止').removeAttr('disabled');
 <?if ($live):?>
   $('#toggle_log').removeAttr('disabled');
   $('#toggle_error').removeAttr('disabled');

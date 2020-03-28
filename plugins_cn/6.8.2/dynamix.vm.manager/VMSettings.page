@@ -25,7 +25,7 @@ $strLoadedModules = shell_exec("/etc/rc.d/rc.libvirt test");
 if (empty($strLoadedModules)) {
   echo "<p class='notice'>您的硬件没有英特尔 VT-x 或 AMD-V 功能. 这是在 KVM 中创建虚拟机所必需的.";
   echo "<a href='http://lime-technology.com/wiki/index.php/UnRAID_Manual_6#Hardware-Assisted_Virtualization_.28HVM.29' target='_blank'>单击此处查看 Unraid Wiki 了解更多信息</a></p>";
-  echo "<input type='button' value='Done' onclick='done()'>";
+  echo "<input type='button' value='完成' onclick='done()'>";
   exit;
 }
 
@@ -230,7 +230,7 @@ VFIO 允许不安全中断:
 <?else:?>
 &nbsp;
 <?endif;?>
-: <input type="button" id="applyBtn" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="button" id="applyBtn" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 <div class="notice reboot" style="display:none;margin-bottom:24px">必须重新启动系统才能使更改生效!</div>
 
