@@ -278,7 +278,7 @@ function formatWarning(val) {
 <?switch ($var['fsState']):
   case "Started":?>
     <tr><td><?status_indicator()?><span class="strong">已启动<?=(($var['startMode']=='Maintenance')?' - 维护模式':'')?></span></td>
-    <td><input type="button" value="停止" onclick="stopArray(this.form)"<?if ($parity||$mover||$btrfs):?> 已停用<?endif;?>></td>
+    <td><input type="button" value="Stop" onclick="stopArray(this.form)"<?if ($parity||$mover||$btrfs):?> 已停用<?endif;?>></td>
     <td id="stop">点击 <strong>停止</strong> 将会使该阵列脱机.<?=$parity?:$mover?:$btrfs?:''?></td></tr>
 <?  if ($var['fsNumUnmountable']>0):?>
       <tr><td><strong>不可卸载的磁盘<?=$var['fsNumUnmountable']==1?'':'s'?> 当前:</strong><br>
@@ -366,55 +366,55 @@ function formatWarning(val) {
     endif;
     break;
   case "Starting":?>
-    <tr><td><?status_indicator()?><span class="strong big">正在启动...</span></td><td><input type="submit" name="cmdStart" value="启动" disabled></td><td></td></tr>
+    <tr><td><?status_indicator()?><span class="strong big">正在启动...</span></td><td><input type="submit" name="cmdStart" value="Start" disabled></td><td></td></tr>
 <?  break;
   case "Formatting":?>
-    <tr><td><?status_indicator()?><span class="strong big">已启动, 正在格式化...</span></td><td><input type="submit" name="cmdStop" value="停止" disabled></td><td></td></tr>
+    <tr><td><?status_indicator()?><span class="strong big">已启动, 正在格式化...</span></td><td><input type="submit" name="cmdStop" value="Stop" disabled></td><td></td></tr>
 <?  break;
   case "Copying":?>
-    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在复制, <?=$var['fsCopyPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoCopy" value="Cancel"></td><td></td></tr>
+    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在复制, <?=$var['fsCopyPrcnt']?>% 已完成...</span></td><td><input type="submit" name="cmdNoCopy" value="Cancel"></td><td></td></tr>
 <?  break;
   case "Clearing":?>
-    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在清理, <?=$var['fsClearPrcnt']?>% complete...</span></td><td><input type="submit" name="cmdNoClear" value="Cancel"></td><td></td></tr>
+    <tr><td><?status_indicator()?><span id="fsState" class="strong big">正在清理, <?=$var['fsClearPrcnt']?>% 已完成...</span></td><td><input type="submit" name="cmdNoClear" value="Cancel"></td><td></td></tr>
 <?  break;
   case "Stopping":?>
-    <tr><td><?status_indicator()?><span class="strong big">正在停止...</span></td><td><input type="submit" name="cmdStop" value="停止" disabled></td><td></td></tr>
+    <tr><td><?status_indicator()?><span class="strong big">正在停止...</span></td><td><input type="submit" name="cmdStop" value="Stop" disabled></td><td></td></tr>
 <?  break;
   case "Stopped":
     if ($var['configValid']=="error"):?>
-      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
       <td>无效, 丢失或过期 <a href="/Tools/Registration">注册 key</a>.</td></tr>
 <?  elseif ($var['configValid']=="invalid"):?>
-      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
       <td>连接的设备太多. 请考虑升级您的 <a href="/Tools/Registration">注册 key</a>.</td></tr>
 <?  elseif ($var['configValid']=="nokeyserver"):?>
-      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
       <td>无法连接密钥服务器. 请检查您的 <a href="/Settings/NetworkSettings">网络设置</a>.</td></tr>
 <?  elseif ($var['configValid']=="withdrawn"):?>
-      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+      <tr><td><?status_indicator()?><span class="strong big">已停止.</span></td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
       <td>此 Unraid OS 版本已被撤回, 可能再使用. 请 <a href="/Plugins">更新</a> 你的服务器.</td></tr>
 <?  else:
       switch ($var['mdState']):
       case "STOPPED":
         if (strstr($var['mdResyncAction'],"recon")):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将会启动阵列并且进行 <strong>奇偶同步</strong> 和/或 <strong>数据重建</strong>.</td></tr>
 <?      elseif ($var['mdResyncAction']=="clear"):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到新的数据磁盘.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到新的数据磁盘.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将会启动阵列并且进行 <strong>清理</strong> 新的数据磁盘.</td></tr>
 <?      elseif ($var['sbClean']!="yes" && $var['mdResyncAction']=="check"):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到不正常关机.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到不正常关机.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将会启动阵列.</td></tr>
 <?      elseif ($var['sbClean']!="yes" && strstr($var['mdResyncAction'],"check")):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到不正常关机.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到不正常关机.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将会启动阵列并且进行 <strong>奇偶校验</strong>.
           <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶校验写入修正</small></td></tr>
 <?      elseif (missing_cache()):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 缓存磁盘丢失.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)" disabled></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 缓存磁盘丢失.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)" disabled></td>
           <td>点击 <strong>启动</strong> 将删除丢失的缓存磁盘, 然后启动阵列.
           <br><input type="checkbox" name="confirmStart" value="关闭" onclick="$('#cmdStart').prop('disabled',!arrayOps.confirmStart.checked)"><small>是, 我想这样做</small></td></tr>
 <?      else:?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将会启动阵列.</td></tr>
 <?      endif;
         maintenance_mode();
@@ -422,11 +422,11 @@ function formatWarning(val) {
         break;
       case "NEW_ARRAY":
         if (strpos($disks['parity']['status'],"DISK_NP")===0 && strpos($disks['parity2']['status'],"DISK_NP")===0):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动</strong> 将记录所有磁盘信息并且启动阵列.
           <br>该阵列将启动, 但由于尚未配置 <em>奇偶校验</em>, 因此 <strong>未受保护</strong>.</td></tr>
 <?      else:?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="启动" onclick="parityWarning(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="parityWarning(this.form)"></td>
           <td>点击 <strong>启动</strong> will record all disk information, bring the array on-line, and start Parity-Sync.
           <br>该阵列将启动, 但是在奇偶同步完成之前该阵列将 <strong>不受保护</strong> .
           <br><input type="checkbox" name="md_invalidslot" value="99">奇偶已就绪且有效.</td></tr>
@@ -435,50 +435,50 @@ function formatWarning(val) {
         check_encryption();
         break;
       case "DISABLE_DISK":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 丢失硬盘.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 丢失硬盘.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)" disabled></td>
         <td>点击 <strong>启动</strong> 将禁用丢失的磁盘, 然后启动阵列. 尽快安装替换磁盘.
         <br><input type="checkbox" name="confirmStart" value="OFF" onclick="$('#cmdStart').prop('disabled',!arrayOps.confirmStart.checked)"><small>是, 我想这样做</small></td></tr>
 <?      maintenance_mode();
         check_encryption();
         break;
       case "RECON_DISK":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 已安装替换磁盘.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 已安装替换磁盘.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
         <td><strong>启动</strong> 将会启动阵列并且进行 <strong>奇偶同步</strong> 和/或 <strong>数据重建</strong>.</td></tr>
 <?      maintenance_mode();
         check_encryption();
         break;
       case "SWAP_DSBL":
         if ($var['fsCopyPrcnt']=="100"):?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 升级磁盘/奇偶交换.</td><td><input type="button" id="cmdStart" value="启动" onclick="prepareInput(this.form)"></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 升级磁盘/奇偶交换.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td><strong>启动</strong> 将扩展数据磁盘的文件系统 (如果可能); 然后启动阵列并开始数据重建.</td></tr>
 <?        maintenance_mode();
           check_encryption();
         else:?>
-          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 升级磁盘/奇偶交换.</td><td><input type="submit" name="cmdCopy" value="复制" disabled></td>
+          <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 升级磁盘/奇偶交换.</td><td><input type="submit" name="cmdCopy" value="Copy" disabled></td>
           <td><strong>复制</strong> 将奇偶信息复制到新的奇偶磁盘.
           <br>复制完成后, 将会启动阵列, 直到数据重建完成后禁用这块磁盘.
           <br><input type="checkbox" name="confirmStart" value="OFF" onclick="arrayOps.cmdCopy.disabled=!arrayOps.confirmStart.checked"><small>是, 我想这样做</small></td></tr>
 <?      endif;
         break;
       case "ERROR:INVALID_EXPANSION":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 无效的扩展.</td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 无效的扩展.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
         <td>不能添加新磁盘, 也不能删除现有磁盘.</td></tr>
 <?      break;
       case "ERROR:NEW_DISK_TOO_SMALL":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 替换的磁盘太小.</td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 替换的磁盘太小.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
         <td>替换磁盘必须与原始磁盘一样大或更大.</td></tr>
 <?      break;
       case "ERROR:PARITY_NOT_BIGGEST":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 奇偶校验槽中的磁盘不是最大的.</td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 奇偶校验槽中的磁盘不是最大的.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
         <td>如果这是一个新阵列, 请将最大的磁盘移到 <em>奇偶</em> 插槽中.
         <br>如果要添加新磁盘或替换禁用的磁盘, 请尝试奇偶交换</td></tr>
 <?      break;
       case "ERROR:TOO_MANY_MISSING_DISKS":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 无效的配置.</td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 无效的配置.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
         <td>错误或丢失的磁盘太多!</td></tr>
 <?      break;
       case "ERROR:NO_DATA_DISKS":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 没有数据磁盘.</td><td><input type="submit" name="cmdStart" value="启动" disabled></td>
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 没有数据磁盘.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
         <td>没有分配阵列数据磁盘!</td></tr>
 <?      break;
       endswitch;
@@ -494,14 +494,14 @@ function formatWarning(val) {
 <input type="hidden" name="#include" value="webGui/include/KeyUpload.php">
 <table class="array_status noshift">
 <tr><td></td><td><input type="submit" name="#apply" value="Delete" disabled></td><td>点击 <strong>删除</strong> 将删除加密密钥文件.
-<br><input type="checkbox" onchange="toggleApply(this.checked)"><small>Yes I want to do this</small></td></tr>
+<br><input type="checkbox" onchange="toggleApply(this.checked)"><small>是的, 我想这样做</small></td></tr>
 <tr><td></td><td class="line" colspan="2"></td></tr>
 </table>
 </form>
 <?endif;?><!-- markdown fix -->
 <table class="array_status noshift">
  <tr><td></td><td><input type="button" id="button-down" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('down')" value="挂起"<?=$parity?' disabled':''?>><input type="button" id="button-up" onclick="$('[id^=button-]').prop('disabled',true);toggle_state('up')" value="唤醒"<?=$parity?' disabled':''?>></td>
- <td>点击 <strong>挂起</strong> 将立即挂起所有磁盘<br><strong>唤醒</strong> 将立即唤醒所有磁盘.</td></tr>
+ <td>点击 <strong>挂起</strong> 将立即挂起所有磁盘<br>点击 <strong>唤醒</strong> 将立即唤醒所有磁盘.</td></tr>
  <tr><td></td><td><input type="button" value="清理统计" onclick="toggle_state('Clear')"></td><td>点击 <strong>清理统计</strong> 将立即清除所有磁盘统计信息.</td></tr>
  <tr><td></td><td class="line" colspan="2"></td></tr>
 </table>

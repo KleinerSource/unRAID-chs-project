@@ -150,22 +150,22 @@ EOF;
 //
 function download($URL, $name, &$error) {
   if ($file = popen("wget --compression=auto --no-cache --progress=dot -O $name $URL 2>&1", 'r')) {
-    echo "plugin: downloading: $URL ...\r";
+    echo "插件: 下载中: $URL ...\r";
     $level = -1;
     while (!feof($file)) {
       if (preg_match("/\d+%/", fgets($file), $matches)) {
         $percentage = substr($matches[0],0,-1);
         if ($percentage > $level) {
-          echo "plugin: downloading: $URL ... $percentage%\r";
+          echo "插件: 下载中: $URL ... $percentage%\r";
           $level = $percentage;
         }
       }
     }
     if (($perror = pclose($file)) == 0) {
-      echo "plugin: downloading: $URL ... done\n";
+      echo "插件: 下载中: $URL ... 完成\n";
       return true;
     } else {
-      echo "plugin: downloading: $URL ... failed (".error_desc($perror).")\n";
+      echo "插件: 下载中: $URL ... 失败 (".error_desc($perror).")\n";
       $error = "wget: $URL download failure (".error_desc($perror).")";
       return false;
     }
@@ -252,12 +252,12 @@ function plugin($method, $plugin_file, &$error) {
     // bergware - check Unraid version dependency (if present)
     $min = $file->attributes()->Min;
     if ($min && version_compare($unraid['version'],$min,'<')) {
-      echo "plugin: skipping: ".basename($name)." - Unraid version too low, requires at least version $min\n";
+      echo "插件: 跳过: ".basename($name)." - Unraid 版本太低, 至少需要 $min 版本\n";
       continue;
     }
     $max = $file->attributes()->Max;
     if ($max && version_compare($unraid['version'],$max,'>')) {
-      echo "plugin: skipping: ".basename($name)." - Unraid version too high, requires at most version $max\n";
+      echo "插件: 跳过: ".basename($name)." - Unraid 版本太高, 最高只兼容 $mix 版本\n";
       continue;
     }
     // Name can be missing but only makes sense if Run attribute is present
@@ -266,7 +266,7 @@ function plugin($method, $plugin_file, &$error) {
       //
       if (!file_exists(dirname($name))) {
         if (!mkdir(dirname($name), 0770, true)) {
-          $error = "plugin: error: unable to create parent directory for $name";
+          $error = "插件: 错误: 无法为 $name 创建父目录";
           return false;
         }
       }
@@ -471,18 +471,18 @@ if ($method == "install") {
   $installed_plugin_file = @readlink("/var/log/plugins/$plugin");
   if ($installed_plugin_file !== false) {
     if ($plugin_file == $installed_plugin_file) {
-      echo "plugin: not re-installing same plugin\n";
+      echo "插件: not re-installing same plugin\n";
       exit(1);
     }
     // must have version attributes for re-install
     $version = plugin("version", $plugin_file, $error);
     if ($version === false) {
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       exit(1);
     }
     $installed_version = plugin("version", $installed_plugin_file, $error);
     if ($installed_version === false) {
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       exit(1);
     }
     // check version installation?
@@ -490,16 +490,16 @@ if ($method == "install") {
     if (!$forced) {
       // do not re-install if same plugin already installed or has higher version
       if (strcmp($version, $installed_version) < 0) {
-        echo "plugin: not installing older version\n";
+        echo "插件: not installing older version\n";
         exit(1);
       }
       if (strcmp($version, $installed_version) == 0) {
-        echo "plugin: not reinstalling same version\n";
+        echo "插件: not reinstalling same version\n";
         exit(1);
       }
     }
     if (plugin("install", $plugin_file, $error) === false) {
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       if (dirname($plugin_file) == "/boot/config/plugins") {
         move($plugin_file, "/boot/config/plugins-error");
       }
@@ -509,7 +509,7 @@ if ($method == "install") {
   } else {
     // fresh install
     if (plugin("install", $plugin_file, $error) === false) {
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       if (dirname($plugin_file) == "/boot/config/plugins") {
         move($plugin_file, "/boot/config/plugins-error");
       }
@@ -523,7 +523,7 @@ if ($method == "install") {
   if ( ! plugin("noInstall",$plugin_file,$error) ) {
     if ($target != $plugin_file) copy($plugin_file, $target);
     symlink($target, "/var/log/plugins/$plugin");
-  echo "plugin: installed\n";
+  echo "插件: 已安装\n";
   } else {
     echo "Script: executed\n";
   }
@@ -544,13 +544,13 @@ if ($method == "remove") {
     if (plugin("remove", $installed_plugin_file, $error) === false) {
       // but if can't remove, restore the symlink
       symlink($installed_plugin_file, "/var/log/plugins/$plugin");
-      echo "plugin: $error\n";
+      echo "插件: $error\n";
       exit(1);
     }
   }
   // remove the plugin file
   move($installed_plugin_file, "/boot/config/plugins-removed");
-  echo "plugin: removed\n";
+  echo "插件: 已删除\n";
   exec("/usr/local/sbin/update_cron");
   exit(0);
 }
@@ -564,23 +564,23 @@ if ($method == "check") {
   $plugin = $argv[2];
   $installed_plugin_file = @readlink("/var/log/plugins/$plugin");
   if ($installed_plugin_file === false) {
-    echo "plugin: not installed\n";
+    echo "插件: 未安装\n";
     exit(1);
   }
   $installed_pluginURL = plugin("pluginURL", $installed_plugin_file, $error);
   if ($installed_pluginURL === false) {
-    echo "plugin: $error\n";
+    echo "插件: $error\n";
     exit(1);
   }
   $plugin_file = "/tmp/plugins/$plugin";
   if (!download($installed_pluginURL, $plugin_file, $error)) {
-    echo "plugin: $error\n";
+    echo "插件: $error\n";
     @unlink($plugin_file);
     exit(1);
   }
   $version = plugin("version", $plugin_file, $error);
   if ($version === false) {
-    echo "plugin: $error\n";
+    echo "插件: $error\n";
     exit(1);
   }
   echo "$version\n";
@@ -608,20 +608,20 @@ if ($method == "update") {
   // verify previous check has been done
   $plugin_file = "/tmp/plugins/$plugin";
   if (!file_exists($plugin_file)) {
-    echo "plugin: $plugin_file does not exist, check for updates first\n";
+    echo "插件: $plugin_file 不存在, 检查更新\n";
     exit (1);
   }
   // bergware - check Unraid version dependency (if present)
   $min = plugin("min", $plugin_file, $error);
   if ($min && version_compare($unraid['version'],$min,'<')) {
-    echo "plugin: installed Unraid version is too low, require at least version $min\n";
+    echo "插件: 当前 Unraid 版本太低, 至少需要 $min 版本\n";
     exit(1);
   }
   $max = plugin("max", $plugin_file, $error);
   if (empty($max))
     $max = plugin("Unraid", $plugin_file, $error);
   if ($max && version_compare($unraid['version'],$max,'>')) {
-    echo "plugin: installed Unraid version is too high, require at most version $max\n";
+    echo "插件: 当前 Unraid 版本太高, 最高只兼容 $mix 版本\n";
     exit(1);
   }
   // check for a reinstall of same version
@@ -631,7 +631,7 @@ if ($method == "update") {
   }
   // install the updated plugin
   if (plugin("install", $plugin_file, $error) === false) {
-    echo "plugin: $error\n";
+    echo "插件: $error\n";
     exit(1);
   }
   // install was successful, save the updated plugin so it installs again next boot
@@ -649,7 +649,7 @@ if ($method == "update") {
   }
   copy($plugin_file,"/boot/config/plugins/$plugin");
   symlink("/boot/config/plugins/$plugin", "/var/log/plugins/$plugin");
-  echo "plugin: updated\n";
+  echo "插件: 已更新\n";
   exit(0);
 }
 
@@ -658,7 +658,7 @@ if ($method == "update") {
 $plugin_file = $argv[2];
 $value = plugin($method, $plugin_file, $error);
 if ($value === false) {
-  echo "plugin: $error\n";
+  echo "插件: $error\n";
   exit(1);
 }
 echo "$value\n";

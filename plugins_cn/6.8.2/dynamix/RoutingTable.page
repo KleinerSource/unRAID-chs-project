@@ -101,7 +101,7 @@ $(function(){
 > 跃点数值是可选的, 默认为 1. 当同一路由存在多个条目时, 使用它选择首选网关.
 
 &nbsp;
-: <input type="submit" name="task" value="Add Route"><input type="button" value=" Done " onclick="done()">
+: <input type="submit" name="task" value="Add Route"><input type="button" value="完成" onclick="done()">
 </form>
 </div>
 </div>
