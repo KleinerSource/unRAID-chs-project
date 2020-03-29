@@ -5,7 +5,7 @@
 <!ENTITY author    "KleinerSource">
 <!ENTITY version   "v0.4">
 <!ENTITY github    "...">
-<!ENTITY pluginURL "https://tool.ksccc.cc:4433/unraid/&name;.plg">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;.plg">
 ]>
 
 <PLUGIN name="&title;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.8.2" max="6.8.2" support="" icon="users">
@@ -20,7 +20,7 @@
 The 'source' file.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
-<URL>https://tool.ksccc.cc:4433/unraid/&name;-&version;-x86_64-1.txz</URL>
+<URL>https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;-&version;-x86_64-1.txz</URL>
 </FILE>
 
 <!--
