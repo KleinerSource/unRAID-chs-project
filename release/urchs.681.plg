@@ -1,0 +1,51 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY title      "unRAID 简体中文汉化包">
+<!ENTITY name      "urchs.681">
+<!ENTITY author    "KleinerSource">
+<!ENTITY version   "v0.4">
+<!ENTITY github    "...">
+<!ENTITY pluginURL "https://tool.ksccc.cc:4433/unraid/&name;.plg">
+]>
+
+<PLUGIN name="&title;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.8.1" max="6.8.1" support="" icon="users">
+
+<CHANGES>
+###2020.03.28
+- Initial Release
+</CHANGES>
+
+
+<!--
+The 'source' file.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
+<URL>https://tool.ksccc.cc:4433/unraid/&name;-&version;-x86_64-1.txz</URL>
+</FILE>
+
+<!--
+The 'post-install' script
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "----------------------------------------------------"
+echo " unRaid Chinese Pakage"
+echo " &name; 安装完成."
+echo " Copyright 2019-2020, KleinerSource"
+echo " 版本: &version;"
+echo " 注意: 卸载该插件回到原版的话 要重启才会生效 "
+echo "----------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+rm -rf /boot/config/plugins/&name;
+</INLINE>
+</FILE> 
+</PLUGIN>
