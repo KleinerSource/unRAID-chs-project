@@ -11,6 +11,10 @@
 <PLUGIN name="&title;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.8.2" max="6.8.2" support="" icon="users">
 
 <CHANGES>
+###2020.03.29
+- 修复BUG
+- 增加翻译内容
+
 ###2020.03.28
 - Initial Release
 </CHANGES>
