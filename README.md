@@ -10,6 +10,7 @@ unRAID 中文化项目
 ### 插件方式:
 登录 unraid web面板 选择插件页面
 输入插件地址  点击安装即可.
+
 unRaid 6.8.1
 https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/urchs.681.plg
 
