@@ -29,4 +29,4 @@ $(function() {
 <?
 echo ($display['resize'] ? "<pre class='up' style='display:none'>" : "<pre class='up'>").shell_exec('ps -aux')."</pre>";
 ?>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">

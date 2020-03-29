@@ -25,7 +25,7 @@ function installPlugin(name) {
 
 <form name="plugin_install" method="POST" target="progressFrame">
 <input type="text" name="file" id="plugin_file" maxlength="1024" value="" style="width:33%">
-<input type="button" value="安装" onclick="installPlugin(this.form.file.value)">
+<input type="button" value="Install" onclick="installPlugin(this.form.file.value)">
 </form>
 
 > 要下载并安装插件, 请输入 plg 文件的 URL, 然后单击 **安装**. 将会打开一个窗口

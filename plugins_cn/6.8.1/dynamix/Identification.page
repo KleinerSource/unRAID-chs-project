@@ -43,7 +43,7 @@ $name_warn = preg_match('/'.$name_regex.'/', $var['NAME']) ? 'none' : 'block';
 > 这是服务器型号.
 
 &nbsp;
-: <input type="submit" name="changeNames" value="Apply" disabled><input type="button" value="Done" onclick="done()"><?if ($disabled):?>阵列必须为 <span class="strong big">停止</span> 后才能更改<?endif;?>
+: <input type="submit" name="changeNames" value="Apply" disabled><input type="button" value="完成" onclick="done()"><?if ($disabled):?>阵列必须为 <span class="strong big">停止</span> 后才能更改<?endif;?>
 </form>
 <script>
 $("#NAME").keypress(function(event) {

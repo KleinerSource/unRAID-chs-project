@@ -175,7 +175,7 @@ function device_smart(&$disk, $name, &$fail, &$smart) {
   $color  = 'green';
   $file   = "state/smart/$name";
   if (file_exists("$file.ssa") && in_array(file_get_contents("$file.ssa"),$failed)) {
-    $title = "S.M.A.R.T health-check failed\n"; $thumb = 'thumbs-o-down'; $color = 'red'; $text = 'fail'; $fail++;
+    $title = "S.M.A.R.T 健康检查失败\n"; $thumb = 'thumbs-o-down'; $color = 'red'; $text = '失败'; $fail++;
   } else {
     if (empty($saved["smart"]["$name.ack"])) {
       exec("awk 'NR>7{print $1,$2,$4,$6,$9,$10}' ".escapeshellarg($file)." 2>/dev/null", $codes);
@@ -186,7 +186,7 @@ function device_smart(&$disk, $name, &$fail, &$smart) {
         if (!$failing && !in_array($id,$events)) continue;
         if ($failing || ($select ? $thres>0 && $value<=$thres*$level : $raw>0)) $title .= normalize($class,$failing?$when:$raw);
       }
-      if ($title) {$thumb = 'thumbs-o-down'; $color = 'orange'; $text = 'error'; $smart++;} else $title = "没有错误报告\n";
+      if ($title) {$thumb = 'thumbs-o-down'; $color = 'orange'; $text = '错误'; $smart++;} else $title = "没有错误报告\n";
     }
   }
   $title .= "单击上下文菜单";

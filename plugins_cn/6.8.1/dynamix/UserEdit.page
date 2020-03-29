@@ -17,7 +17,7 @@ Tag="user"
 
 <?if (!array_key_exists($name, $users)):?>
   <p class="notice">用户 <?=htmlspecialchars($name)?> 已删除.</p><br>
-  <input type="button" value="Done" onClick="done()">
+  <input type="button" value="完成" onClick="done()">
 <?return;?>
 <?endif;?>
 
@@ -151,7 +151,7 @@ $(function(){
 <?else:?>
 Delete<input type="checkbox" name="confirmDelete" onChange="chkDelete(this.form, this.form.cmdUserEdit)">
 <?endif;?>
-: <input type="submit" name="cmdUserEdit" value="Apply" disabled><input type="button" value="Done" onclick="done('UserEdit')">
+: <input type="submit" name="cmdUserEdit" value="Apply" disabled><input type="button" value="完成" onclick="done('UserEdit')">
 </form>
 <br><br>
 <form markdown="1" method="POST" action="/update.htm" target="progressFrame" onsubmit="return checkPassword(this)">
@@ -165,7 +165,7 @@ Delete<input type="checkbox" name="confirmDelete" onChange="chkDelete(this.form,
 : <input type="password" name="userPasswordConf" maxlength="129" onKeyUp="this.form.cmdUserEdit.disabled=(this.form.userPassword.value != this.form.userPasswordConf.value);">
 
 &nbsp;
-: <input type="submit" name="cmdUserEdit" value="Change" disabled><input type="button" value="Done" onclick="done('UserEdit')">
+: <input type="submit" name="cmdUserEdit" value="Change" disabled><input type="button" value="完成" onclick="done('UserEdit')">
 </form>
 
 <?if ($name != 'root' && $var['shareSMBEnabled'] != 'no'):?>

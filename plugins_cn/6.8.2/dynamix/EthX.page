@@ -208,7 +208,6 @@ brX 桥的成员:
 
 
 </div>
-Network protocol:
 网络协议:
 : <select name="PROTOCOL:0" size="1" onchange="selectProtocol(this.form,'ethX',0)">
   <?=mk_option($ethX["PROTOCOL:0"], 'ipv4', '仅 IPv4');?>

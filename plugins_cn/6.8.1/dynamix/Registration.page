@@ -311,7 +311,7 @@ Flash GUID:
 : <?=$var['flashGUID']?>
 
 <span class="device"><?=$attached_devices?></span>
-: <button type="button" onclick="done()">Done</button>
+: <button type="button" onclick="done()">完成</button>
 
 <?endif;?>
 

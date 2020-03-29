@@ -84,4 +84,4 @@ $(function(){
 <thead><tr><th>时间</th><th>事件</th><th>主题</th><th>说明</th><th>重要性</th><th><?if ($files):?><a href="#" onclick="askConfirmation();return false" title="删除所有通知"><i class="fa fa-trash"></i></a><?endif;?></th></tr></thead>
 <tbody id="archive_list"><tr><td></td><td colspan="4"><div class="spinner"></div></td><td></td></tr></tbody>
 </table>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">

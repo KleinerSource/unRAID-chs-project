@@ -26,7 +26,7 @@ $(function() {
 <thead><td style="width:33%">功能</td><td>值</td><td>信息</td></thead>
 <tbody id="disk_capabilities"><tr><td colspan='3'><div class="spinner"></div></td></tr></tbody>
 </table>
-<input type="button" value="Done" onclick="done()">
+<input type="button" value="完成" onclick="done()">
 
 > 此列表显示此磁盘支持的 SMART 功能.
 >

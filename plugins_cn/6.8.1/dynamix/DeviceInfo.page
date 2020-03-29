@@ -273,7 +273,7 @@ Critical disk utilization threshold (%):
 
 <?endif;?>
 &nbsp;
-: <input type="submit" name="changeDisk" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="changeDisk" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>
 
 <?if (strpos($disk['fsType'],"btrfs")!==false):?>
@@ -598,5 +598,5 @@ SMART 属性通知:
 > Each disk may have its own specific setting overruling the 'default' setting (see global SMART settings under Disk Settings).
 
 <input type="submit" name="#default" value="Default">
-: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>

@@ -16,6 +16,6 @@ Tag="file-text-o"
 ?>
 <?
 $file = "/boot/license.txt";
-if (file_exists($file)) echo Markdown(file_get_contents($file)); else echo Markdown("** No license file present! **");
+if (file_exists($file)) echo Markdown(file_get_contents($file)); else echo Markdown("** 没有许可证文件! **");
 ?>
-<button type="button" onclick="done()">Done</button>
+<button type="button" onclick="done()">完成</button>

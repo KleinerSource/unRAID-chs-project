@@ -148,7 +148,7 @@ foreach ($xml->Agent as $agent) {
     if ($vHelp) echo '<blockquote class="inline_help">'.$vHelp.'</blockquote>';
   }
   echo '<dl><dt>&nbsp;</dt><dd><input type="submit" value="Apply" onclick="prepareService(this, \''.$name.'\')" disabled>';
-  echo '<input type="button" value="Done" onclick="done()">';
+  echo '<input type="button" value="完成" onclick="done()">';
   if (is_file($file)) {
     echo '<input type="button" value="Delete" onclick="execCmd(\'delete\',\''.$name.'\')">';
     echo '<input type="button" value="Test" onclick="testService(\''.$name.'\')"'.($file==$enabledAgent ? '>' : ' disabled>');

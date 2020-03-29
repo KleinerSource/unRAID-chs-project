@@ -104,14 +104,14 @@ if (isset($_POST['contName'])) {
     echo "<h2>命令:</h2>";
     echo "<pre>".htmlspecialchars($cmd)."</pre>";
     echo "<div style='text-align:center'><button type='button' onclick='window.location=window.location.pathname+window.location.hash+\"?xmlTemplate=edit:${filename}\"'>返回</button>";
-    echo "<button type='button' onclick='done()'>Done</button></div><br>";
+    echo "<button type='button' onclick='done()'>完成</button></div><br>";
     goto END;
   }
   // Will only pull image if it's absent
   if (!$DockerClient->doesImageExist($Repository)) {
     // Pull image
     if (!pullImage($Name, $Repository)) {
-      echo '<div style="text-align:center"><button type="button" onclick="done()">Done</button></div><br>';
+      echo '<div style="text-align:center"><button type="button" onclick="done()">完成</button></div><br>';
       goto END;
     }
   }
@@ -148,7 +148,7 @@ if (isset($_POST['contName'])) {
   if ($startContainer) $cmd = str_replace('/docker create ', '/docker run -d ', $cmd);
   execCommand($cmd);
 
-  echo '<div style="text-align:center"><button type="button" onclick="done()">Done</button></div><br>';
+  echo '<div style="text-align:center"><button type="button" onclick="done()">完成</button></div><br>';
   goto END;
 }
 
@@ -192,7 +192,7 @@ if ($_GET['updateContainer']){
       removeImage($oldImageID);
     }
   }
-  echo '<div style="text-align:center"><button type="button" onclick="window.parent.jQuery(\'#iframe-popup\').dialog(\'close\')">Done</button></div><br>';
+  echo '<div style="text-align:center"><button type="button" onclick="window.parent.jQuery(\'#iframe-popup\').dialog(\'close\')">完成</button></div><br>';
   goto END;
 }
 
@@ -1054,7 +1054,7 @@ button[type=button]{margin:0 20px 0 0}
       <tr>
         <td></td>
         <td>
-          <input type="submit" value="<?=$xmlType=='edit' ? 'Apply':' Apply '?>"><input type="button" value="Done" onclick="done()">
+          <input type="submit" value="<?=$xmlType=='edit' ? 'Apply':' Apply '?>"><input type="button" value="完成" onclick="done()">
           <?if ($authoringMode):?><button type="submit" name="dryRun" value="true" onclick="$('*[required]').prop('required', null);">保存</button><?endif;?>
         </td>
       </tr>

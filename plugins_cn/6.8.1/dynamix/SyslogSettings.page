@@ -128,5 +128,5 @@ $(function(){
 > Syslog 文件的镜像存储在闪存设备的 **logs** 文件夹中.
 
 &nbsp;
-: <input type="submit" value="Apply" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" value="Apply" disabled><input type="button" value="完成" onclick="done()">
 </form>

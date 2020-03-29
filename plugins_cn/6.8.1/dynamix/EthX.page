@@ -428,7 +428,7 @@ IPv6 隐私扩展:
 <?endforeach;?>
 
 &nbsp;
-: <input type="submit" value="Apply" onclick="$('#wait_<?=$tabbed?'eth0':'ethX'?>').show()" disabled><input type="button" value="Done" onclick="done()">
+: <input type="submit" value="Apply" onclick="$('#wait_<?=$tabbed?'eth0':'ethX'?>').show()" disabled><input type="button" value="完成" onclick="done()">
 <input type="button" name="#shut_ethX" value="Port <?=$cmd?>" onclick="portToggle('ethX','<?=$cmd?>')">
 <?if (!$service):?>
 <input type="button" class="access-ethX" value="Add VLAN" onclick="addVLAN('ethX')" style="display:none">

@@ -37,7 +37,7 @@ Samba 额外配置:
 : <textarea spellcheck="false" cols="80" rows="<?=substr_count($text,"\n")+1?>" maxlength="2048" name="text" style="resize:none;font-family:bitstream;width:65.5%" <?if ($var['fsState']=="Started"):?>disabled<?endif;?>><?=htmlspecialchars($text)?></textarea>
 
 &nbsp;
-: <input type="submit" value="Apply" disabled><input type="button" value="Done" onclick="done()"><?if ($var['fsState']=="Started"):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
+: <input type="submit" value="Apply" disabled><input type="button" value="完成" onclick="done()"><?if ($var['fsState']=="Started"):?>阵列必须为 <span class="strong big">已停止</span> 才能更改<?endif;?>
 
 > 单击 '应用' 按钮以提交当前编辑. 点击 **重置** 以
 > 撤消所做的任何更改 (在保存之前). 单击 '完成' 以退出此页面.

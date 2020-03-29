@@ -146,5 +146,5 @@ $(function(){
 : <input type="password" name="userPasswordConf" maxlength="129" onKeyUp="this.form.cmdUserEdit.disabled=(this.form.userName.value=='' || this.form.userPassword.value!=this.form.userPasswordConf.value)">
 
 &nbsp;
-: <input type="submit" name="cmdUserEdit" value="Add" disabled><input type="button" value="Done" onclick="done('UserAdd')">
+: <input type="submit" name="cmdUserEdit" value="Add" disabled><input type="button" value="完成" onclick="done('UserAdd')">
 </form>

@@ -74,7 +74,7 @@ Use the *'Preserve current assignments'* selection to populate the desired disk 
 <?=mk_option_check(0,'cache','缓存插槽')?>
 </select>
 <br>
-<span class="indent"><input type="submit" class="lock" name="cmdInit" value="Apply" disabled><input type="button" class="lock" value="Done" onclick="done()"></span>
+<span class="indent"><input type="submit" class="lock" name="cmdInit" value="Apply" disabled><input type="button" class="lock" value="完成" onclick="done()"></span>
 <?if ($newarray):?>
 阵列已经 <span class='strong big'>重置</span> (请配置)
 <?elseif ($disabled):?>

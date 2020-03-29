@@ -30,7 +30,7 @@ if (file_exists('/boot/previous/changes.txt')) {
       break;
     }
   }
-  $branch = strpos($version,'rc')===false ? '稳定' : 'Next';
+  $branch = strpos($version,'rc')===false ? '稳定版' : '下次再说';
 }
 ?>
 <style>

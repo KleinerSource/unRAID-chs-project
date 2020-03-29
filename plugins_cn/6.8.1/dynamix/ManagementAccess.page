@@ -252,7 +252,7 @@ HTTPS 端口:
 > 输入您的本地顶级域, 可能为空.
 
 &nbsp;
-: <input type="button" value="Apply" onclick="checkPorts(this.form)" disabled><input type="button" value="Done" onclick="done()">
+: <input type="button" value="Apply" onclick="checkPorts(this.form)" disabled><input type="button" value="完成" onclick="done()">
 
 </form>
 <div style="height:24px"></div>
