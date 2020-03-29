@@ -17,10 +17,11 @@ https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/releas
 unRaid 6.8.2 
 https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/urchs.682.plg
 
-注: 插件方式安装重启服务器受不影响, 如果要卸载插件 需要重启服务器才会生效.
+### 注: 插件方式安装重启服务器受不影响, 如果要卸载插件 需要重启服务器才会生效.
 
 ### sftp上传方式:
 在unraid启动完成后 利用winscp等软件 连接到unraid ssh 将文件复制到 /usr/local/emhttp/plugins 中. 刷新页面即可.
+
 注: 该方法在 unraid server 重启服务器之后 将会恢复到原英文版.
 
 ### 如果这个项目对您有用, 可以请我喝杯茶, 以鼓励项目能持续发展, 更加完善.
