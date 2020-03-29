@@ -296,7 +296,7 @@ function show_totals($text) {
   echo "<td><span class='diskio'>".my_diskio($sum['ioWrites'])."</span><span class='number'>".my_number($sum['numWrites'])."</span></td>";
   echo "<td>".my_number($sum['numErrors'])."</td>";
   echo "<td></td>";
-  if (strstr($text,'Array') && ($var['startMode']=='Normal')) {
+  if (strstr($text,'个阵列设备') && ($var['startMode']=='Normal')) {
     echo "<td>".my_scale($sum['fsSize']*1024,$unit,-1)." $unit</td>";
     if ($display['text']%10==0) {
       echo "<td>".my_scale($sum['fsUsed']*1024,$unit)." $unit</td>";

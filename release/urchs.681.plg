@@ -3,7 +3,7 @@
 <!ENTITY title      "unRAID 简体中文汉化包">
 <!ENTITY name      "urchs.681">
 <!ENTITY author    "KleinerSource">
-<!ENTITY version   "v0.4">
+<!ENTITY version   "v0.5">
 <!ENTITY github    "...">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;.plg">
 ]>
@@ -32,9 +32,9 @@ echo ""
 echo "----------------------------------------------------"
 echo " unRaid Chinese Pakage"
 echo " &name; 安装完成."
-echo " Copyright 2019-2020, KleinerSource"
 echo " 版本: &version;"
 echo " 注意: 卸载该插件回到原版的话 要重启才会生效 "
+echo " Copyright 2019-2020, KleinerSource"
 echo "----------------------------------------------------"
 echo ""
 </INLINE>
@@ -46,6 +46,14 @@ The 'remove' script.
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
 rm -rf /boot/config/plugins/&name;
+echo ""
+echo "----------------------------------------------------"
+echo " unRaid Chinese Pakage"
+echo " &name; 卸载完成."
+echo " 注意: 需要重启才会生效 "
+echo " Copyright 2019-2020, KleinerSource"
+echo "----------------------------------------------------"
+echo ""
 </INLINE>
 </FILE> 
 </PLUGIN>

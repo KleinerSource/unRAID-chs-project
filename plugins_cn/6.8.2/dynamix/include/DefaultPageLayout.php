@@ -396,10 +396,10 @@ $.ajaxPrefilter(function(s, orig, xhr){
   <div id="header" class="<?=$display['banner']?>">
    <div class="logo">
    <a href="https://unraid.net" target="_blank"><?readfile("$docroot/webGui/images/UN-logotype-gradient.svg")?></a>
-   Version: <?=$var['version']?><?=$notes?>
+   版本: <?=$var['version']?><?=$notes?>
    </div>
    <div class="block">
-    <span class="text-left">服务器<br/>描述<br/>注册<br/>运行时间</span>
+    <span class="text-left">服务器<br/>描述<br/>注册版本<br/>运行时间</span>
     <span class="text-right"><?=$var['NAME']." &bullet; ".$eth0['IPADDR:0']?><br/><?=$var['COMMENT']?><br/>
     <a href="/Tools/Registration" title="转到注册页面">Unraid OS <span id="licensetype"><?=$var['regTy']?></span><span id="licenseexpire"></span></a><br/>
     <span class="uptime"></span></span>

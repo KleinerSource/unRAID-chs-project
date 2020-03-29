@@ -34,11 +34,11 @@ if (!empty($_POST['trial'])) {
 <div id="status_panel"></div>
 <form markdown="1" id="trial_form">
 
-<p><input type="checkbox" id="eula" name="eula"><label for="eula">By using this software, you agree with our <a target="_blank" href="/Tools/EULA">End-User License Agreement</a> and <a target="_blank" href="https://unraid.net/policies">Privacy Policy</a>.</label></p>
+<p><input type="checkbox" id="eula" name="eula"><label for="eula">使用此软件, 表示您已经同意我们的 <a target="_blank" href="/Tools/EULA">最终用户许可协议</a> 和 <a target="_blank" href="https://unraid.net/policies">隐私政策</a>.</label></p>
 
 <br><br>
 
-<center><input type="button" id="trial_button" value="<?=(strstr($var['regTy'], "expired")?"Extend":"Start")?> Trial" onclick="startTrial()" disabled></center>
+<center><input type="button" id="trial_button" value="<?=(strstr($var['regTy'], "expired")?"延期":"开始")?>试用" onclick="startTrial()" disabled></center>
 
 </form>
 </div>
@@ -53,15 +53,15 @@ function startTrial() {
   $.post('https://keys.lime-technology.com/account/trial',{timestamp:timestamp,guid:guid},function(data) {
     $.post('/webGui/include/TrialRequest.php',{trial:data.trial,csrf_token:'<?=$var['csrf_token']?>'},function(data2) {
       $('#spinner_image,#status_panel').fadeOut('fast');
-      parent.swal({title:'Trial <?=(strstr($var['regTy'], "expired")?"extended":"started")?>',text:'Thank you for registering USB Flash GUID '+guid+'.',type:'success'},function(){parent.window.location='/Main';});
+      parent.swal({title:'Trial <?=(strstr($var['regTy'], "expired")?"extended":"started")?>',text:'感谢您注册 USB Flash GUID '+guid+'.',type:'success'},function(){parent.window.location='/Main';});
     });
   }).fail(function(data) {
       $('#trial_form').find('input').prop('disabled', false);
       $('#spinner_image').fadeOut('fast');
       var status = data.status;
       var obj = data.responseJSON;
-      var msg = "<p>Sorry, an error ("+status+") occurred registering USB Flash GUID <strong>"+guid+"</strong><p>" +
-                "<p>The error is: "+obj.error+"</p>";
+      var msg = "<p>抱歉, 出现错误 ("+status+") 发生注册 USB Flash GUID 的情况 <strong>"+guid+"</strong><p>" +
+                "<p>错误: "+obj.error+"</p>";
 
       $('#status_panel').hide().html(msg).slideDown('fast');
   });

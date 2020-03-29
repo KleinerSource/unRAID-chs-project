@@ -200,19 +200,19 @@ Spinup group(s):
   <?=mk_option($disk['spindownDelay'], "9",  "9 小时")?>
   </select><span id="smart_selftest" class='orange-text'></span>
 
-警告磁盘温度阈值 (&deg;<?=$display['unit']?>):
+磁盘警告温度阈值 (&deg;<?=$display['unit']?>):
 : <input type="number" min="0" max="300" name="<?=htmlspecialchars($name)?>_hotTemp" class="narrow" value="<?=strlen($disk['hotTemp'])?displayTemp($disk['hotTemp']):''?>" placeholder="<?=displayTemp($display['hot'])?>">
 
-> *Warning disk temperature* sets the warning threshold for this hard disk temperature. Exceeding this threshold will result in a warning notification.
+> *磁盘警告温度阈值* 在此设置硬盘温度的警告阈值. 超过此阈值将导致警告通知.
 >
-> A value of zero will disable the warning threshold (including notifications).
+> 设置为 0 将禁用警告阈值 (包括通知).
 
-Critical disk temperature threshold (&deg;<?=$display['unit']?>):
+磁盘临界温度阈值 (&deg;<?=$display['unit']?>):
 : <input type="number" min="0" max="300" name="<?=htmlspecialchars($name)?>_maxTemp" class="narrow" value="<?=strlen($disk['maxTemp'])?displayTemp($disk['maxTemp']):''?>" placeholder="<?=displayTemp($display['max'])?>">
 
-> *Critical disk temperature* sets the critical threshold for this hard disk temperature. Exceeding this threshold will result in an alert notification.
+> *临界磁盘温度* 在此设置硬盘温度的临界阈值. 超过此阈值将导致警告通知.
 >
-> A value of zero will disable the critical threshold (including notifications).
+> 设置为 0 将禁用临界阈值 (包括通知).
 
 <?if ($disk['type']=="Data" || $disk['name']=="cache"):?>
 文件系统状态:
@@ -232,8 +232,8 @@ Critical disk temperature threshold (&deg;<?=$display['unit']?>):
   <?=mk_option($disk['fsType'], "luks:reiserfs", "reiserfs - 加密的")?>
   </select>
 
-> Enter the desired file system type.  Changing the file system type of a device will permit you to reformat
-> that device using the new file system.  Be aware that **all existing data on the device will be lost**.
+> 输入所需的文件系统类型. 更改设备的文件系统类型将允许您使用新文件系
+> 统重新格式化该设备. 请注意: **设备上的所有现有数据都将丢失**.
 
 <?elseif ($var['SYS_CACHE_SLOTS']>1):?>
 文件系统类型:
@@ -246,30 +246,30 @@ Critical disk temperature threshold (&deg;<?=$display['unit']?>):
 <?endif;?>
 <?else:?>
 文件系统类型:
-: <?=str_replace('luks:','',$disk['fsType']).(strpos($disk['fsType'],'luks:')!==false ? ' - encrypted' : '')?>&nbsp;
+: <?=str_replace('luks:','',$disk['fsType']).(strpos($disk['fsType'],'luks:')!==false ? ' - 已加密' : '')?>&nbsp;
 
 <?endif;?>
-Comments:
+注释:
 : <input type="text" name="diskComment.<?=$disk['idx'];?>" maxlength="256" value="<?=htmlspecialchars($disk['comment'])?>">
 
-> This text will appear under the *Comments* column for the share in Windows Explorer.
-> Enter anything you like, up to 256 characters.
+> 该文本将显示在 Windows 资源管理器中 共享的 *注释* 列.
+> 可以输入任意字符, 最多 256 个字符.
 
-Warning disk utilization threshold (%):
+磁盘使用率警告阀值 (%):
 : <input type="number" min="0" max="100" name="<?=htmlspecialchars($name)?>_warning" class="narrow" value="<?=strlen($disk['warning'])?$disk['warning']:''?>" placeholder="<?=$display['warning']?>">
 
-> *Warning disk utilization* sets the warning threshold for this hard disk utilization. Exceeding this threshold will result in a warning notification.
+> *磁盘使用率警告阀值* 在此设置硬盘使用率的警告阈值. 超过此阈值将导致警告通知.
 >
-> When the warning threshold is set equal or greater than the critical threshold, there will be only critical notifications (warnings are not existing).
+> 当警告阈值设置为等于或大于严重阈值时, 将仅存在严重通知 (不存在警告).
 >
-> A value of zero will disable the warning threshold (including notifications).
+> 设置为 0 将禁用警告阈值 (包括通知).
 
-Critical disk utilization threshold (%):
+磁盘使用率临界阀值 (%):
 : <input type="number" min="0" max="100" name="<?=htmlspecialchars($name)?>_critical" class="narrow" value="<?=strlen($disk['critical'])?$disk['critical']:''?>" placeholder="<?=$display['critical']?>")>
 
-> *Critical disk utilization* sets the critical threshold for this hard disk utilization. Exceeding this threshold will result in an alert notification.
+> *磁盘使用率临界阀值* 在此设置硬盘使用率的临界阈值. 超过此阈值将导致警告通知.
 >
-> A value of zero will disable the critical threshold (including notifications).
+> 设置为 0 将禁用临界阈值 (包括通知).
 
 <?endif;?>
 &nbsp;
@@ -294,7 +294,7 @@ btrfs balance status:
 <input type="hidden" name="#arg[2]" value="/mnt/<?=$disk['name']?>">
 
 &nbsp;
-: <input type="submit" value="Balance"><input type="text" name="#arg[3]" maxlength="256" value=""> Options (see Help)
+: <input type="submit" value="Balance"><input type="text" name="#arg[3]" maxlength="256" value=""> 选项 (请见帮助)
 
 > **Balance** will run the *btrfs balance* program to restripe the extents across all pool devices, for example,
 > to convert the pool from raid1 to raid0 or vice-versa.
@@ -314,7 +314,7 @@ btrfs balance status:
 <input type="hidden" name="#arg[2]" value="/mnt/<?=$disk['name']?>">
 
 &nbsp;
-: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *运行*
+: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *运行中*
 
 > **Cancel** will cancel the balance operation in progress.
 
@@ -343,7 +343,7 @@ btrfs scrub status:
 <input type="hidden" name="#arg[3]" value="-r">
 
 &nbsp;
-: <input type="submit" value="Scrub"><label><input type="checkbox" name="#arg[3]" value=""> Repair corrupted blocks</label>
+: <input type="submit" value="Scrub"><label><input type="checkbox" name="#arg[3]" value="">修复损坏的块</label>
 
 > **Scrub** runs the *btrfs scrub* program which will read all data and metadata blocks from all
 > devices and verify checksums.
@@ -356,7 +356,7 @@ btrfs scrub status:
 <input type="hidden" name="#arg[2]" value="/mnt/<?=$disk['name']?>">
 
 &nbsp;
-: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *Running*
+: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *运行中*
 
 > **取消** 将取消正在进行的清理操作。
 
@@ -370,12 +370,12 @@ btrfs scrub status:
 </form>
 <?endif?>
 <?if (strpos($disk['fsType'],"btrfs")!==false):?>
-<div id="title" class="nocontrol"><span class="left"><i class="title fa fa-shield"></i>Check Filesystem Status</span></div>
+<div id="title" class="nocontrol"><span class="left"><i class="title fa fa-shield"></i>检查文件系统状态</span></div>
 <form markdown="1" method="POST" action="/update.php" target="progressFrame">
 <?if (maintenance_mode()):?>
 <?exec("$docroot/webGui/scripts/btrfs_check status /dev/{$disk['deviceSb']} {$disk['id']}", $check_status, $retval);?>
 
-btrfs check status:
+btrfs 状态检查:
 : <?echo "<pre>" . implode("\n", $check_status) . "</pre>";?>
 
 <?if ($retval != 0):?>
@@ -385,9 +385,9 @@ btrfs check status:
 <input type="hidden" name="#arg[3]"  value="<?=$disk['id']?>">
 
 &nbsp;
-: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value="--readonly"> Options (see Help)
+: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value="--readonly"> 选项 (请见帮助)
 
-> **Check** will run the *btrfs check* program to check file system integrity on the device.
+> **Check** 将运行 *btrfs check* 程序以检查设备上文件系统完整性.
 >
 > The *Options* field is initialized with *--readonly* which specifies check-only.  If repair is needed, you should run
 > a second Check pass, setting the *Options* to *--repair*; this will permit *btrfs check* to fix the file system.
@@ -406,7 +406,7 @@ btrfs check status:
 &nbsp;
 : <input type="button" value="刷新" onclick="refresh()"><input type="submit" value="取消"> *运行*
 
-> **取消** will cancel the Check operation in progress.
+> 点击 **取消** 将取消正在进行的检查操作.
 
 <?endif;?>
 <?else:?>
@@ -439,9 +439,9 @@ reiserfsck 状态:
 <input type="hidden" name="#arg[3]"  value="<?=$disk['id']?>">
 
 &nbsp;
-: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value=""> Options (see Help)
+: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value=""> 选项 (请见帮助)
 
-> **Check** will run the *reiserfsck* program to check file system integrity on the device.
+> **Check** 将运行 *reiserfsck* 程序以检查设备上文件系统完整性.
 >
 > The *Options* field may be filled in with specific options used to fix problems in the file system. Typically, you
 > first run a Check pass leaving *Options* blank.  Upon completion, if *reiserfsck* finds any problems, you must
@@ -459,7 +459,7 @@ reiserfsck 状态:
 <input type="hidden" name="#arg[3]"  value="<?=$disk['id']?>">
 
 &nbsp;
-: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *Running*
+: <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *运行中*
 
 > **取消** 将取消正在进行的检查操作.
 
@@ -473,7 +473,7 @@ reiserfsck 状态:
 </form>
 <?endif;?>
 <?if (strpos($disk['fsType'],"xfs")!==false):?>
-<div id="title" class="nocontrol"><span class="left"><i class="title fa fa-shield"></i>Check Filesystem Status</span></div>
+<div id="title" class="nocontrol"><span class="left"><i class="title fa fa-shield"></i>检查文件系统状态</span></div>
 <form markdown="1" method="POST" action="/update.php" target="progressFrame">
 <?if (maintenance_mode()):?>
 <?exec("$docroot/webGui/scripts/xfs_check status /dev/{$disk['deviceSb']} {$disk['id']}", $check_status, $retval);?>
@@ -488,9 +488,9 @@ xfs_repair 状态:
 <input type="hidden" name="#arg[3]"  value="<?=$disk['id']?>">
 
 &nbsp;
-: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value="-n"> Options (see Help)
+: <input type="submit" value="Check"><input type="text" name="#arg[4]" maxlength="256" value="-n"> 选项 (请见帮助)
 
-> **Check** will run the *xfs_repair* program to check file system integrity on the device.
+> **Check** 将运行 *xfs_repair* 程序以检查设备上文件系统完整性.
 >
 > The *Options* field is initialized with *-n* which specifies check-only.  If repair is needed, you should run
 > a second Check pass, setting the *Options* blank; this will permit *xfs_repair* to fix the file system.
@@ -536,13 +536,13 @@ SMART 通知值:
   <?=mk_option($disk['smSelect'], "1", "标准化")?>
   </select>
 
-> SMART notifications are generated on either an increasing RAW value of the attribute, or a decreasing NORMALIZED value which reaches a predefined threshold set by the manufacturer.
+> SMART 通知是在属性的原始值增加时生成的, 或者是在达到制造商设置的预定义阈值减少时生成的.
 >
-> Each disk may have its own specific setting overruling the 'default' setting (see global SMART settings under Disk Settings).
+> 每个磁盘可能都有自己的特定设置, 而不是 '默认' 设置 (请参阅 '磁盘设置' 下的 '全局 SMART 设置').
 
 SMART notification tolerance level:
 : <select name="smLevel">
-  <?=mk_option($disk['smLevel'], "-1", "Use default")?>
+  <?=mk_option($disk['smLevel'], "-1", "使用默认")?>
   <?=mk_option($disk['smLevel'], "1.00", "Absolute")?>
   <?=mk_option($disk['smLevel'], "1.05", "5%")?>
   <?=mk_option($disk['smLevel'], "1.10", "10%")?>
@@ -554,7 +554,7 @@ SMART notification tolerance level:
 
 > A tolerance level may be given to prevent that small changes result in a notification. Setting a too high tolerance level may result in critical changes without a notification.
 >
-> Each disk may have its own specific setting overruling the 'default' setting (see global SMART settings under Disk Settings).
+> 每个磁盘可能都有自己的特定设置, 而不是 '默认' 设置 (请参阅 '磁盘设置' 下的 '全局 SMART 设置').
 
 SMART 控制器类型:
 : <select name="smType" onchange="setGlue(this.form,true)">
@@ -580,7 +580,7 @@ SMART 控制器类型:
 > By default automatic controller selection is done by smartctl to read the SMART information. Certain controllers however need specific settings for smartctl to work.
 > Use this setting to select your controller type and fill-in the specific disk index and device name for your situation. Use the manufacturer's documentation to find the relevant information.
 >
-> Each disk may have its own specific setting overruling the 'default' setting (see global SMART settings under Disk Settings).
+> 每个磁盘可能都有自己的特定设置, 而不是 '默认' 设置 (请参阅 '磁盘设置' 下的 '全局 SMART 设置').
 
 SMART 属性通知:
 : <input type="text" name="smCustom" value="<?=$disk['smCustom']??$var['smCustom']?>" class="narrow">自定义属性 (使用逗号分隔数字)
@@ -595,7 +595,7 @@ SMART 属性通知:
 > In addition custom SMART attributes can be entered to generate notifications. Be careful in this selection,
 > it may cause an avalance of notifcations if inappropriate SMART attributes are chosen.
 >
-> Each disk may have its own specific setting overruling the 'default' setting (see global SMART settings under Disk Settings).
+> 每个磁盘可能都有自己的特定设置, 而不是 '默认' 设置 (请参阅 '磁盘设置' 下的 '全局 SMART 设置').
 
 <input type="submit" name="#default" value="Default">
 : <input type="submit" name="#apply" value="Apply" disabled><input type="button" value="完成" onclick="done()">
