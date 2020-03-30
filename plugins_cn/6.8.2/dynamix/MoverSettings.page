@@ -1,5 +1,5 @@
 Menu="Scheduler:2"
-Title="Mover 设置"
+Title="搬家设置(将缓存中的数据移动到阵列中)"
 Tag="calendar-check-o"
 ---
 <?PHP
@@ -24,8 +24,8 @@ if (empty($disks['cache']) || $disks['cache']['status']=='DISK_NP') {
 }
 $cron = explode(' ',$var['shareMoverSchedule']);
 $move = $cron[2]!='*' ? 3 : ($cron[4]!='*' ? 2 : (substr($cron[1],0,1)!='*' ? 1 : 0));
-$mode = ['Hourly','Daily','Weekly','Monthly'];
-$days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+$mode = ['时计划','日计划','周计划','月计划'];
+$days = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
 ?>
 <script>
 $(function() {
@@ -54,18 +54,18 @@ function presetMover(form) {
 }
 </script>
 <form markdown="1" name="mover_schedule" method="POST" action="/update.htm" target="progressFrame" onsubmit="prepareMover(this)">
-Mover 计划:
+搬家计划:
 : <select name="shareMoverSchedule" size="1" onchange="presetMover(this.form)">
   <?for ($m=0; $m<count($mode); $m++):?>
   <?=mk_option($move, strval($m), $mode[$m])?>
   <?endfor;?>
   </select>
 
-> Choose a mover schedule ranging from hourly, daily, weekly and monthly.
+> 选择每小时, 每天, 每周和每月的搬家时间表.
 >
-> The interval determines how fast the mover will activated, it runs in the background.
+> 时间间隔决定了搬家计划在后台运行的频率.
 
-Day of the week:
+周计划:
 : <select name="day" size="1">
   <?for ($d=0; $d<count($days); $d++):?>
   <?=mk_option($cron[4], strval($d), $days[$d])?>
@@ -73,9 +73,9 @@ Day of the week:
   <?=mk_option($cron[4], "*", "--------", "disabled")?>
   </select>
 
-> Choose a day when the weekly schedule is selected. Otherwise disabled.
+> 选择周计划的日期. 否则禁用.
 
-Day of the month:
+月计划:
 : <select name="dotm" size="1">
   <?for ($d=1; $d<=31; $d++):?>
   <?=mk_option($cron[2], strval($d), sprintf("%02d", $d))?>
@@ -83,9 +83,9 @@ Day of the month:
   <?=mk_option($cron[2], "*", "--------", "disabled")?>
   </select>
 
-> Choose a date when the monthly schedule is selected. Otherwise disabled.
+> 选择月计划时选择日期. 否则禁用.
 
-Time of the day:
+时计划:
 : <span id="H1"<?if ($move==0):?> style="display:none"<?endif;?>><select name="hour1" size="1" class="narrow">
   <?for ($d=0; $d<=23; $d++):?>
   <?=mk_option($cron[1], strval($d), sprintf("%02d", $d))?>
@@ -97,25 +97,25 @@ Time of the day:
   <?endfor;?>
   </select>&nbsp;&nbsp;HH:MM</span>
 : <span id="H2"<?if ($move!=0):?> style="display:none"<?endif;?>><select name="hour2" size="1">
-  <?=mk_option($cron[1], "*/1", "Every hour")?>
-  <?=mk_option($cron[1], "*/2", "Every 2 hours")?>
-  <?=mk_option($cron[1], "*/3", "Every 3 hours")?>
-  <?=mk_option($cron[1], "*/4", "Every 4 hours")?>
-  <?=mk_option($cron[1], "*/6", "Every 6 hours")?>
-  <?=mk_option($cron[1], "*/8", "Every 8 hours")?>
+  <?=mk_option($cron[1], "*/1", "每小时")?>
+  <?=mk_option($cron[1], "*/2", "每 2 小时")?>
+  <?=mk_option($cron[1], "*/3", "每 3 小时")?>
+  <?=mk_option($cron[1], "*/4", "每 4 小时")?>
+  <?=mk_option($cron[1], "*/6", "每 6 小时")?>
+  <?=mk_option($cron[1], "*/8", "每 8 小时")?>
   </select></span>
 
-> When an hourly schedule is selected this will set the interval in hours. An interval always starts on the whole hour (minute 0).
+> 选择时计划时, 将以小时为单位设置间隔. 间隔总是从整小时(0分钟) 开始.
 >
-> For the other schedules choose here the time of the day the mover should start.
+> 对于其他计划, 请在此处选择搬家程序应该开始的时间.
 
-Mover logging:
+搬家记录:
 : <select name="shareMoverLogging" size="1">
-  <?=mk_option($var['shareMoverLogging'], "yes", "Enabled")?>
-  <?=mk_option($var['shareMoverLogging'], "no", "Disabled")?>
+  <?=mk_option($var['shareMoverLogging'], "yes", "启用")?>
+  <?=mk_option($var['shareMoverLogging'], "no", "禁用")?>
   </select>
 
-> Write mover messages to the syslog file.
+> 将搬家消息写入系统日志文件.
 
 &nbsp;
 : <input type="submit" name="changeMover" value="Apply" disabled><input type="button" value="完成" onclick="done()">
@@ -123,9 +123,9 @@ Mover logging:
 <?if ($var['shareCacheEnabled']=="yes" && is_dir("/mnt/cache")):?>
 &nbsp;
 <?if (file_exists("/var/run/mover.pid")):?>
-: <input type="submit" name="cmdStartMover" value="Move now" disabled> Mover is running.
+: <input type="submit" name="cmdStartMover" value="Move now" disabled> 正在搬家.
 <?else:?>
-: <input type="submit" name="cmdStartMover" value="Move now"> Click to invoke the Mover.
+: <input type="submit" name="cmdStartMover" value="Move now"> 点击 *搬家(Move now)* 立刻开始搬家.
 <?endif;?>
 <?endif;?>
 </form>

@@ -24,7 +24,7 @@ $user_prefs      = $dockerManPaths['user-prefs'];
 $autostart_file  = $dockerManPaths['autostart-file'];
 
 if (!$containers && !$images) {
-  echo "<tr><td colspan='7' style='text-align:center;padding-top:12px'>未安装 Docker 容器</td></tr>";
+  echo "<tr><td colspan='7' style='text-align:center;padding-top:12px'>未添加 Docker 容器</td></tr>";
   return;
 }
 

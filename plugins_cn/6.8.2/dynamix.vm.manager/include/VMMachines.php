@@ -19,7 +19,7 @@ require_once "$docroot/plugins/dynamix.vm.manager/include/libvirt_helpers.php";
 $user_prefs = '/boot/config/plugins/dynamix.vm.manager/userprefs.cfg';
 $vms = $lv->get_domains();
 if (empty($vms)) {
-  echo '<tr><td colspan="8" style="text-align:center;padding-top:12px">No Virtual Machines installed</td></tr>';
+  echo '<tr><td colspan="8" style="text-align:center;padding-top:12px">未添加虚拟机</td></tr>';
   return;
 }
 if (file_exists($user_prefs)) {

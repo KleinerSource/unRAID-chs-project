@@ -741,7 +741,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 			<tr class="disk_file_options">
 				<td>虚拟磁盘大小:</td>
 				<td>
-					<input type="text" name="disk[{{INDEX}}][size]" value="" class="narrow" placeholder="e.g. 10M, 1G, 10G...">
+					<input type="text" name="disk[{{INDEX}}][size]" value="" class="narrow" placeholder="例如 10M, 1G, 10G...">
 				</td>
 			</tr>
 
@@ -942,7 +942,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 				<td>
 					<select name="audio[<?=$i?>][id]" class="audio narrow">
 					<?php
-						echo mk_option($arrAudio['id'], '', 'None');
+						echo mk_option($arrAudio['id'], '', '无');
 
 						foreach($arrValidAudioDevices as $arrDev) {
 							echo mk_option($arrAudio['id'], $arrDev['id'], $arrDev['name'].' ('.$arrDev['id'].')');

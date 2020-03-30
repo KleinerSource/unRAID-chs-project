@@ -127,7 +127,7 @@ function form_submit(url, params, $panel, diagnostics) {
         }).fail(function() {
             $('#spinner_image').fadeOut('fast');
             $panel.fadeOut('fast').find('textarea,input').prop('disabled', false);
-            var failure_message = '<p class="red-text" style="text-align:center;">Sorry, an error (Unable to generate system diagnostics) occurred.  Please try again later.</p>';
+            var failure_message = '<p class="red-text" style="text-align:center;">抱歉, 发生错误 (无法生成系统诊断). 请稍后再试.</p>';
             $('#thanks_panel').html(failure_message).fadeIn('fast');
         });
 
@@ -141,13 +141,13 @@ function form_submit(url, params, $panel, diagnostics) {
 
     $.post(url,params,function(data) {
         if (data.error) {
-            var failure_message = '<p class="red-text" style="text-align:center;">Sorry, an error ('+data.error+') occurred.  Please try again later.</p>';
+            var failure_message = '<p class="red-text" style="text-align:center;">抱歉, 发生 ('+data.error+') 错误.  请稍后再试.</p>';
             $('#thanks_panel').html(failure_message).fadeIn('fast');
         } else {
             data.message = data.message || '';
 
             var url_parts = url.split('/');
-            var success_message = '<div style="text-align:center"><h2>Thank You!</h2><img src="/webGui/images/feedback_'+url_parts[4]+'.jpg"/><p style="text-align:center">'+data.message+'</p></div>';
+            var success_message = '<div style="text-align:center"><h2>谢谢!</h2><img src="/webGui/images/feedback_'+url_parts[4]+'.jpg"/><p style="text-align:center">'+data.message+'</p></div>';
 
             $('#thanks_panel').html(success_message).fadeIn('fast', function() {
                 var resetfunction = window[url_parts[4]+'_reset'];

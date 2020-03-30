@@ -100,7 +100,7 @@ function check_temp($name,$temp,$text,$info) {
   $last = $saved[$item][$name] ?? 0;
   if ($warn) {
     if ($temp>$last) {
-      exec("$notify -e ".escapeshellarg("Unraid $text 温度")." -s ".escapeshellarg(ucfirst($warn)." [$server] - $text ".($warn=='alert'?'overheated (':'is hot (').my_temp($temp).")")." -d ".escapeshellarg("$info")." -i \"$warn\"");
+      exec("$notify -e ".escapeshellarg("Unraid $text 温度")." -s ".escapeshellarg(ucfirst($warn)." [$server] - $text ".($warn=='alert'?'过热 (':'很热 (').my_temp($temp).")")." -d ".escapeshellarg("$info")." -i \"$warn\"");
       $saved[$item][$name] = $max>0 && $temp<=$max ? $max : $temp;
     }
   } else {

@@ -53,16 +53,16 @@ $(function() {
   var form = document.ethX_settings;
 <?if ($tabbed && !$service):?>
   $('#tabX').bind({click:function(){
-    $('#bond-ethX').dropdownchecklist('destroy').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
-    $('#bridge-ethX').dropdownchecklist('destroy').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
+    $('#bond-ethX').dropdownchecklist('destroy').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
+    $('#bridge-ethX').dropdownchecklist('destroy').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
   }});
 <?endif;?>
   if (!$.cookie('#view-ethX')) {$('#view-ethX').show(); $('#tag-ethX').removeClass('fa-chevron-down').addClass('fa-chevron-up');}
 <?foreach ($vlan_ethX as $i):?>
   if (!$.cookie('#view-ethX-<?=$i?>')) {$('#view-ethX-<?=$i?>').show(); $('#tag-ethX-<?=$i?>').removeClass('fa-chevron-down').addClass('fa-chevron-up');}
 <?endforeach;?>
-  $('#bond-ethX').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
-  $('#bridge-ethX').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
+  $('#bond-ethX').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
+  $('#bridge-ethX').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
   checkBondingSettings(form,0,'ethX');
   checkBridgingSettings(form,0,'ethX');
   checkNetworkAccess(form,'ethX');

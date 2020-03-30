@@ -251,7 +251,7 @@ $('.tooltip_diskio').tooltipster({delay:100,trigger:'custom',triggerOpen:{mousee
 toggle_diskio(true);
 <?
 $parity = $var['mdResync'] ? '<br><small>已禁用 -- 奇偶校验操作正在运行</small>' : '';
-$mover = file_exists('/var/run/mover.pid') ? '<br><small>已禁用 -- Mover 正在运行</small>' : '';
+$mover = file_exists('/var/run/mover.pid') ? '<br><small>已禁用 -- 搬家程序正在运行</small>' : '';
 $btrfs = exec('pgrep -cf /sbin/btrfs') ? '<br><small>已禁用 -- BTRFS 操作正在运行</small>' : '';
 ?>
 $(function(){
@@ -469,8 +469,8 @@ function formatWarning(val) {
         <td>替换磁盘必须与原始磁盘一样大或更大.</td></tr>
 <?      break;
       case "ERROR:PARITY_NOT_BIGGEST":?>
-        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 奇偶校验槽中的磁盘不是最大的.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
-        <td>如果这是一个新阵列, 请将最大的磁盘移到 <em>奇偶</em> 插槽中.
+        <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 奇偶槽(Parity) 中的磁盘不是最大容量的.</td><td><input type="submit" name="cmdStart" value="Start" disabled></td>
+        <td>如果这是一个新阵列, 请将最大容量的磁盘移到 <em>奇偶</em> 插槽中.
         <br>如果要添加新磁盘或替换禁用的磁盘, 请尝试奇偶交换</td></tr>
 <?      break;
       case "ERROR:TOO_MANY_MISSING_DISKS":?>
@@ -510,9 +510,9 @@ function formatWarning(val) {
 <table class="array_status noshift">
  <tr><td></td>
 <?if ($mover):?>
- <td><input type="submit" name="cmdStartMover" value="Move now" disabled></td><td>已禁用 - Mover 正在运行.</td>
+ <td><input type="submit" name="cmdStartMover" value="Move now" disabled></td><td>已禁用 - 搬家程序正在运行正在运行.</td>
 <?else:?>
- <td><input type="submit" name="cmdStartMover" value="Move now"></td><td>点击 <strong>Move now</strong> 将立即调用 Mover.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab2',{path:'/'})"<?endif;?>>(计划)</a></td>
+ <td><input type="submit" name="cmdStartMover" value="Move now"></td><td>点击 <strong>搬家(Move now)</strong> 将立即执行将缓存磁盘中的数据移动到阵列中.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab2',{path:'/'})"<?endif;?>>(计划)</a></td>
 <?endif;?>
  </tr>
 </table>

@@ -76,8 +76,8 @@ foreach ($shares as $name => $share) {
   $row++;
   $color = $share['color'];
   switch ($color) {
-    case 'green-on' : $orb = 'circle'; $color = 'green'; $help = 'All files protected'; break;
-    case 'yellow-on': $orb = 'warning'; $color = 'yellow'; $help = 'Some or all files unprotected'; break;
+    case 'green-on' : $orb = 'circle'; $color = 'green'; $help = '所有文件已受保护'; break;
+    case 'yellow-on': $orb = 'warning'; $color = 'yellow'; $help = '部分或全部文件未受保护'; break;
   }
   if ($crypto) switch ($share['luksStatus']) {
     case 0: $luks = "<i class='nolock fa fa-lock'></i>"; break;

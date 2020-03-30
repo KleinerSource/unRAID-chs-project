@@ -17,7 +17,7 @@ Tag="pencil"
 ?>
 <?
 function my_time2($time) {
-  return $time ? my_time($time) : "Anytime";
+  return $time ? my_time($time) : "任何时间";
 }
 $attached_devices="该服务器已连接 {$var['deviceCount']} 个存储设备".($var['deviceCount']==1 ? "" : "s").".";
 $contact_support="<a href='https://lime-technology.com/contact' target='_blank'>联系支持</a>";
@@ -37,18 +37,18 @@ div.remark{padding:0 10px;text-align:justify;}
 <input type="hidden" name="deviceCount" value="<?=$var['deviceCount']?>">
 <span class="thanks">感谢您尝试 Unraid 操作系统!</span>
 <div markdown="1" class="remark">
-Your server will not be usable until you purchase a Registration key or install a free 30-day *Trial* key. A *Trial*
-key provides all the functionality of a *Pro* Registration key.
+在购买注册密钥或安装免费的 30 天 *试用* 密钥之前, 服务器将无法使用.
+*试用* 密钥提供 *专业版* 注册密钥的所有功能.
 
-Registration keys are bound to your USB Flash boot device serial number (GUID).  Please use a high quality name brand device
-at least 1GB in size.
+注册密钥已绑定到 USB 闪存引导设备序列号 (GUID), 请使用至少 1GB 大小的
+高品质名牌设备
 
-Note: USB memory card readers are generally **not** supported because most do not present unique serial numbers.
+注意: 通常情况下 USB 读卡器是 **不** 的支持, 因为大多数读卡器不提供唯一的序列号.
 
 <span class="red-text">重要:</span>
 
-+ Please make sure your <u>[server time](DateTime)</u> is accurate to within 5 minutes.
-+ Please make sure there is a <u>[DNS server](NetworkSettings)</u> specified.
++ 请确保您的 <u>[server time](DateTime)</u> 误差在 5 分钟内.
++ 请确保有一个 <u>[DNS server](NetworkSettings)</u>.
 </div>
 
 Flash 供应商:
@@ -74,14 +74,14 @@ Flash GUID:
 <input type="hidden" name="deviceCount" value="<?=$var['deviceCount']?>">
 <span class="thanks"> 感谢您尝试 Unraid 操作系统!</span>
 <div markdown="1" class="remark">
-Your *Trial* key includes all the functionality and device support of a *Pro* Registration key.
+您的 *试用* 密钥包括 *专业版* 注册密钥的所有功能和设备支持
 
-After your *Trial* key has reached expiration, your server **still functions normally** until the next time you <code>停止</code> the array.
+当您的 *试用* 密钥过期后, 您的服务器 **仍然正常工作**, 直到您下次<code>停止</code>阵列.
 
-At that point, you may either purchase a Registration key, or request a *Trial* extension.
+这时, 您可以购买注册密钥, 或者请求 *试用* 延期.
 </div>
 
-***Trial*** key expires on:
+***试用*** 密钥到期日期:
 : <?=my_time($var['regTm2'])?>
 
 Flash 供应商:
@@ -94,7 +94,7 @@ Flash GUID:
 : <?=$var['flashGUID']?>
 
 <span class="device"><?=$attached_devices?></span>
-: <input type="submit" value="购买 Key"> <input type="button" value="Request Extension" disabled>
+: <input type="submit" value="购买 Key"> <input type="button" value="请求延期" disabled>
 
 </form>
 <?endif;?>
@@ -109,10 +109,10 @@ Flash GUID:
 <div markdown="1" class="remark">
 <span class='red-text'>无法连接到 key-server!</span>
 
-Your *Trial* key requires an internet connection.  Please check your [Nework Settings](NetworkSettings).
+您的 *试用* 密钥需要因特网连接. 请检查您的 [Nework Settings](NetworkSettings).
 </div>
 
-***Trial*** key expires on:
+***试用*** 密钥到期日期:
 : <?=my_time($var['regTm2'])?>
 
 Flash 供应商:
@@ -125,7 +125,7 @@ Flash GUID:
 : <?=$var['flashGUID']?>
 
 <span class="device"><?=$attached_devices?></span>
-: <input type="submit" value="购买 Key"> <input type="button" value="Request Extension" disabled>
+: <input type="submit" value="购买 Key"> <input type="button" value="请求延期" disabled>
 
 </form>
 <?endif;?>
@@ -138,12 +138,12 @@ Flash GUID:
 <input type="hidden" name="deviceCount" value="<?=$var['deviceCount']?>">
 <span class="thanks"> 感谢您尝试 Unraid 操作系统!</span>
 <div markdown="1" class="remark">
-<span class='red-text'>Release has been withdrawn!</span>
+<span class='red-text'>此版本已被撤回!</span>
 
 This release has been withdrawn for use with *Trial* keys.
 </div>
 
-***Trial*** key expires on:
+***试用*** 密钥到期日期:
 : <?=my_time($var['regTm2'])?>
 
 Flash 供应商:
@@ -156,7 +156,7 @@ Flash GUID:
 : <?=$var['flashGUID']?>
 
 <span class="device"><?=$attached_devices?></span>
-: <input type="submit" value="购买 Key"> <input type="button" value="Request Extension" disabled>
+: <input type="submit" value="购买 Key"> <input type="button" value="请求延期" disabled>
 
 </form>
 <?endif;?>
@@ -171,9 +171,9 @@ Flash GUID:
 <div markdown="1" class="remark">
 <span class='red-text'>您的 *试用* Key 已过期.</span>
 
-To continue using Unraid OS you may purchase a Registration key. Alternately, you may request a *Trial* extension key.
+要继续使用 Unraid OS, 您可以购买注册密钥. 或者, 您可以请求 *延期试用* 密钥.
 
-Most *Trial* extension requests are processed immediately but please allow up to one business day to receive your *Trial* extension key.
+大多数 *试用* 延期请求会立即处理, 但请允许最多一个工作日收到您的 *延期试用* 密钥.
 </div>
 
 Flash 供应商:
@@ -186,7 +186,7 @@ Flash GUID:
 : <?=$var['flashGUID']?>
 
 <span class="device"><?=$attached_devices?></span>
-: <input type="submit" value="购买 Key"> <input type="button" value="Request Extension" onclick="openBox('/webGui/include/TrialRequest.php','Request Trial Extension',300,600);">
+: <input type="submit" value="购买 Key"> <input type="button" value="请求延期" onclick="openBox('/webGui/include/TrialRequest.php','请求试用延期',300,600);">
 
 </form>
 <?endif;?>
@@ -197,13 +197,13 @@ Flash GUID:
 <form markdown="1" method="GET" action="https://lime-technology.com/getkey" target="_blank">
 <input type="hidden" name="TrialGUID" value="<?=$var['flashGUID'];?>">
 <input type="hidden" name="deviceCount" value="<?=$var['deviceCount']?>">
-<span class='thanks red'>Invalid <em>Trial</em> Installation</span>
+<span class='thanks red'>无效的 <em>试用</em> 安装</span>
 <div markdown="1" class="remark">
-It is not possible to use a *Trial* key with an existing Unraid OS installation.
+在现有的 Unraid OS 安装中不可能使用 *试用* 密钥.
 
-You may purchase a Registration key corresponding to this USB Flash device to continue using this installation.
+您可以购买与此 USB 闪存设备对应的注册密钥以继续使用此安装.
 
-For more information, please <?=$contact_support?>.
+更多信息, 请 <?=$contact_support?>.
 </div>
 
 Flash 供应商:
@@ -238,7 +238,7 @@ Flash GUID:
 <?if ($var['regTy']=="Basic"):?>
 <span class="thanks">感谢您选择 Unraid 操作系统!</span>
 <div markdown="1" class="remark">
-To support more storage devices as your server grows, click Upgrade Key below.
+要服务器增长时支持更多存储设备, 请单击下面的升级密钥.
 </div>
 
 注册为:
@@ -268,7 +268,7 @@ Flash GUID:
 <?if ($var['regTy']=="Plus"):?>
 <span class="thanks">感谢您选择 Unraid 操作系统!</span>
 <div markdown="1" class="remark">
-To support more storage devices as your server grows, click Upgrade Key below.
+要服务器增长时支持更多存储设备, 请单击下面的升级密钥.
 </div>
 
 注册为:
@@ -323,12 +323,12 @@ Flash GUID:
 <input type="hidden" name="deviceCount" value="<?=$var['deviceCount']?>">
 <span class='thanks red'>丢失 Key 文件</span>
 <div markdown="1" class="remark">
-It appears that your Registration key file is corrupted or missing.  The key file should be located in the
-[config](Registration/Browse?dir=/boot/config) directory on your USB Flash boot device.
+您的注册密钥文件似乎已损坏或丢失. 密钥文件应该位于 USB闪存引导设备的
+[config](Registration/Browse?dir=/boot/config) 目录中.
 
-If you do not have a backup copy of your Registration key file, <?=$contact_support?>.
+如果您没有注册密钥文件的备份副本,请 <?=$contact_support?>.
 
-If this was a <em>Trial</em> installation, you may purchase a Registration key.
+如果这是 <em>试用</em> 安装, 您可以购买注册密钥.
 </div>
 
 Flash 供应商:
@@ -355,20 +355,20 @@ Flash GUID:
 <span class='thanks red'>注册的 GUID 与 USB 闪存启动设备 GUID 不匹配</span>
 <?if (strstr($var['regTy'], "Trial")):?>
 <div markdown="1" class="remark">
-*Trial* installations are only valid with the originally registered USB Flash device.
+*试用* 安装仅对第一次注册的 USB 闪存设备有效.
 
-To continue using this installation with this USB Flash device, you may purchase a Registration key.
+若要在此 USB 闪存设备上继续使用此安装, 您可以购买注册密钥.
 </div>
 <?else:?>
 <div markdown="1" class="remark">
-The Registration key file does not correspond to the USB Flash boot device.  Please copy the correct key file to the [config](Registration/Browse?dir=/boot/config) directory
-on your USB Flash boot device. If you do not have a backup copy of your key file, <?=$contact_support?>.
+注册密钥文件与 USB 闪存引导设备不对应. 请将正确的密钥文件复制到. 请将正确的密钥文件复制到 [config](Registration/Browse?dir=/boot/config) 目录
+如果您没有密钥文件的备份副本, 请 <?=$contact_support?>.
 
-If you want to replace your Registration key with a new key bound to this USB Flash device, click Replace Key below. An original key may be
-replaced anytime. Thereafter, a replacement key may be replaced again after one year has passed.  If you require
-another replacement key sooner, <?=$contact_support?>.
+如果要用绑定到此 USB闪存设备的新密钥替换注册密钥, 请单击下面的 '替换密钥'. 
+原密钥可以随时更换. 此后, 更换密钥可在一年后再次更换. 
+如果您需要提前更换密钥, 请 <?=$contact_support?>.
 
-**Note:** Replacing a Registration key results in permanently *blacklisting* the previous USB Flash GUID.
+**注意:**替换注册密钥后 旧的 USB 闪存设备 GUID 将导致永久列入 *黑名单*.
 </div>
 <?endif;?>
 

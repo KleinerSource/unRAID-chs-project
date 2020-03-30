@@ -60,18 +60,18 @@ endforeach;
 > 1.作为单个设备.
 > 2.作为多设备池.
 >
-> When configured as a single device you may format the device using any supported file system (btrfs, reiserfs,
-> or xfs).  This configuration offers the highest performance, but at the cost of no data protection - if the
-> single Cache device fails all data contained on it may be lost.
+> 当配置为单个设备时, 您可以使用任何受支持的文件系统 (btrfs, reiserfs, 或者 xfs) 来格式化设备.
+> 这种配置提供了最高的性能，但代价是没有数据保护 - 如果
+> 单个高速缓存设备出现故障, 其中包含的所有数据可能会丢失.
 >
-> When configured as a multi-device pool, Unraid OS will automatically select *btrfs-raid1* format (for both data
-> and meta-data).  btrfs permits any number of devices to be added to the pool and each copy of data is guaranteed
-> to be written to two different devices.  Hence the pool can withstand a single-disk failure without losing data.
+> 当配置为多设备池时, Unraid OS 将自动选择 *btrfs-raid1* 格式化 (用于数据和元数据).
+> btrfs 允许向池中添加任意数量的设备, 并且保证每个数据副本都写入两个不同的设备
+> 因此, 设备池可以承受单个磁盘故障而不丢失数据.
 >
-> When [User Shares](/Settings/ShareSettings) are enabled, user shares may be configured to
-> automatically make use of the Cache in order to
-> speed up writes.  A special background process called the *mover* can be scheduled to run
-> periodically to move user share files off the Cache and onto the Array.
+> 启用 [User Shares](/Settings/ShareSettings) 时, 
+> 可以将用户共享配置为自动使用缓存以加快写入速度, 
+> 可以计划定期运行名为 *mover* 的特殊后台进程
+> 以将用户共享文件从缓存移到阵列上.
 
 <?if ($var['fsState'] == "Stopped"):?>
 <div></div>

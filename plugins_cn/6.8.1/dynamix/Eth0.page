@@ -310,7 +310,7 @@ function checkBondingSettings(form,ctrl,port) {
       $('#bond-members-'+port).hide(me);
     } else {
       $('#bond-members-'+port).show(me);
-      $('#bond-'+port).dropdownchecklist('destroy').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
+      $('#bond-'+port).dropdownchecklist('destroy').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
     }
     if (ctrl==1) checkBridgingSettings(form,1,port);
   }
@@ -321,7 +321,7 @@ function checkBridgingSettings(form,ctrl,port) {
   var i = 0;
   if (form.BRIDGING.value=='yes' && form.BONDING.value=='no') {
     $('#bridge-members-'+port).show(me);
-    $('#bridge-'+port).dropdownchecklist('destroy').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
+    $('#bridge-'+port).dropdownchecklist('destroy').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
   } else {
     $('#bridge-members-'+port).hide(me);
   }
@@ -411,8 +411,8 @@ $(function() {
 <?foreach ($vlan_eth0 as $i):?>
   if (!$.cookie('#view-eth0-<?=$i?>')) {$('#view-eth0-<?=$i?>').show(); $('#tag-eth0-<?=$i?>').removeClass('fa-chevron-down').addClass('fa-chevron-up');}
 <?endforeach;?>
-  $('#bond-eth0').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
-  $('#bridge-eth0').dropdownchecklist({emptyText:'None', width:<?=$width[0]?>});
+  $('#bond-eth0').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
+  $('#bridge-eth0').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>});
   checkBondingSettings(form,0,'eth0');
   checkBridgingSettings(form,0,'eth0');
   checkNetworkAccess(form,'eth0');
@@ -756,7 +756,7 @@ IPv4地址分配:
   <?=mk_option($eth0["USE_DHCP:$i"], 'yes', '自动');?>
   <?=mk_option($eth0["USE_DHCP:$i"], 'no', '静态');?>
 <?if ($i>0):?>
-  <?=mk_option($eth0["USE_DHCP:$i"], '', 'None');?>
+  <?=mk_option($eth0["USE_DHCP:$i"], '', '无');?>
 <?endif;?>
   </select>
 
@@ -804,7 +804,7 @@ IPv6 地址分配:
   <?=mk_option($eth0["USE_DHCP6:$i"], 'yes', '自动');?>
   <?=mk_option($eth0["USE_DHCP6:$i"], 'no', '静态');?>
 <?if ($i>0):?>
-  <?=mk_option($eth0["USE_DHCP6:$i"], '', 'None');?>
+  <?=mk_option($eth0["USE_DHCP6:$i"], '', '无');?>
 <?endif;?>
   </select>
 
@@ -871,7 +871,7 @@ IPv4 地址分配:
 : <select name="USE_DHCP:INDEX" size="1" onchange="selectProtocol(this.form,'eth0',INDEX)">
   <?=mk_option($eth0["USE_DHCP:INDEX"], 'yes', '自动');?>
   <?=mk_option($eth0["USE_DHCP:INDEX"], 'no', '静态');?>
-  <?=mk_option($eth0["USE_DHCP:INDEX"], '', 'None');?>
+  <?=mk_option($eth0["USE_DHCP:INDEX"], '', '无');?>
   </select>
 
 <div markdown="1" class="more-ipv4-eth0-INDEX" style="display:none">
@@ -906,7 +906,7 @@ IPv6 地址分配:
 : <select name="USE_DHCP6:INDEX" size="1" onchange="selectProtocol(this.form,'eth0',INDEX)">
   <?=mk_option($eth0["USE_DHCP6:INDEX"], 'yes', '自动');?>
   <?=mk_option($eth0["USE_DHCP6:INDEX"], 'no', '静态');?>
-  <?=mk_option($eth0["USE_DHCP6:INDEX"], '', 'None');?>
+  <?=mk_option($eth0["USE_DHCP6:INDEX"], '', '无');?>
   </select>
 
 <div markdown="1" class="more-ipv6-eth0-INDEX" style="display:none">

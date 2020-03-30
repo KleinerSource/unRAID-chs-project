@@ -75,8 +75,8 @@ foreach ($disks as $name => $disk) {
   $color = $disk['fsColor'];
   $row++;
   switch ($color) {
-    case 'green-on' : $orb = 'circle'; $color = 'green'; $help = 'All files protected'; break;
-    case 'yellow-on': $orb = 'warning'; $color = 'yellow'; $help = 'All files unprotected'; break;
+    case 'green-on' : $orb = 'circle'; $color = 'green'; $help = '所有文件已受保护'; break;
+    case 'yellow-on': $orb = 'warning'; $color = 'yellow'; $help = '所有文件未受保护'; break;
   }
   if ($crypto) switch ($disk['luksState']) {
     case 0: $luks = "<i class='nolock fa fa-lock'></i>"; break;

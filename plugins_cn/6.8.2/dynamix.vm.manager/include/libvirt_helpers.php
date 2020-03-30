@@ -500,10 +500,10 @@
 	}
 
 	function appendOrdinalSuffix($number) {
-		$ends = ['th','st','nd','rd','th','th','th','th','th','th'];
+		$ends = ['号','号','号','号','号','号','号','号','号','号'];
 
 		if (($number % 100) >= 11 && ($number % 100) <= 13) {
-			$abbreviation = $number . 'th';
+			$abbreviation = $number . '号';
 		} else {
 			$abbreviation = $number . $ends[$number % 10];
 		}

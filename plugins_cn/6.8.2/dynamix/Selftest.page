@@ -58,18 +58,18 @@ SMART 简短的自检:
 
 > 开始 *简短的* SMART自检, 可以在 *功能* 部分下查看预计的持续时间. 这通常是几分钟.
 >
-> When the disk is spun down, it will abort any running self-test.
-> This feature is only available when the disk is in active mode.
+> 当磁盘挂起时, 它将中止任何正在运行的自检.
+> 此功能仅在磁盘处于活动状态下时可用.
 
 SMART 扩展自检:
 : <input type='button' value='开始' id='long_test' onclick="startLongTest()" disabled>
 
-> Starts an *extended* SMART self-test, the estimated duration can be viewed under the *Capabilities* section. This is usually several hours.
+> 启动 *扩展* SMART 自检, 估计持续时间可以在 *功能* 部分下查看. 这通常是几个小时.
 >
-> When the disk is spun down, it will abort any running self-test. It is advised to disable the spin down timer of the disk
-> to avoid interruption of this self-test.
+> 当磁盘挂起时, 它将中止任何正在运行的自检. 建议禁用磁盘挂起计时器
+> 以避免此自检中断.
 >
-> This feature is only available when the disk is in active mode.
+> 此功能仅在磁盘处于活动状态下时可用.
 
 上次 SMART 测试结果:
 : <span id="test_result"><i class='fa fa-circle-o-notch fa-spin fa-fw'></i></span>

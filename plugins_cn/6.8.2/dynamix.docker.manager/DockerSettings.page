@@ -165,7 +165,7 @@ Docker 虚拟磁盘大小:
 > 要调整现有镜像文件的大小, 请在此处指定新大小. 下次启动 Docker 服务时, 文件 (和文件系统) 将增加到新的大小 (但不会减少).
 
 Docker 虚拟磁盘位置:
-: <input id="DOCKER_IMAGE_FILE" type="text" name="DOCKER_IMAGE_FILE" value="<?=$dockercfg['DOCKER_IMAGE_FILE']?>" placeholder="e.g. /mnt/disk1/docker.img" data-pickcloseonfile="true" data-pickfilter="img" data-pickroot="/mnt/" data-pickfolders="true" required="required" pattern="^[^\\]*\.(img|IMG)$">
+: <input id="DOCKER_IMAGE_FILE" type="text" name="DOCKER_IMAGE_FILE" value="<?=$dockercfg['DOCKER_IMAGE_FILE']?>" placeholder="例如 /mnt/disk1/docker.img" data-pickcloseonfile="true" data-pickfilter="img" data-pickroot="/mnt/" data-pickfolders="true" required="required" pattern="^[^\\]*\.(img|IMG)$">
   <?if (file_exists($dockercfg['DOCKER_IMAGE_FILE'])):?>
   <span id="deletePanel"><label><input type="checkbox" id="deleteCheckbox"> 删除镜像文件</label></span>
   <?endif;?>
@@ -180,7 +180,7 @@ Docker 虚拟磁盘位置:
 > 建议在阵列外部 (例如在缓存池上) 创建此映像文件. 为了获得最佳性能, 首选 SSD 设备.
 
 默认存储位置:
-: <input id="DOCKER_APP_CONFIG_PATH" type="text" name="DOCKER_APP_CONFIG_PATH" value="<?=$dockercfg['DOCKER_APP_CONFIG_PATH']?>" placeholder="e.g. /mnt/user/appdata" data-pickfilter="HIDE_FILES_FILTER" data-pickroot="<?=(is_dir('/mnt/user/') ? '/mnt/user/' : '/mnt/')?>" data-pickfolders="true" pattern="^[^\\]*/$">
+: <input id="DOCKER_APP_CONFIG_PATH" type="text" name="DOCKER_APP_CONFIG_PATH" value="<?=$dockercfg['DOCKER_APP_CONFIG_PATH']?>" placeholder="例如 /mnt/user/appdata" data-pickfilter="HIDE_FILES_FILTER" data-pickroot="<?=(is_dir('/mnt/user/') ? '/mnt/user/' : '/mnt/')?>" data-pickfolders="true" pattern="^[^\\]*/$">
   <?if ($var['fsState'] != "Started"):?>
   <span><i class="fa fa-warning icon warning"></i>谨慎修改: 在启动阵列之前无法验证路径</span>
   <?elseif (!is_dir($dockercfg['DOCKER_APP_CONFIG_PATH'])):?>
