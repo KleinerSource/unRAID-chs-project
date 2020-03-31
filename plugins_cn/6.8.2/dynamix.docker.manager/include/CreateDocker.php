@@ -309,13 +309,13 @@ button[type=button]{margin:0 20px 0 0}
     $('#tab'+this_tab).bind({click:function(){$('#'+elementId).show();}});
     for (var x=1; x<=last; x++) if(x != this_tab) $('#tab'+x).bind({click:function(){$('#'+elementId).hide();}});
     <?endif;?>
-    $('.advanced-switch').switchButton({labels_placement: "left", on_label: '高级视图', off_label: 'Basic View'});
+    $('.advanced-switch').switchButton({labels_placement: "left", on_label: '高级视图', off_label: '基本视图'});
     $('.advanced-switch').change(function () {
       var status = $(this).is(':checked');
       toggleRows('advanced', status, 'basic');
       load_contOverview();
       $("#catSelect").dropdownchecklist("destroy");
-      $("#catSelect").dropdownchecklist({emptyText:'选择类别...', maxDropHeight:200, width:300, explicitClose:'...close'});
+      $("#catSelect").dropdownchecklist({emptyText:'选择类别...', maxDropHeight:200, width:300, explicitClose:'...关闭'});
     });
   });
 
@@ -1266,7 +1266,7 @@ button[type=button]{margin:0 20px 0 0}
     // Add switchButton
     $('.switch-on-off').each(function(){var checked = $(this).is(":checked");$(this).switchButton({labels_placement: "right", checked:checked});});
     // Add dropdownchecklist to Select Categories
-    $("#catSelect").dropdownchecklist({emptyText:'选择类别...', maxDropHeight:200, width:300, explicitClose:'...close'});
+    $("#catSelect").dropdownchecklist({emptyText:'选择类别...', maxDropHeight:200, width:300, explicitClose:'...关闭'});
     <?if ($authoringMode){
       echo "$('.advanced-switch').prop('checked','true'); $('.advanced-switch').change();";
       echo "$('.advanced-switch').siblings('.switch-button-background').click();";

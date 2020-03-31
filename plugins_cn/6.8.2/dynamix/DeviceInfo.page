@@ -175,10 +175,11 @@ $(function() {
 : <?=my_number($disk['sizeSb'])?> KB (K=1024)
 
 分区格式:
-: <?=$disk['format']?>
+: <?=(strpos($disk['format'],'MBR: 4K-aligned')!==false ? 'MBR: 4K-已对齐' : '')?><?=(strpos($disk['format'],'MBR: 4K-unaligned')!==false ? ' MBR:4K-未对齐' : '')?>&nbsp;
+
 
 <?if ($var['spinupGroups']=="yes" && ($disk['type']=="Data" || $disk['type']=="Parity")):?>
-Spinup group(s):
+唤醒组:
 : <input type="text" name="diskSpinupGroup.<?=$disk['idx'];?>" maxlength="256" value="<?=$disk['spinupGroup']?>">
 
 <?endif;?>
@@ -216,7 +217,8 @@ Spinup group(s):
 
 <?if ($disk['type']=="Data" || $disk['name']=="cache"):?>
 文件系统状态:
-: <?=$disk['fsStatus']?>&nbsp;
+: <?=(strpos($disk['fsStatus'],'Mounted')!==false ? ' 已挂载' : '')?><?=(strpos($disk['fsStatus'],'-')!==false ? '-' : '')?>&nbsp;
+
 
 <?if ($var['fsState']=="Stopped"):?>
 <?$disabled = $var['mdState']=="SWAP_DSBL" ? "disabled" : "";?>
@@ -316,7 +318,7 @@ btrfs balance status:
 &nbsp;
 : <input type="button" value="Refresh" onclick="refresh()"><input type="submit" value="Cancel"> *运行中*
 
-> **Cancel** will cancel the balance operation in progress.
+> **Cancel** 将取消正在进行的 balance 操作.
 
 <?endif;?>
 <?else:?>

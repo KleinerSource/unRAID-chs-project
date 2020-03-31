@@ -100,7 +100,7 @@ function settings(form, data) {
 <?=mk_option($ssmtp['service'], "smtp.mail.com:465:YES:NO:login", "Mail.com")?>
 <?=mk_option($ssmtp['service'], "smtp.gmx.com:465:YES:NO:login", "GMX.com")?>
 <?=mk_option($ssmtp['service'], "smtp.zoho.com:465:YES:NO:login", "zoho Mail")?>
-<?=mk_option($ssmtp['service'], "::NO:NO:none", "Custom")?>
+<?=mk_option($ssmtp['service'], "::NO:NO:none", "自定义")?>
 </select>
 
 > 选择一个预设服务以设置基本服务设置.

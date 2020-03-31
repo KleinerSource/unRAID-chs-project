@@ -255,7 +255,7 @@ foreach ($rows as $row) echo $row;
 共享状态:
 : <span class="big">共享容器数据</span>
 
-> 只要共享包含数据, 就不能删除它. 请注意, 有些数据可能会被隐藏. 另请参见 [SMB Settings](/Settings/SMB) -> 隐藏 "点" 文件.
+> 只要共享包含数据, 就不能删除它. 请注意, 有些数据可能会被隐藏. 另请参见 [SMB 设置](/Settings/SMB) -> 隐藏 "点" 文件.
 
 &nbsp;
 : <input type="submit" name="cmdEditShare" value="Apply" disabled><input type="button" value="完成" onclick="done()">
@@ -280,10 +280,10 @@ function initDropdown(remove,create) {
 <?endif;?>
   }
   if (create) {
-    $('#s1').dropdownchecklist({emptyText:'全部', width:<?=$width[1]?>, explicitClose:'...close'});
-    $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[1]?>, explicitClose:'...close'});
+    $('#s1').dropdownchecklist({emptyText:'全部', width:<?=$width[1]?>, explicitClose:'...关闭'});
+    $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[1]?>, explicitClose:'...关闭'});
 <?if ($name):?>
-    $("#s3").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...close'});
+    $("#s3").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...关闭'});
 <?endif;?>
   }
 }
@@ -314,11 +314,11 @@ function prepareEdit(form) {
 // Test share name validity
   var share = form.shareName.value.trim();
   if (share.length==0) {
-    swal('Missing share name', 'Enter a name for the share', 'error');
+    swal('缺少共享名', '请输入共享名称', 'error');
     return false;
   }
   if (share.match('^(disk[0-9]+|cache[0-9]*|flash)$')) {
-    swal('Invalid share name', 'Do not use reserved names', 'error');
+    swal('无效的共享名', '不要使用保留名称', 'error');
     return false;
   }
   form.shareName.value = share;

@@ -91,7 +91,7 @@ function my_clock($time) {
   $days = floor($time/1440);
   $hour = $time/60%24;
   $mins = $time%60;
-  return plus($days,'day',($hour|$mins)==0).plus($hour,'hour',$mins==0).plus($mins,'minute',true);
+  return plus($days,'天',($hour|$mins)==0).plus($hour,'小时',$mins==0).plus($mins,'分钟',true);
 }
 
 function my_array(&$disk) {
@@ -153,7 +153,7 @@ if ($mdResync>0) {
   $data[] = "总大小: ".my_scale($mdResync*1024, $unit)." $unit";
   $data[] = "经过的时间: ".my_clock(floor((time()-$var['sbUpdated'])/60));
   $data[] = "当前位置: ".my_scale($mdResyncPos*1024, $unit)." $unit (".number_format(($mdResyncPos/($mdResync/100+1)),1,$unraid['display']['number'][0],'')." %)";
-  $data[] = "估计速度: ".my_scale($mdResyncDb/$mdResyncDt*1024, $unit, 1)." $unit/sec";
+  $data[] = "估计速度: ".my_scale($mdResyncDb/$mdResyncDt*1024, $unit, 1)." $unit/秒";
   $data[] = "估计完成时间: ".my_clock(round(((($mdResyncDt*(($mdResync-$mdResyncPos)/($mdResyncDb/100+1)))/100)/60),0));
   $data[] = "同步错误 ".($var['mdResyncCorr']==0 ? 'detected: ' : 'corrected: ').$var['sbSyncErrs'];
 } else {
@@ -172,7 +172,7 @@ if ($mdResync>0) {
       $data[] = '奇偶有效';
     }
     $duration = $sbSynced2 - $sbSynced;
-    $speed = my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/s";
+    $speed = my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/秒";
     $data[] = "上次检查时间 ".my_time($sbSynced2).", 发现 $sbSyncErrs 个错误".($sbSyncErrs==1?'.':' ');
     $data[] = "持续时间: ".my_check($duration,$speed);
   }
@@ -181,7 +181,7 @@ if ($mdResync>0) {
 $word = $size==1 ? "" : "including ";
 $warn = ($error0 || $error3) ? "alert" : (($error1 || $error2) ? "warning" : "normal");
 $stat = $warn=="normal" ? "[PASS]" : "[FAIL]";
-$info = "阵列 $size disk".($size==1 ? "" : "s").($parity ? " ({$word}parity".($cache ? " & cache)" : ")") : ($cache ? " ({$word}cache)" : ""));
+$info = "阵列 $size 硬盘".($size==1 ? "" : "").($parity ? " ({$word}parity".($cache ? " & cache)" : ")") : ($cache ? " ({$word}cache)" : ""));
 $message = implode('\n', $data);
 exec("$notify -s ".escapeshellarg("通知 [$server] - 阵列健康报告 $stat")." -d ".escapeshellarg("$info")." -m ".escapeshellarg("$message")." -i ".escapeshellarg("$warn $output"));
 

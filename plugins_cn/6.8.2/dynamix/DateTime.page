@@ -31,10 +31,10 @@ Tag="clock-o"
 
 > 从下拉列表中选择您适用的时区.
 
-使用NTP:
+使用 NTP:
 : <select name="USE_NTP" size="1" class="narrow" onchange="checkDateTimeSettings(this.form)">
-  <?=mk_option($var['USE_NTP'], "yes", "Yes")?>
-  <?=mk_option($var['USE_NTP'], "no", "No")?>
+  <?=mk_option($var['USE_NTP'], "yes", "是")?>
+  <?=mk_option($var['USE_NTP'], "no", "否")?>
   </select>
 
 > 选择 '是' 以使用网络时间协议来保持服务器时间准确.

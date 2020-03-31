@@ -26,8 +26,8 @@ $(checkNFSenable);
 <form markdown="1" name="nfs_enable" method="POST" action="/update.htm" target="progressFrame">
 启用 NFS:
 : <select name="shareNFSEnabled" size="1" onchange="checkNFSenable()">
-  <?=mk_option($var['shareNFSEnabled'], "no", "No");?>
-  <?=mk_option($var['shareNFSEnabled'], "yes", "Yes");?>
+  <?=mk_option($var['shareNFSEnabled'], "no", "否");?>
+  <?=mk_option($var['shareNFSEnabled'], "yes", "是");?>
   </select>
 
 > 选择 '是' 以启用 NFS 协议.

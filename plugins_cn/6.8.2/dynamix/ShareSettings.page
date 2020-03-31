@@ -23,8 +23,8 @@ $width    = [166,300];
 ?>
 <script>
 $(function() {
-  $('#s1').dropdownchecklist({emptyText:'全部', width:<?=$width[0]?>, explicitClose:'...close'});
-  $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, explicitClose:'...close'});
+  $('#s1').dropdownchecklist({emptyText:'全部', width:<?=$width[0]?>, explicitClose:'...关闭'});
+  $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, explicitClose:'...关闭'});
   presetShare(document.share_settings);
 });
 // Simulate the original input field
@@ -79,8 +79,8 @@ function presetShare(form,shares) {
 
 启用用户共享:
 : <select name="shareUser" size="1" onchange="presetShare(this.form,this.value)" <?=$disabled?>>
-  <?=mk_option($var['shareUser'], "e", "Yes")?>
-  <?=mk_option($var['shareUser'], "-", "No")?>
+  <?=mk_option($var['shareUser'], "e", "是")?>
+  <?=mk_option($var['shareUser'], "-", "否")?>
   </select>
 
 > 如果设置为 '是', 则会激活用户共享功能.

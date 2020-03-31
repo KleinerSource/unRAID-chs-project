@@ -19,7 +19,7 @@ Tag="pencil"
 function my_time2($time) {
   return $time ? my_time($time) : "任何时间";
 }
-$attached_devices="该服务器已连接 {$var['deviceCount']} 个存储设备".($var['deviceCount']==1 ? "" : "s").".";
+$attached_devices="该服务器已连接 {$var['deviceCount']} 个存储设备".($var['deviceCount']==1 ? "" : "").".";
 $contact_support="<a href='https://lime-technology.com/contact' target='_blank'>联系支持</a>";
 ?>
 <style>
@@ -109,7 +109,7 @@ Flash GUID:
 <div markdown="1" class="remark">
 <span class='red-text'>无法连接到 key-server!</span>
 
-您的 *试用* 密钥需要因特网连接. 请检查您的 [Nework Settings](NetworkSettings).
+您的 *试用* 密钥需要因特网连接. 请检查您的 [网络设置](NetworkSettings).
 </div>
 
 ***试用*** 密钥到期日期:

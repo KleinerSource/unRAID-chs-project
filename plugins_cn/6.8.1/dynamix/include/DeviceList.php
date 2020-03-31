@@ -157,7 +157,7 @@ function fs_info(&$disk) {
     echo "<td>".vfs_type($disk['fsType'])."</td><td colspan='4' style='text-align:center'>{$disk['fsStatus']}";
 }
 function my_diskio($data) {
-  return my_scale($data,$unit,1)." $unit/s";
+  return my_scale($data,$unit,1)." $unit/秒";
 }
 function parity_only($disk) {
   return $disk['type']=='Parity';
@@ -271,7 +271,7 @@ function my_clock($time) {
   $days = floor($time/1440);
   $hour = $time/60%24;
   $mins = $time%60;
-  return plus($days,'day',($hour|$mins)==0).plus($hour,'hour',$mins==0).plus($mins,'minute',true);
+  return plus($days,'天',($hour|$mins)==0).plus($hour,'小时',$mins==0).plus($mins,'分钟',true);
 }
 function read_disk($name, $part) {
   global $var;
@@ -441,7 +441,7 @@ case 'parity':
     if (in_parity_log($log,$timestamp)) break;
     $duration = $var['sbSynced2'] - $var['sbSynced'];
     $status = $var['sbSyncExit'];
-    $speed = ($status==0) ? my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/s" : "不可用";
+    $speed = ($status==0) ? my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/秒" : "不可用";
     $error = $var['sbSyncErrs'];
     $year = date('Y',$var['sbSynced2']);
     if ($status==0||file_exists($log)) file_put_contents($log,"$year $timestamp|$duration|$speed|$status|$error\n",FILE_APPEND);

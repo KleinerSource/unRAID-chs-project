@@ -161,7 +161,7 @@ function day_count($time) {
   }
 }
 function plus($val, $word, $last) {
-  return $val>0 ? (($val || $last) ? ($val.' '.$word.($val!=1?'s':'').($last ?'':', ')) : '') : '';
+  return $val>0 ? (($val || $last) ? ($val.' '.$word.($val!=1?'':'').($last ?'':', ')) : '') : '';
 }
 function read_parity_log($epoch, $busy=false) {
   $log = '/boot/config/parity-checks.log';

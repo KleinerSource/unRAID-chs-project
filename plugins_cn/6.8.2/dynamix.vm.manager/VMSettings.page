@@ -210,7 +210,7 @@ PCIe ACS 覆盖:
 > 要使对此设置的更改生效, 需要重新启动.
 >
 > **警告: 使用此设置可能会导致某些硬件配置的数据损坏.**
-> 请访问 [Lime Technology forums](https://forums.unraid.net/forum/51-vm-engine-kvm) 了解更多信息.
+> 请访问 [Lime Technology 论坛](https://forums.unraid.net/forum/51-vm-engine-kvm) 了解更多信息.
 
 VFIO 允许不安全中断:
 : <select id="vfio_allow_unsafe"<?=$safemode?' disabled':''?>>
@@ -222,7 +222,7 @@ VFIO 允许不安全中断:
 > 要使对此设置的更改生效, 需要重新启动.
 >
 > **警告: 使用此设置可能会导致某些硬件配置的数据损坏.**
-> 请访问 [Lime Technology forums](https://forums.unraid.net/forum/51-vm-engine-kvm) 了解更多信息.
+> 请访问 [Lime Technology 论坛](https://forums.unraid.net/forum/51-vm-engine-kvm) 了解更多信息.
 
 </div>
 <?if (file_exists("/var/log/libvirt/libvirtd.log")):?>

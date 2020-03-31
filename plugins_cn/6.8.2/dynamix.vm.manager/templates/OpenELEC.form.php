@@ -54,7 +54,7 @@
 
 		$reply = [];
 		if (empty($arrDeleteOpenELEC)) {
-			$reply = ['error' => 'Unknown version: ' . $_POST['delete_version']];
+			$reply = ['error' => '未知的版本: ' . $_POST['delete_version']];
 		} else {
 			// delete img file
 			@unlink($arrDeleteOpenELEC['localpath']);

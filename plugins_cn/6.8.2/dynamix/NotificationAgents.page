@@ -79,7 +79,7 @@ function testService(name) {
   form.submit();
 }
 function initDropdown() {
-  if (openPage) {$("[id^='slot_']").dropdownchecklist({width:<?=$width[1]?>,explicitClose:'...close'}); openPage = false;}
+  if (openPage) {$("[id^='slot_']").dropdownchecklist({width:<?=$width[1]?>,explicitClose:'...关闭'}); openPage = false;}
 }
 </script>
 <form method="POST" id="formExec" action="/update.php" target="progressFrame">

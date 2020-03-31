@@ -232,8 +232,8 @@ function initDropdownSMB(reset) {
     $('#smb1').dropdownchecklist('destroy');
     $('#smb2').dropdownchecklist('destroy');
   }
-  $("#smb1").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...close'});
-  $("#smb2").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...close'});
+  $("#smb1").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...关闭'});
+  $("#smb2").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...关闭'});
 }
 function readSMB() {
   var form = document.smb_edit;

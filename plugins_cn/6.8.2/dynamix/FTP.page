@@ -36,8 +36,8 @@ $(function() {
 
 FTP 服务器:
 : <select name="#arg[1]" size="1">
-  <?=mk_option($ftp_server, "0", "Disabled")?>
-  <?=mk_option($ftp_server, "1", "Enabled")?>
+  <?=mk_option($ftp_server, "0", "禁用")?>
+  <?=mk_option($ftp_server, "1", "启用")?>
   </select>
 
 > 启用或禁用 FTP 服务器守护程序. 默认情况下, FTP 服务器是启用的.

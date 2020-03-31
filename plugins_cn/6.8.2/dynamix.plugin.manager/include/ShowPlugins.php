@@ -92,9 +92,9 @@ foreach (glob($plugins,GLOB_NOSORT) as $plugin_link) {
   else
     $desc = Markdown("**{$name}**");
 //author
-  $author = plugin('author',$plugin_file) ?: "anonymous";
+  $author = plugin('author',$plugin_file) ?: "匿名";
 //version
-  $version = plugin('version',$plugin_file) ?: "unknown";
+  $version = plugin('version',$plugin_file) ?: "未知";
   $date = str_replace('.','',$version);
 //support
   $support = plugin('support',$plugin_file) ?: "";
@@ -102,7 +102,7 @@ foreach (glob($plugins,GLOB_NOSORT) as $plugin_link) {
 //category
   $category = plugin('category',$plugin_file) ?: (strpos($version,'-')!==false ? 'next' : 'stable');
 //status
-  $status = 'unknown';
+  $status = '未知';
   $changes_file = $plugin_file;
   $url = plugin('pluginURL',$plugin_file);
   if ($url !== false) {

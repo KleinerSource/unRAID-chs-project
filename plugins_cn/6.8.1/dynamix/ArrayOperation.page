@@ -32,15 +32,15 @@ if ($forced && ($present || $missing || $wrong)) $forced = false;
 
 function check_encryption() {
   global $forced, $missing, $wrong;
-  if ($forced) $status = "Enter new key";
-  elseif ($missing) $status = "Missing key";
-  elseif ($wrong) $status = "Wrong key";
+  if ($forced) $status = "输入新的密钥";
+  elseif ($missing) $status = "缺少密钥";
+  elseif ($wrong) $status = "错误的密钥";
   else return;
   echo "<tr><td></td><td class='gap'>加密状态:</td><td><span class='red-text'>$status</span><span id='pass'><input name='luksReformat' type='checkbox' onchange='selectInput(this.form)'>允许重新格式化</span></td></tr>";
   echo "<tr><td></td><td class='gap'>加密输入:</td><td>";
   echo "<select name='input' size='1' onchange='selectInput(this.form)'>";
-  echo mk_option(1,'text','Passphrase');
-  echo mk_option(1,'file','Keyfile');
+  echo mk_option(1,'text','密码');
+  echo mk_option(1,'file','密钥文件');
   echo "</select></td></tr>";
   echo "<tr id='text'><td></td><td class='gap'>密码:</td><td><input type='password' name='text' maxlength='512' value='' onkeyup='selectInput(this.form)'><input name='showPass' type='checkbox' onchange='selectInput(this.form)'>显示密码</td></tr>";
   echo "<tr id='copy'><td></td><td class='gap'>重新输入密码:</td><td><input type='password' name='copy' maxlength='512' value='' onkeyup='selectInput(this.form)'></td></tr>";
@@ -144,9 +144,9 @@ function prepareInput(form) {
 function parityWarning(form) {
   if (form.md_invalidslot.checked) {
 <?if (strpos($disks['parity2']['status'],'_NP')===false):?>
-    var text = '<i>双奇偶校验有效</i> 必需 <b>全部</b> 原始插槽中的磁盘';
+    var text = '<i>双奇偶有效</i> 需要其原始插槽中的 <b>所有</b> 磁盘';
 <?else:?>
-    var text = '<i>奇偶校验有效</i> 必需 <b>全部</b> 具有原始内容的磁盘';
+    var text = '<i>奇偶有效</i> 需要 <b>所有</b> 磁盘具有其原始内容';
 <?endif;?>
   } else {
     var text = '<i>奇偶校验</i> 磁盘内容将被覆盖';
@@ -266,7 +266,7 @@ function formatWarning(val) {
     <td><input type="button" value="Stop" onclick="stopArray(this.form)"<?if ($parity||$mover||$btrfs):?> 已停用<?endif;?>></td>
     <td id="stop">点击 <strong>停止(Stop)</strong> 将会使该阵列脱机.<?=$parity?:$mover?:$btrfs?:''?></td></tr>
 <?  if ($var['fsNumUnmountable']>0):?>
-      <tr><td><strong>不可卸载的磁盘<?=$var['fsNumUnmountable']==1?'':'s'?> 当前:</strong><br>
+      <tr><td><strong>不可卸载的磁盘<?=$var['fsNumUnmountable']==1?'':''?> 当前:</strong><br>
 <?    foreach ($disks as $disk) if (strpos($disk['fsStatus'],'Unmountable')!==false)
       echo "<span class='blue-text'>".my_disk($disk['name'])."</span> &bullet; ".my_id($disk['id'])." (".$disk['device'].")<br>";?>
       </td><td><input type="submit" id="btnFormat" name="cmdFormat" value="格式化" disabled><input type="hidden" name="unmountable_mask" value="<?=$var['fsUnmountableMask']?>"></td>

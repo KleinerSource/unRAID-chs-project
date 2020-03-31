@@ -3,7 +3,7 @@
 <!ENTITY title      "unRAID 简体中文汉化包">
 <!ENTITY name      "urchs.682">
 <!ENTITY author    "KleinerSource">
-<!ENTITY version   "v0.6">
+<!ENTITY version   "v0.7">
 <!ENTITY github    "...">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;.plg">
 ]>
@@ -11,6 +11,10 @@
 <PLUGIN name="&title;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.8.2" max="6.8.2" support="" icon="users">
 
 <CHANGES>
+###2020.03.31
+- 替换更合适的翻译词汇
+- 增加翻译内容
+
 ###2020.03.30
 - 替换更合适的翻译词汇
 - 增加翻译内容

@@ -95,7 +95,7 @@ function setIndex(form) {
   <?=mk_option($var['spinupGroups'], "yes", "是")?>
   </select>
 
-> 如果设置为 '是', 则启用 [Spinup Groups] (/help) 功能.
+> 如果设置为 '是', 则启用 [唤醒组] (/help) 功能.
 
 默认分区格式:
 : <select name="defaultFormat" size="1">
@@ -209,7 +209,7 @@ function setIndex(form) {
 >
 > 选择 *自动* 为 '读/修改/写'.
 
-默认警告磁盘利用率阈值 (%):
+默认警告磁盘使用率阈值 (%):
 : <input type="number" min="0" max="100" name="display_warning" class="narrow" value="<?=$display['warning']?>">
 
 > *Warning disk utilization* sets the default warning threshold for all hard disks utilization. Exceeding this threshold will result in a warning notification.
@@ -218,7 +218,7 @@ function setIndex(form) {
 >
 > A value of zero will disable the warning threshold (including notifications).
 
-默认关键磁盘利用率阈值 (%):
+默认关键磁盘使用率阈值 (%):
 : <input type="number" min="0" max="100" name="display_critical" class="narrow" value="<?=$display['critical']?>">
 
 > *Critical disk utilization* sets the default critical threshold for all hard disks utilization. Exceeding this threshold will result in an alert notification.

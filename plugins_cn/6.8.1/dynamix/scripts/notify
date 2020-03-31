@@ -141,15 +141,15 @@ case 'smtp-init':
 case 'cron-init':
   @mkdir($unread,0755,true);
   @mkdir($archive,0755,true);
-  $text = empty($notify['status']) ? "" : "# Éú³ÉµÄÕóÁÐ×´Ì¬¼ì²é¼Æ»®:\n{$notify['status']} $docroot/plugins/dynamix/scripts/statuscheck &> /dev/null\n\n";
+  $text = empty($notify['status']) ? "" : "# ç”Ÿæˆçš„é˜µåˆ—çŠ¶æ€æ£€æŸ¥è®¡åˆ’:\n{$notify['status']} $docroot/plugins/dynamix/scripts/statuscheck &> /dev/null\n\n";
   parse_cron_cfg("dynamix", "status-check", $text);
-  $text = empty($notify['unraidos']) ? "" : "# Éú³ÉµÄ Unraid OS ¸üÐÂ¼ì²é¼Æ»®:\n{$notify['unraidos']} $docroot/plugins/dynamix.plugin.manager/scripts/unraidcheck &> /dev/null\n\n";
+  $text = empty($notify['unraidos']) ? "" : "# ç”Ÿæˆçš„ Unraid OS æ›´æ–°æ£€æŸ¥è®¡åˆ’:\n{$notify['unraidos']} $docroot/plugins/dynamix.plugin.manager/scripts/unraidcheck &> /dev/null\n\n";
   parse_cron_cfg("dynamix", "unraid-check", $text);
-  $text = empty($notify['version']) ? "" : "# Éú³ÉµÄ²å¼þ°æ±¾¼ì²é¼Æ»®:\n{$notify['version']} $docroot/plugins/dynamix.plugin.manager/scripts/plugincheck &> /dev/null\n\n";
+  $text = empty($notify['version']) ? "" : "# ç”Ÿæˆçš„æ’ä»¶ç‰ˆæœ¬æ£€æŸ¥è®¡åˆ’:\n{$notify['version']} $docroot/plugins/dynamix.plugin.manager/scripts/plugincheck &> /dev/null\n\n";
   parse_cron_cfg("dynamix", "plugin-check", $text);
-  $text = empty($notify['system']) ? "" : "# Éú³ÉµÄÏµÍ³¼à¿Ø¼Æ»®:\n{$notify['system']} $docroot/plugins/dynamix/scripts/monitor &> /dev/null\n\n";
+  $text = empty($notify['system']) ? "" : "# ç”Ÿæˆçš„ç³»ç»Ÿç›‘æŽ§è®¡åˆ’:\n{$notify['system']} $docroot/plugins/dynamix/scripts/monitor &> /dev/null\n\n";
   parse_cron_cfg("dynamix", "monitor", $text);
-  $text = empty($notify['docker_update']) ? "" : "# Éú³ÉµÄ Docker ¼à¿Ø¼Æ»®:\n{$notify['docker_update']} $docroot/plugins/dynamix.docker.manager/scripts/dockerupdate.php check &> /dev/null\n\n";
+  $text = empty($notify['docker_update']) ? "" : "# ç”Ÿæˆçš„ Docker ç›‘æŽ§è®¡åˆ’:\n{$notify['docker_update']} $docroot/plugins/dynamix.docker.manager/scripts/dockerupdate.php check &> /dev/null\n\n";
   parse_cron_cfg("dynamix", "docker-update", $text);
   break;
 

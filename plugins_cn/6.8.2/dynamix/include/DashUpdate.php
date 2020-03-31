@@ -27,7 +27,7 @@ function my_clock($time) {
   $days = floor($time/1440);
   $hour = $time/60%24;
   $mins = $time%60;
-  return plus($days,'day',($hour|$mins)==0).plus($hour,'hour',$mins==0).plus($mins,'minute',true);
+  return plus($days,'天',($hour|$mins)==0).plus($hour,'小时',$mins==0).plus($mins,'分钟',true);
 }
 function parity_disks($disk) {
   return $disk['type']=='Parity';
@@ -122,23 +122,23 @@ function device_name(&$disk, $array) {
       case 'Cache' : $type = $disk['rotational'] ? ($disk['luksState'] ? 'disk-encrypted' : 'disk') : 'nvme'; break;
     }
     $name = my_disk($disk['name']);
-    return "<i class='icon-$type'></i> <a href=\"".htmlspecialchars("$path/Device?name={$disk['name']}")."\" title=\"$name settings\">$name</a>";
+    return "<i class='icon-$type'></i> <a href=\"".htmlspecialchars("$path/Device?name={$disk['name']}")."\" title=\"$name 设置\">$name</a>";
   } else {
     $name = $disk['device'];
-    return "<i class='icon-disk'></i> <a href=\"".htmlspecialchars("$path/New?name=$name")."\" title=\"$name settings\">$name</a>";
+    return "<i class='icon-disk'></i> <a href=\"".htmlspecialchars("$path/New?name=$name")."\" title=\"$name 设置\">$name</a>";
   }
 }
 function device_status(&$disk, $array, &$error, &$warning) {
   global $var;
   if ($array && $var['fsState']=='Stopped') {
-    $color = 'green'; $text = 'off-line';
+    $color = 'green'; $text = '离线';
   } else switch ($disk['color']) {
     case 'green-on'    : $color = 'green';  $text = '活跃';     break;
     case 'green-blink' : $color = 'grey';   $text = '待命';    break;
     case 'blue-on'     : $color = 'blue';   $text = '未分配'; break;
     case 'blue-blink'  : $color = 'grey';   $text = '未分配'; break;
-    case 'yellow-on'   : $color = 'yellow'; $text = '模拟';   $warning++; break;
-    case 'yellow-blink': $color = 'grey';   $text = '模拟';   $warning++; break;
+    case 'yellow-on'   : $color = 'yellow'; $text = '已模拟';   $warning++; break;
+    case 'yellow-blink': $color = 'grey';   $text = '已模拟';   $warning++; break;
     case 'red-on'      : $color = 'red';    $text = '已禁用';   $error++; break;
     case 'red-blink'   : $color = 'grey';   $text = '已禁用';   $error++; break;
     case 'red-off'     : $color = 'red';    $text = '有错误';     $error++; break;
@@ -361,13 +361,13 @@ case 'status':
       echo "<span class='red'>奇偶磁盘".($parity_slots==1?'':'')." 不存在</span>";
     } elseif ($parity_slots > $parity_invalid) {
       if ($parity_invalid==0) {
-        echo "<span class='green'>奇偶校验有效</span>";
+        echo "<span class='green'>奇偶有效</span>";
       } else {
-        echo "<span class='orange'>奇偶已降级: $parity_invalid 无效的设备".($parity_invalid==1?'':'s')."</span>";
+        echo "<span class='orange'>奇偶已降级: $parity_invalid 无效的设备".($parity_invalid==1?'':'')."</span>";
       }
     } else {
       if (empty($var['mdInvalidDisk'])) {
-        echo "<span class='red strong'>奇偶校验无效</span>";
+        echo "<span class='red strong'>奇偶无效</span>";
       } else {
         echo "<span class='red strong'>数据无效</span>";
       }

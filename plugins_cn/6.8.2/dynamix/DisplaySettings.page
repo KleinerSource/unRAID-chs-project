@@ -158,12 +158,12 @@ $(function() {
 
 数字格式:
 : <select name="number" size="1">
-  <?=mk_option($display['number'], ".,", "[D] dot : [G] comma")?>
-  <?=mk_option($display['number'], ". ", "[D] dot : [G] space")?>
-  <?=mk_option($display['number'], ".",  "[D] dot : [G] none")?>
-  <?=mk_option($display['number'], ",.", "[D] comma : [G] dot")?>
-  <?=mk_option($display['number'], ", ", "[D] comma : [G] space")?>
-  <?=mk_option($display['number'], ",",  "[D] comma : [G] none")?>
+  <?=mk_option($display['number'], ".,", "[D] 点 : [G] 逗号")?>
+  <?=mk_option($display['number'], ". ", "[D] dot : [G] 空格")?>
+  <?=mk_option($display['number'], ".",  "[D] dot : [G] 无")?>
+  <?=mk_option($display['number'], ",.", "[D] 逗号 : [G] 点")?>
+  <?=mk_option($display['number'], ", ", "[D] 逗号 : [G] 空格")?>
+  <?=mk_option($display['number'], ",",  "[D] 逗号 : [G] 无")?>
   </select>
 
 单位:
@@ -179,8 +179,8 @@ $(function() {
 
 页面查看:
 : <select name="tabs" size="1">
-  <?=mk_option($display['tabs'], "0", "Tabbed")?>
-  <?=mk_option($display['tabs'], "1", "Non-tabbed")?>
+  <?=mk_option($display['tabs'], "0", "分页式")?>
+  <?=mk_option($display['tabs'], "1", "不分页")?>
   </select>
 
 用户菜单位置:
@@ -236,7 +236,7 @@ $(function() {
   </select>
 
 <div id="custom" markdown="1" style="display:none">
-Custom banner:
+自定义横幅:
 <input type="hidden" name="#custom" value="">
 : <span id="dropbox">
 <?if (file_exists($banner)):?>

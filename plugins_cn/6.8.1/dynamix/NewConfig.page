@@ -42,7 +42,7 @@ function prepareNewConfig(form) {
   form.preset.disabled = true;
 }
 $(function() {
-  $('#s1').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...close'});
+  $('#s1').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...关闭'});
 <?if ($disabled):?>
   $('#s1').dropdownchecklist('disable');
 <?endif;?>

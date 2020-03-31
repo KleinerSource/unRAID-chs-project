@@ -142,8 +142,8 @@ span.disabled{color:#404040}
 <input type="hidden" name="DOCKER_CUSTOM_NETWORKS" value="<?=implode(' ',$unset)?> ">
 启用 Docker:
 : <select id="DOCKER_ENABLED" name="DOCKER_ENABLED">
-  <?=mk_option($dockercfg['DOCKER_ENABLED'], 'no', 'No')?>
-  <?=mk_option($dockercfg['DOCKER_ENABLED'], 'yes', 'Yes')?>
+  <?=mk_option($dockercfg['DOCKER_ENABLED'], 'no', '否')?>
+  <?=mk_option($dockercfg['DOCKER_ENABLED'], 'yes', '是')?>
   </select>
   <?if ($var['fsState'] != "Started"):?>
   <span id="arraystopped"><i class="fa fa-warning icon warning"></i> <?=($dockercfg['DOCKER_ENABLED']=='yes')?'阵列启动后, Docker 将可用':'启动阵列后, 才能启动 Docker'?></span>

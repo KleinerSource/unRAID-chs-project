@@ -274,7 +274,7 @@ foreach ($cpus as $pair) {
 </tbody>
 <thead sort='<?=++$N?>'><tr class='hidden'><td></td><td colspan='3'></td><td></td></tr></thead>
 <tbody sort='<?=$N?>' class='sortable'>
-<tr><td></td><td colspan='3' class='next'><i class='icon-ram'></i><div class='section'>内存<br><span><?="$memory_installed $unit $memory_type $ecc"?><span id='util'>利用率: <span class='sys0'>0%</span></span><br><br></div>
+<tr><td></td><td colspan='3' class='next'><i class='icon-ram'></i><div class='section'>内存<br><span><?="$memory_installed $unit $memory_type $ecc"?><span id='util'>使用率: <span class='sys0'>0%</span></span><br><br></div>
 <i class='fa fa-fw chevron' id='mem_view' onclick='toggleChevron("mem_view",0)'></i>
 <a href='/Dashboard/Processes' title='查看正在运行的进程'><i class='fa fa-fw fa-cog chevron'></i></a>
 </td><td></td></tr>
@@ -386,7 +386,7 @@ foreach ($ports as $port) {
 <?endif;?>
 <?endif;?>
 <thead sort='<?=++$N?>' class='sortable'><tr><td></td><td colspan='4' class='next'>共享<i class='fa fa-fw chevron mt0' id='shares_view' onclick='toggleChevron("shares_view",4)'></i>
-<a href='/Shares' title='Go to Share settings'><i class='fa fa-fw fa-cog chevron mt0'></i></a>
+<a href='/Shares' title='转到共享设置'><i class='fa fa-fw fa-cog chevron mt0'></i></a>
 <span class='info'>共享数量: <?=count($shares)?> 有 <?=$cache_only?> 仅为缓存和 <?=$encrypted?> 加密的</span>
 <?if ($group):?>
 <select name="enter_share" size="1" onchange="changeMode(this.value)">
@@ -409,7 +409,7 @@ foreach ($ports as $port) {
 $i = 0;
 foreach ($shares as $name => $share) {
   $i++;
-  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   if ($share['luksStatus']>0) $list = str_replace('blue-text','green-text',$list);
   elseif ($share['useCache']=='only') $list = str_replace('blue-text','orange-text',$list);
   $comment = truncate($share['comment'],40);
@@ -422,7 +422,7 @@ if (!count($shares)) echo "<tr><td></td><td colspan='4' class='none'>当前没�
 <?if ($var['shareAFPEnabled']=='yes'):?>
 <tbody sort='<?=$N?>' class='afp share share2 sortable'><?
 foreach ($shares as $name => $share) {
-  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   if ($share['luksStatus']>0) $list = str_replace('blue-text','green-text',$list);
   elseif ($share['useCache']=='only') $list = str_replace('blue-text','orange-text',$list);
   $comment = truncate($share['comment'],40);
@@ -435,7 +435,7 @@ if (!count($shares)) echo "<tr><td></td><td colspan='4' class='none'>当前没�
 <?if ($var['shareNFSEnabled']=='yes'):?>
 <tbody sort='<?=$N?>' class='nfs share share3 sortable'><?
 foreach ($shares as $name => $share) {
-  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   if ($share['luksStatus']>0) $list = str_replace('blue-text','green-text',$list);
   elseif ($share['useCache']=='only') $list = str_replace('blue-text','orange-text',$list);
   $comment = truncate($share['comment'],40);
@@ -448,7 +448,7 @@ if (!count($shares)) echo "<tr><td></td><td colspan='4' class='none'>目前没�
 <?if (!$group):?>
 <tbody sort='<?=$N?>' class='share sortable'><?
 foreach ($shares as $name => $share) {
-  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/Share?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   if ($share['luksStatus']>0) $list = str_replace('blue-text','green-text',$list);
   elseif ($share['useCache']=='only') $list = str_replace('blue-text','orange-text',$list);
   $comment = truncate($share['comment'],40);
@@ -465,7 +465,7 @@ if (!count($shares)) echo "<tr><td></td><td colspan='4' class='none'>目前没�
 <tbody sort='<?=$N?>' class='smb user user1 sortable'><?
 foreach ($users as $user) {
   $name = $user['name'];
-  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   $desc = truncate($user['desc'],40);
   if ($name=='root') {
     $write = '-'; $read = '-';
@@ -497,7 +497,7 @@ foreach ($users as $user) {
 <tbody sort='<?=$N?>' class='afp user user2 sortable'><?
 foreach ($users as $user) {
   $name = $user['name'];
-  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   $desc = truncate($user['desc'],40);
   if ($name=='root') {
     $write = '-'; $read = '-';
@@ -529,7 +529,7 @@ foreach ($users as $user) {
 <tbody sort='<?=$N?>' class='nfs user user3 sortable'><?
 foreach ($users as $user) {
   $name = $user['name'];
-  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   $desc = truncate($user['desc'],40);
   $write = '-'; $read = '-';
   if ($user['passwd']!='yes') $list = str_replace('blue-text','orange-text',$list);
@@ -541,7 +541,7 @@ foreach ($users as $user) {
 <tbody sort='<?=$N?>' class='user sortable'><?
 foreach ($users as $user) {
   $name = $user['name'];
-  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name settings\">".truncate($name,20)."</a>";
+  $list = "<a href=\"$path/UserEdit?name=".urlencode($name)."\" class=\"blue-text\" title=\"$name 设置\">".truncate($name,20)."</a>";
   $desc = truncate($user['desc'],40);
   if ($user['passwd']!='yes') $list = str_replace('blue-text','orange-text',$list);
   echo "<tr><td></td><td><i class='icon-user'></i>$list</td><td>$desc</td><td>-</td><td>-</td><td></td></tr>";
@@ -570,7 +570,7 @@ foreach ($users as $user) {
 <?if ($cache_pool):?>
 <thead sort='<?=++$N?>' class='sortable'><tr><td></td><td colspan='5' class='next'>缓存<?if (!$started):?> (已停止)<?endif;?><i class='fa fa-fw chevron mt0' id='cache_view' onclick='toggleChevron("cache_view",0)'></i>
 <a href='/Dashboard/Device?name=cache' title='转到缓存设置'><i class='fa fa-fw fa-cog chevron mt0'></i></a>
-<?if ($started):?><span class='info'><?=my_scale($cache_used*1024,$unit)." $unit"?> used of <?=my_scale($cache_size*1024,$unit,-1,-1)." $unit"?> (<?=$cache_percent?> %)</span><?endif;?>
+<?if ($started):?><span class='info'><?=my_scale($cache_used*1024,$unit)." $unit"?> / <?=my_scale($cache_size*1024,$unit,-1,-1)." $unit"?> 已使用 (<?=$cache_percent?> %)</span><?endif;?>
 </td><td></td></tr>
 <tr class='my_view'><td></td><td id='cache_info' colspan='5'></td><td></td></tr>
 <tr id='cache_view_on'><td></td><td>设备</td><td>状态</td><td>温度</td><td>SMART</td><td>使用率</td><td></td></tr>
@@ -724,10 +724,10 @@ function portSelect(name) {
 }
 function moreInfo(data,table) {
   var info = [];
-  if (data[1]>0) info.push(data[1]+" failed device"+(data[1]==1?'':'s'));
-  if (data[2]>0) info.push(data[2]+" heat warning"+(data[2]==1?'':'s'));
-  if (data[3]>0) info.push(data[3]+" SMART error"+(data[3]==1?'':'s'));
-  if (data[4]>0) info.push(data[4]+" utilization warning"+(data[4]==1?'':'s'));
+  if (data[1]>0) info.push(data[1]+" failed device"+(data[1]==1?'':''));
+  if (data[2]>0) info.push(data[2]+" heat warning"+(data[2]==1?'':''));
+  if (data[3]>0) info.push(data[3]+" SMART error"+(data[3]==1?'':''));
+  if (data[4]>0) info.push(data[4]+" utilization warning"+(data[4]==1?'':''));
   return info.length ? "<div class='last'><i class='icon-u-triangle failed'></i><span class='failed'>"+table+" has "+info.join('. ')+".</span></div>" : "";
 }
 <?if ($wireguard):?>
@@ -744,12 +744,12 @@ function update1() {
       } else if (info[1] > 86400) {
         var d = parseInt(info[1]/86400);
         var s = d==1 ? '' : 's';
-        $('td#'+vtun+'-hs-'+n[vtun]).text(d+' day'+s+' ago');
+        $('td#'+vtun+'-hs-'+n[vtun]).text(d+' day'+s+' 前');
       } else {
         var h = parseInt(info[1]/3600).pad();
         var m = parseInt(info[1]/60%60).pad();
         var s = parseInt(info[1]%60).pad();
-        $('td#'+vtun+'-hs-'+n[vtun]).text(h+':'+m+':'+s+' ago');
+        $('td#'+vtun+'-hs-'+n[vtun]).text(h+':'+m+':'+s+' 前');
       }
       $('td#'+vtun+'-rx-'+n[vtun]).html(info[2]+'&nbsp;<i class="fa fa-fw fa-arrow-up"></i>&nbsp;&nbsp;&nbsp;'+info[3]+'&nbsp;<i class="fa fa-fw fa-arrow-down"></i>');
     }

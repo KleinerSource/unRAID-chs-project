@@ -70,11 +70,11 @@ function provisionSSL(button) {
         $.get("//"+data.internal_dns+":<?=$var['PORT']?>/dnscheck",function() {
           success_rebind_check(data);
         }).fail(function(){
-          failure({"status":403, "responseJSON":{"error": "Your router or DNS server has DNS rebinding protection enabled, preventing "+data.internal_dns+" <?=$internalip?> resolution. See Help for more details and workarounds"}});
+          failure({"status":403, "responseJSON":{"error": "您的路由器或DNS服务器已启用DNS重新绑定保护, 阻止了 "+data.internal_dns+" <?=$internalip?> resolution. 有关详细信息和解决方法, 请参见帮助"}});
         });
       }
     } else {
-      failure({"status":403, "responseJSON":{"error": "Server was unable to provision SSL certificate"}});
+      failure({"status":403, "responseJSON":{"error": "服务器无法设置 SSL 证书"}});
     }
   };
   var success_rebind_check = function(data) {
@@ -145,13 +145,13 @@ $(function(){
 <!--
 限制访问:
 : <select name="BIND_MGT" size="1" class="narrow">
-  <?=mk_option($var['BIND_MGT'], "no", "No")?>
-  <?=mk_option($var['BIND_MGT'], "yes", "Yes")?>
+  <?=mk_option($var['BIND_MGT'], "no", "否")?>
+  <?=mk_option($var['BIND_MGT'], "yes", "是")?>
   </select>
 
-> By default GUI, SSH and TELNET access are available on all active interfaces of the system.
+> 默认情况下, 在系统的所有活动接口上都可以使用 GUI, SSH 和 TELNET 访问.
 >
-> *Restrict access* limits GUI, SSH and TELNET access to the management interface only (eth0).
+> *限制访问* 仅限制对管理接口 (eth0) 的 GUI, SSH 和 TELNET 访问.
 -->
 
 使用 TELNET:
@@ -215,7 +215,7 @@ SSH 端口:
 > 以确定是否需要续订 Let's Encrypt SSL 证书.
 > 此后, 它每 24 小时唤醒一次. 如果在到期 30 天内, 将自动下载新证书并设置到服务器.
 >
-> 注意: 在设置 Let's Encrypt SSL 证书之后, 您可以通过将此字段更改为 **Yes** 来
+> 注意: 在设置 Let's Encrypt SSL 证书之后, 您可以通过将此字段更改为 **是** 来
 > 关闭 *updatedns* 和 *newcert* 的后台进程.
 >
 > **nginx 证书处理详细信息**

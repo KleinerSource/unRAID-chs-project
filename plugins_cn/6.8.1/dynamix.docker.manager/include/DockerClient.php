@@ -638,11 +638,11 @@ class DockerClient {
 
 	public function humanTiming($time) {
 		$time = time() - $time; // to get the time since that moment
-		$tokens = [31536000 => 'year', 2592000 => 'month', 604800 => 'week', 86400 => 'day',3600 => 'hour', 60 => 'minute', 1 => 'second'];
+		$tokens = [31536000 => '年', 2592000 => '月', 604800 => '周', 86400 => '天',3600 => '小时', 60 => '分钟', 1 => '秒'];
 		foreach ($tokens as $unit => $text) {
 			if ($time < $unit) continue;
 			$numberOfUnits = floor($time / $unit);
-			return $numberOfUnits.' '.$text.(($numberOfUnits==1)?'':'s').' ago';
+			return $numberOfUnits.' '.$text.(($numberOfUnits==1)?'':'').' ago';
 		}
 	}
 

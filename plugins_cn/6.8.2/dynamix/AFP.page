@@ -20,8 +20,8 @@ Tag="apple"
 <form markdown="1" method="POST" action="/update.htm" target="progressFrame">
 启用 AFP:
 : <select name="shareAFPEnabled" size="1">
-  <?=mk_option($var['shareAFPEnabled'], "no", "No");?>
-  <?=mk_option($var['shareAFPEnabled'], "yes", "Yes");?>
+  <?=mk_option($var['shareAFPEnabled'], "no", "否");?>
+  <?=mk_option($var['shareAFPEnabled'], "yes", "是");?>
   </select>
 
 > 选择 '是' 启用[AFP] (/Help) 协议支持.
@@ -66,7 +66,7 @@ Tag="apple"
 > 使用 SMB 协议访问共享. 
 >
 > ### 其他注释
-> [防止在网络卷上创建.DS_Store文件] (http://hints.macworld.com/article.php?story=2005070300463515) -来自文章：
+> [防止在网络卷上创建.DS_Store文件] (http://hints.macworld.com/article.php?story=2005070300463515) - 来自文章：
 >
 > 为了防止创建这些文件, 请打开 终端 并键入: 
 >

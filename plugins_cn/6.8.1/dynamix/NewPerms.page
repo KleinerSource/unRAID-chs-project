@@ -40,8 +40,8 @@ function setNewPerms(form) {
   if (dirs) swal({title:'继续?',text:'这将更新文件夹和文件权限',type:'warning',showCancelButton:true},function(){openBox('/webGui/scripts/newperms&arg1='+dirs,'New Permissions',490,430,true);});
 }
 $(function() {
-  $('#s1').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...close'});
-  $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...close'});
+  $('#s1').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...关闭'});
+  $('#s2').dropdownchecklist({emptyText:'无', width:<?=$width[0]?>, firstItemChecksAll:true, explicitClose:'...关闭'});
 <?if ($var['fsState']!="Started"):?>
   $('#s1').dropdownchecklist('disable');
   $('#s2').dropdownchecklist('disable');

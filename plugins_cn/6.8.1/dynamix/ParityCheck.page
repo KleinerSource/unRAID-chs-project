@@ -35,8 +35,8 @@ if (file_exists($memory)) {
 <script>
 <?if ($parity['mode']==5):?>
 $(function() {
-  $("#s1").dropdownchecklist({emptyText:'每天', width:<?=$width[0]?>, explicitClose:'...close'});
-  $("#s2").dropdownchecklist({emptyText:'每月', width:<?=$width[0]?>, explicitClose:'...close'});
+  $("#s1").dropdownchecklist({emptyText:'每天', width:<?=$width[0]?>, explicitClose:'...关闭'});
+  $("#s2").dropdownchecklist({emptyText:'每月', width:<?=$width[0]?>, explicitClose:'...关闭'});
 });
 // Simulate a single input field
 function prepareParity(form) {

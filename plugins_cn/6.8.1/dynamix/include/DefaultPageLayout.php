@@ -101,14 +101,14 @@ function resumeEvents(id,delay){
   });
 }
 function plus(value, label, last) {
-  return value>0 ? (value+' '+label+(value!=1?'s':'')+(last?'':', ')) : '';
+  return value>0 ? (value+' '+label+(value!=1?'':'')+(last?'':', ')) : '';
 }
 function updateTime() {
   var now = new Date();
   var days = parseInt(uptime/86400);
   var hour = parseInt(uptime/3600%24);
   var mins = parseInt(uptime/60%60);
-  $('span.uptime').html(((days|hour|mins)?plus(days,'day',(hour|mins)==0)+plus(hour,'hour',mins==0)+plus(mins,'minute',true):'不到一分钟'));
+  $('span.uptime').html(((days|hour|mins)?plus(days,'天',(hour|mins)==0)+plus(hour,'小时',mins==0)+plus(mins,'分钟',true):'不到一分钟'));
   uptime += Math.round((now.getTime() - before.getTime())/1000);
   before = now;
   if (expiretime > 0) {
@@ -118,11 +118,11 @@ function updateTime() {
       hour = parseInt(remainingtime/3600%24);
       mins = parseInt(remainingtime/60%60);
       if (days) {
-        $('#licenseexpire').html(plus(days,'day',true)+' remaining');
+        $('#licenseexpire').html(plus(days,'天',true)+' 剩余');
       } else if (hour) {
-        $('#licenseexpire').html(plus(hour,'hour',true)+' remaining').addClass('orange-text');
+        $('#licenseexpire').html(plus(hour,'小时',true)+' 剩余').addClass('orange-text');
       } else if (mins) {
-        $('#licenseexpire').html(plus(mins,'minute',true)+' remaining').addClass('red-text');
+        $('#licenseexpire').html(plus(mins,'分钟',true)+' 剩余').addClass('red-text');
       } else {
         $('#licenseexpire').html('还剩不到一分钟').addClass('red-text');
       }

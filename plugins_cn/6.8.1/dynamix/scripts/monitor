@@ -179,12 +179,12 @@ function check_usage($name,$used,$text,$info) {
   $last = $saved[$item][$name] ?? 0;
   if ($warn) {
     if ($used>$last) {
-      exec("$notify -e ".escapeshellarg("Unraid $text 磁盘利用率")." -s ".escapeshellarg(ucfirst($warn)." [$server] - $text 为 ".($warn=='alert'?'空间不足':'使用率高')." (${used}%)")." -d ".escapeshellarg("$info")." -i \"$warn\"");
+      exec("$notify -e ".escapeshellarg("Unraid $text 磁盘使用率")." -s ".escapeshellarg(ucfirst($warn)." [$server] - $text 为 ".($warn=='alert'?'空间不足':'使用率高')." (${used}%)")." -d ".escapeshellarg("$info")." -i \"$warn\"");
       $saved[$item][$name] = $critical>0 && $used<=$critical ? $critical : $used;
     }
   } else {
     if ($last && $used<=100) {
-      exec("$notify -e ".escapeshellarg("Unraid $text 消息")." -s ".escapeshellarg("通知 [$server] - $text 磁盘利用率恢复正常")." -d ".escapeshellarg("$info"));
+      exec("$notify -e ".escapeshellarg("Unraid $text 消息")." -s ".escapeshellarg("通知 [$server] - $text 磁盘使用率恢复正常")." -d ".escapeshellarg("$info"));
       unset($saved[$item][$name]);
     }
   }
@@ -216,7 +216,7 @@ foreach ($disks as $disk) {
   break;
   case 'yellow':
     if ($warn!=$last) {
-      $status = $name=='parity' ? "parity-sync in progress" : "drive not ready, content being reconstructed";
+      $status = $name=='parity' ? "正在进行奇偶同步" : "驱动器未就绪, 正在重建内容";
       exec("$notify -e ".escapeshellarg("Unraid $text 错误")." -s ".escapeshellarg("警告 [$server] - $text, $status")." -d ".escapeshellarg("$info")." -i \"warning\"");
       $saved[$item][$name] = $warn;
     }
@@ -270,7 +270,7 @@ $item = 'array';
 $name = 'errors';
 $last = $saved[$item][$name] ?? 0;
 $warn = count($errors);
-$info = "阵列 $warn disk".($warn==1 ? "" : "s")." 有读取错误";
+$info = "阵列 $warn 硬盘".($warn==1 ? "" : "")." 有读取错误";
 if ($warn>0) {
   if ($warn<>$last) {
     $message = implode('\n', $errors);
@@ -298,7 +298,7 @@ if ($var['mdResyncPos']) {
     } elseif (strstr($var['mdResyncAction'],"check")) {
       $last = '奇偶校验';
     }
-    $info = "Size: ".my_scale($var['mdResyncSize']*1024,$unit)." $unit";
+    $info = "大小: ".my_scale($var['mdResyncSize']*1024,$unit)." $unit";
     exec("$notify -e ".escapeshellarg("Unraid $last")." -s ".escapeshellarg("通知 [$server] - $last 已启动")." -d ".escapeshellarg("$info")." -i \"warning\"");
     $saved[$item][$name] = $last;
   }
@@ -306,7 +306,7 @@ if ($var['mdResyncPos']) {
   if ($last) {
     $duration = $var['sbSynced2'] - $var['sbSynced'];
     $status = $var['sbSyncExit'];
-    $speed = $status==0 ? my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/s" : "不可用";
+    $speed = $status==0 ? my_scale($var['mdResyncSize']*1024/$duration,$unit,1)." $unit/秒" : "不可用";
     list($entry,$duration,$speed,$status,$error) = explode('|', read_write_parity_log($var['sbSynced2'],$duration,$speed,$status,$var['sbSyncErrs']));
     $info = $status==0 ? "持续时间: ".my_check($duration, $speed) : ($status==-4 ? "已取消" : "错误代码: $status");
     $level = ($status==0 && $var['sbSyncErrs']==0) ? "normal" : "warning";
@@ -347,17 +347,17 @@ if ($retval===0) {
   $warn = exec("df /var/lib/docker|awk '/^\//{print $5*1}'");
   if ($warn>=$high1 && $high1>0) {
     if ($warn>$last) {
-      exec("$notify -e \"Docker 临界的镜像磁盘利用率\" -s ".escapeshellarg("注意 [$server] - Docker 镜像磁盘利用率达到 ${warn}%")." -d ".escapeshellarg("$info")." -i \"alert\"");
+      exec("$notify -e \"Docker 临界的镜像磁盘使用率\" -s ".escapeshellarg("注意 [$server] - Docker 镜像磁盘使用率达到 ${warn}%")." -d ".escapeshellarg("$info")." -i \"alert\"");
       $saved[$item][$name] = $warn;
     }
   } elseif ($warn>=$high2 && $high2>0) {
     if ($warn>$last) {
-      exec("$notify -e \"Docker 较高的镜像磁盘利用率\" -s ".escapeshellarg("警告 [$server] - Docker 镜像磁盘利用率达到 ${warn}%")." -d ".escapeshellarg("$info")." -i \"warning\"");
+      exec("$notify -e \"Docker 较高的镜像磁盘使用率\" -s ".escapeshellarg("警告 [$server] - Docker 镜像磁盘使用率达到 ${warn}%")." -d ".escapeshellarg("$info")." -i \"warning\"");
       $saved[$item][$name] = $warn;
     }
   } else {
     if ($last) {
-      exec("$notify -e \"Docker 镜像磁盘利用率\" -s ".escapeshellarg("通知 [$server] - Docker 映像磁盘利用率恢复到正常水平")." -d ".escapeshellarg("$info"));
+      exec("$notify -e \"Docker 镜像磁盘使用率\" -s ".escapeshellarg("通知 [$server] - Docker 映像磁盘使用率恢复到正常水平")." -d ".escapeshellarg("$info"));
       unset($saved[$item][$name]);
     }
   }

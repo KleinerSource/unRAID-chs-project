@@ -112,7 +112,7 @@ Time Machine 卷大小限制:
 > 使用先前在服务器上创建的用户名/密码登录的 macOS 用户还可以查看和读/写所有设置
 > 为公开的共享. 在这种情况下, 在服务器上创建或修改的文件将由登录用户所拥有.
 
->
+
 > **安全** 当以来宾身份登录到服务器时, macOS 用户可以查看和读取 (而不是写入)
 > 设置为安全的所有共享.<br>
 > 使用先前在服务器上创建的用户名/密码登录的 macOS 用户还可以查看和读取
@@ -246,8 +246,8 @@ function initDropdownAFP(reset) {
     $('#afp1').dropdownchecklist('destroy');
     $('#afp2').dropdownchecklist('destroy');
   }
-  $("#afp1").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...close'});
-  $("#afp2").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...close'});
+  $("#afp1").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...关闭'});
+  $("#afp2").dropdownchecklist({firstItemChecksAll:true, emptyText:'选择...', width:<?=$width[0]?>, explicitClose:'...关闭'});
 }
 function readAFP() {
   var form = document.afp_edit;
