@@ -159,8 +159,8 @@ $(function() {
 数字格式:
 : <select name="number" size="1">
   <?=mk_option($display['number'], ".,", "[D] 点 : [G] 逗号")?>
-  <?=mk_option($display['number'], ". ", "[D] dot : [G] 空格")?>
-  <?=mk_option($display['number'], ".",  "[D] dot : [G] 无")?>
+  <?=mk_option($display['number'], ". ", "[D] 点 : [G] 空格")?>
+  <?=mk_option($display['number'], ".",  "[D] 点 : [G] 无")?>
   <?=mk_option($display['number'], ",.", "[D] 逗号 : [G] 点")?>
   <?=mk_option($display['number'], ", ", "[D] 逗号 : [G] 空格")?>
   <?=mk_option($display['number'], ",",  "[D] 逗号 : [G] 无")?>

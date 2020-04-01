@@ -243,7 +243,7 @@ VFIO 允许不安全中断:
 <?if ($libvirt_running == 'yes' && trim(shell_exec('stat -c %T -f /etc/libvirt'))=='btrfs'):?>
 <div class="advanced" markdown="1">
 <div id="title"><span class="left"><i class="title fa fa-list"></i>Libvirt 卷信息</span></div>
-btrfs filesystem show:
+btrfs 文件系统信息:
 : <?="<pre>".shell_exec("btrfs filesystem show /etc/libvirt")."</pre>"?>
 
 <form markdown="1" method="POST" action="/update.php" target="progressFrame">

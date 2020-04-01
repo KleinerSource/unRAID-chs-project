@@ -413,7 +413,7 @@ button[type=button]{margin:0 20px 0 0}
     popup.html($("#templatePopupConfig").html());
 
     // Add switchButton to checkboxes
-    popup.find(".switch").switchButton({labels_placement:"right",on_label:'是',off_label:'否'});
+    popup.find(".switch").switchButton({labels_placement:"right",on_label:'YES',off_label:'NO'});
     popup.find(".switch-button-background").css("margin-top", "6px");
 
     // Load Mode field if needed and enable field
@@ -428,12 +428,12 @@ button[type=button]{margin:0 20px 0 0}
       show : {effect: 'fade' , duration: 250},
       hide : {effect: 'fade' , duration: 250},
       buttons: {
-        "添加": function() {
+        "Add": function() {
           $(this).dialog("close");
           confNum += 1;
           var Opts = Object;
           var Element = this;
-          ["Name","目标","默认","模式","说明","类型","显示","必须","掩码","值"].forEach(function(e){
+          ["Name","Target","Default","Mode","Description","Type","Display","Required","Mask","Value"].forEach(function(e){
             Opts[e] = getVal(Element, e);
           });
           if (! Opts.Name ){
@@ -491,7 +491,7 @@ button[type=button]{margin:0 20px 0 0}
     popup.find("*[name=Mode]:first").val(mode);
 
     // Add switchButton to checkboxes
-    popup.find(".switch").switchButton({labels_placement:"right",on_label:'是',off_label:'否'});
+    popup.find(".switch").switchButton({labels_placement:"right",on_label:'YES',off_label:'NO'});
 
     // Start Dialog section
     popup.find(".switch-button-background").css("margin-top", "6px");
@@ -503,11 +503,11 @@ button[type=button]{margin:0 20px 0 0}
       show : {effect: 'fade' , duration: 250},
       hide : {effect: 'fade' , duration: 250},
       buttons: {
-        "保存": function() {
+        "Save": function() {
           $(this).dialog("close");
           var Opts = Object;
           var Element = this;
-          ["名称","目标","默认","模式","说明","类型","显示","必须","掩码","值"].forEach(function(e){
+          ["Name","Target","Default","Mode","Description","Type","Display","Required","Mask","Value"].forEach(function(e){
             Opts[e] = getVal(Element, e);
           });
           if (Opts.Display == "always-hide" || Opts.Display == "advanced-hide") {
@@ -842,9 +842,9 @@ button[type=button]{margin:0 20px 0 0}
               <option value="Network:Proxy">网络:代理</option>
               <option value="Network:Voip">网络:Voip</option>
               <option value="Network:Management">网络:管理</option>
-              <option value="Network:Other">网络:其它</option>
-              <option value="Network:VPN">Network:VPN</option>
               <option value="Network:Messenger">网络:消息</option>
+              <option value="Network:VPN">Network:VPN</option>
+              <option value="Network:Other">网络:其它</option>
             </optgroup>
             <optgroup label="Development Status">
               <option value="Status:Stable">状态:稳定版</option>

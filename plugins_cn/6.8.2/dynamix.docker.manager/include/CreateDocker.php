@@ -1055,7 +1055,7 @@ button[type=button]{margin:0 20px 0 0}
         <td></td>
         <td>
           <input type="submit" value="<?=$xmlType=='edit' ? 'Apply':' Apply '?>"><input type="button" value="完成" onclick="done()">
-          <?if ($authoringMode):?><button type="submit" name="dryRun" value="true" onclick="$('*[required]').prop('required', null);">Save</button><?endif;?>
+          <?if ($authoringMode):?><button type="submit" name="dryRun" value="true" onclick="$('*[required]').prop('required', null);">保存</button><?endif;?>
         </td>
       </tr>
     </table>

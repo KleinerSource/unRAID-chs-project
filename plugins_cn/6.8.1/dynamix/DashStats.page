@@ -265,7 +265,7 @@ foreach ($cpus as $pair) {
   list($cpu1, $cpu2) = preg_split('/[,-]/',$pair);
   echo "<tr class='cpu_open'><td></td>";
   if ($cpu2)
-    echo "<td>CPU $cpu1 - HT $cpu2</td><td><span class='cpu$cpu1 load'>0%</span><div class='usage-disk sys'><span id='cpu$cpu1'></span><span></span></div></td><td><span class='cpu$cpu2 load'>0%</span><div class='usage-disk sys'><span id='cpu$cpu2'></span><span></span></div></td>";
+    echo "<td>CPU $cpu1 - 超线程 $cpu2</td><td><span class='cpu$cpu1 load'>0%</span><div class='usage-disk sys'><span id='cpu$cpu1'></span><span></span></div></td><td><span class='cpu$cpu2 load'>0%</span><div class='usage-disk sys'><span id='cpu$cpu2'></span><span></span></div></td>";
   else
     echo "<td>CPU $cpu1</td><td colspan='2'><span class='cpu$cpu1 load'>0%</span><div class='usage-disk sys'><span id='cpu$cpu1'></span><span></span></div></td>";
   echo "<td></td></tr>";
