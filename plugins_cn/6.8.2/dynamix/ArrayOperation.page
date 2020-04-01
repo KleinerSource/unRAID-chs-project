@@ -164,7 +164,7 @@ function parityWarning(form) {
     var text = '<i>奇偶有效</i> 需要 <b>所有</b> 磁盘具有其原始内容';
 <?endif;?>
   } else {
-    var text = '<i>奇偶校验</i> 磁盘内容将被覆盖';
+    var text = '<i>奇偶</i> 磁盘内容将被覆盖';
   }
   swal({title:'继续开始',text:text,html:true,type:'warning',confirmButtonText:'继续',showCancelButton:true},function(){prepareInput(form);});
 }
@@ -250,7 +250,7 @@ reload_page();
 $('.tooltip_diskio').tooltipster({delay:100,trigger:'custom',triggerOpen:{mouseenter:true},triggerClose:{click:false,scroll:true,mouseleave:true}});
 toggle_diskio(true);
 <?
-$parity = $var['mdResync'] ? '<br><small>已禁用 -- 奇偶校验操作正在运行</small>' : '';
+$parity = $var['mdResync'] ? '<br><small>已禁用 -- 奇偶操作正在运行</small>' : '';
 $mover = file_exists('/var/run/mover.pid') ? '<br><small>已禁用 -- 搬家程序正在运行</small>' : '';
 $btrfs = exec('pgrep -cf /sbin/btrfs') ? '<br><small>已禁用 -- BTRFS 操作正在运行</small>' : '';
 ?>
@@ -299,10 +299,10 @@ function formatWarning(val) {
         if ($var['mdResyncAction']=="check"):?>
           <tr><td></td><td><input type="submit" name="cmdCheck" value="Check"></td><td>点击 <strong>检查(Check)</strong> 将在所有阵列上启动 <strong>读取检查</strong>.</td></tr>
 <?      elseif (strstr($var['mdResyncAction'],"check")):?>
-          <tr><td>奇偶校验有效.</td><td><input type="submit" name="cmdCheck" value="Check"></td><td>点击 <strong>检查(Check)</strong> 将启动 <strong>奇偶校验</strong>.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab1',{path:'/'})"<?endif;?>>(计划)</a>
-          <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶校验写入修正</small></td></tr>
+          <tr><td>奇偶有效.</td><td><input type="submit" name="cmdCheck" value="Check"></td><td>点击 <strong>检查(Check)</strong> 将启动 <strong>奇偶校验</strong>.&nbsp;&nbsp;<a href="/Main/Scheduler"<?if ($tabbed):?> onclick="$.cookie('one','tab1',{path:'/'})"<?endif;?>>(计划)</a>
+          <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶磁盘写入修正</small></td></tr>
 <?      endif;?>
-        <tr><td></td><td><input type="button" value="历史" onclick="openBox('/webGui/include/ParityHistory.php','奇偶校验/读取检查 历史记录',600,900,false)"></td>
+        <tr><td></td><td><input type="button" value="历史" onclick="openBox('/webGui/include/ParityHistory.php','奇偶/读取检查 历史记录',600,900,false)"></td>
 <?      if ($var['sbSyncExit']!=0):?>
           <td>上次检查未完成 <strong><?=my_time($var['sbSynced2']).day_count($var['sbSynced2'])?></strong><?if ($var['sbSynced2']):?>, 找到 <strong><?=$var['sbSyncErrs']?></strong> 个错误<?=$var['sbSyncErrs']==1?'':' '?>.<?endif;?>
           <br><i class="fa fa-dot-circle-o icon"></i><small>错误代码: <?=my_error($var['sbSyncExit'])?></small></td></tr>
@@ -408,7 +408,7 @@ function formatWarning(val) {
 <?      elseif ($var['sbClean']!="yes" && strstr($var['mdResyncAction'],"check")):?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 检测到不正常关机.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动(Start)</strong> 将会启动阵列并且进行 <strong>奇偶校验</strong>.
-          <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶校验写入修正</small></td></tr>
+          <br><input type="checkbox" name="optionCorrect" value="correct" checked><small>对奇偶写入修正</small></td></tr>
 <?      elseif (missing_cache()):?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 缓存磁盘丢失.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)" disabled></td>
           <td>点击 <strong>启动(Start)</strong> 将删除丢失的缓存磁盘, 然后启动阵列.
@@ -424,7 +424,7 @@ function formatWarning(val) {
         if (strpos($disks['parity']['status'],"DISK_NP")===0 && strpos($disks['parity2']['status'],"DISK_NP")===0):?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="prepareInput(this.form)"></td>
           <td>点击 <strong>启动(Start)</strong> 将记录所有磁盘信息并且启动阵列.
-          <br>该阵列将启动, 但由于尚未配置 <em>奇偶校验</em>, 因此 <strong>未受保护</strong>.</td></tr>
+          <br>该阵列将启动, 但由于尚未配置 <em>奇偶</em>, 因此 <strong>未受保护</strong>.</td></tr>
 <?      else:?>
           <tr><td><?status_indicator()?><span class="strong big">已停止</span>. 配置有效.</td><td><input type="button" id="cmdStart" value="Start" onclick="parityWarning(this.form)"></td>
           <td>点击 <strong>启动(Start)</strong> will record all disk information, bring the array on-line, and start Parity-Sync.

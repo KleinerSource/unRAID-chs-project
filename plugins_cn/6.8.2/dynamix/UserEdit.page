@@ -151,7 +151,7 @@ $(function(){
 <?if ($name=="root"):?>
 &nbsp;
 <?else:?>
-Delete<input type="checkbox" name="confirmDelete" onChange="chkDelete(this.form, this.form.cmdUserEdit)">
+删除<input type="checkbox" name="confirmDelete" onChange="chkDelete(this.form, this.form.cmdUserEdit)">
 <?endif;?>
 : <input type="submit" name="cmdUserEdit" value="Apply" disabled><input type="button" value="完成" onclick="done('UserEdit')">
 </form>

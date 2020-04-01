@@ -592,7 +592,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 								// Determine if cache drive is available:
 								if (!empty($disks['cache']) && (!empty($disks['cache']['device']))) {
 									if ($strShareUserLocalUseCache != 'no' && $var['shareCacheEnabled'] == 'yes') {
-										$strLabel = my_disk('cache').' - '.my_scale($disks['cache']['fsFree']*1024, $strUnit).' '.$strUnit.' free';
+										$strLabel = my_disk('cache').' - 剩余空间 '.my_scale($disks['cache']['fsFree']*1024, $strUnit).' '.$strUnit.'';
 										echo mk_option($default_option, 'cache', $strLabel);
 									}
 								}
@@ -607,7 +607,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 											// skip this disk based on local and global share settings
 											continue;
 										}
-										$strLabel = my_disk($name).' - '.my_scale($disk['fsFree']*1024, $strUnit).' '.$strUnit.' free';
+										$strLabel = my_disk($name).' - 剩余空间 '.my_scale($disk['fsFree']*1024, $strUnit).' '.$strUnit.'';
 										echo mk_option($default_option, $name, $strLabel);
 									}
 								}
@@ -617,7 +617,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 
 						echo mk_option($default_option, 'manual', '手动');
 					?>
-					</select><input type="text" data-pickcloseonfile="true" data-pickfolders="true" data-pickfilter="img,qcow,qcow2" data-pickmatch="^[^.].*" data-pickroot="/mnt/" name="disk[<?=$i?>][new]" class="disk" id="disk_<?=$i?>" value="<?=htmlspecialchars($arrDisk['new'])?>" placeholder="Separate sub-folder and image will be created based on Name"><div class="disk_preview"></div>
+					</select><input type="text" data-pickcloseonfile="true" data-pickfolders="true" data-pickfilter="img,qcow,qcow2" data-pickmatch="^[^.].*" data-pickroot="/mnt/" name="disk[<?=$i?>][new]" class="disk" id="disk_<?=$i?>" value="<?=htmlspecialchars($arrDisk['new'])?>" placeholder="将根据名称创建单独的子文件夹和磁盘镜像"><div class="disk_preview"></div>
 				</td>
 			</tr>
 
@@ -709,7 +709,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 								// Determine if cache drive is available:
 								if (!empty($disks['cache']) && (!empty($disks['cache']['device']))) {
 									if ($strShareUserLocalUseCache != 'no' && $var['shareCacheEnabled'] == 'yes') {
-										$strLabel = my_disk('cache').' - '.my_scale($disks['cache']['fsFree']*1024, $strUnit).' '.$strUnit.' free';
+										$strLabel = my_disk('cache').' - 剩余空间 '.my_scale($disks['cache']['fsFree']*1024, $strUnit).' '.$strUnit.'';
 										echo mk_option($default_option, 'cache', $strLabel);
 									}
 								}
@@ -724,7 +724,7 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 											// skip this disk based on local and global share settings
 											continue;
 										}
-										$strLabel = my_disk($name).' - '.my_scale($disk['fsFree']*1024, $strUnit).' '.$strUnit.' free';
+										$strLabel = my_disk($name).' - 剩余空间 '.my_scale($disk['fsFree']*1024, $strUnit).' '.$strUnit.'';
 										echo mk_option($default_option, $name, $strLabel);
 									}
 								}
@@ -732,9 +732,9 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 
 						}
 
-						echo mk_option('', 'manual', 'Manual');
+						echo mk_option('', 'manual', '手动');
 					?>
-					</select><input type="text" data-pickcloseonfile="true" data-pickfolders="true" data-pickfilter="img,qcow,qcow2" data-pickmatch="^[^.].*" data-pickroot="/mnt/" name="disk[{{INDEX}}][new]" class="disk" id="disk_{{INDEX}}" value="" placeholder="Separate sub-folder and image will be created based on Name"><div class="disk_preview"></div>
+					</select><input type="text" data-pickcloseonfile="true" data-pickfolders="true" data-pickfilter="img,qcow,qcow2" data-pickmatch="^[^.].*" data-pickroot="/mnt/" name="disk[{{INDEX}}][new]" class="disk" id="disk_{{INDEX}}" value="" placeholder="将根据名称创建单独的子文件夹和磁盘镜像"><div class="disk_preview"></div>
 				</td>
 			</tr>
 
@@ -790,12 +790,12 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 				<blockquote class="inline_help">
 					<p>
 						<b>Unraid 共享</b><br>
-						用于创建到基于 Linux-Based Guest 的 VirtFS映射. 在此处指定主机上的路径.
+						用于创建到基于 Linux-Based Guest 的 VirtFS 映射. 在此处指定主机上的路径.
 					</p>
 
 					<p>
 						<b>Unraid 挂载标签</b><br>
-						Specify the mount tag that you will use for mounting the VirtFS share inside the VM.  See this page for how to do this on a Linux-based guest: <a href="http://wiki.qemu.org/Documentation/9psetup" target="_blank">http://wiki.qemu.org/Documentation/9psetup</a>
+						指定将用于在虚拟机内装入 VirtFS 共享的标签. 有关如何在  Linux-Based Guest 上执行此操作的信息, 请参见本页: <a href="http://wiki.qemu.org/Documentation/9psetup" target="_blank">http://wiki.qemu.org/Documentation/9psetup</a>
 					</p>
 
 					<p>单击左侧的符号可以 添加/删除 其他设备.</p>
@@ -809,14 +809,14 @@ $hdrXML = "<?xml version='1.0' encoding='UTF-8'?>\n"; // XML encoding declaratio
 			<tr class="advanced">
 				<td>Unraid 共享:</td>
 				<td>
-					<input type="text" data-pickfolders="true" data-pickfilter="NO_FILES_FILTER" data-pickroot="/mnt/" value="" name="shares[{{INDEX}}][source]" placeholder="e.g. /mnt/user/..." title="path of Unraid share" />
+					<input type="text" data-pickfolders="true" data-pickfilter="NO_FILES_FILTER" data-pickroot="/mnt/" value="" name="shares[{{INDEX}}][source]" placeholder="例如 /mnt/user/..." title="path of Unraid share" />
 				</td>
 			</tr>
 
 			<tr class="advanced">
 				<td>Unraid 挂载标签:</td>
 				<td>
-					<input type="text" value="" name="shares[{{INDEX}}][target]" placeholder="e.g. shares (name of mount tag inside vm)" title="mount tag inside vm" />
+					<input type="text" value="" name="shares[{{INDEX}}][target]" placeholder="例如 shares (name of mount tag inside vm)" title="mount tag inside vm" />
 				</td>
 			</tr>
 		</table>

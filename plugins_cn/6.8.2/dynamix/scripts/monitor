@@ -184,7 +184,7 @@ function check_usage($name,$used,$text,$info) {
     }
   } else {
     if ($last && $used<=100) {
-      exec("$notify -e ".escapeshellarg("Unraid $text 消息")." -s ".escapeshellarg("通知 [$server] - $text 磁盘使用率恢复正常")." -d ".escapeshellarg("$info"));
+      exec("$notify -e ".escapeshellarg("Unraid $text 消息")." -s ".escapeshellarg("通知 [$server] - $text 使用率恢复正常")." -d ".escapeshellarg("$info"));
       unset($saved[$item][$name]);
     }
   }

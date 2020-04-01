@@ -169,7 +169,7 @@ function done(key) {
   location.replace(path);
 }
 function chkDelete(form, button) {
-  button.value = form.confirmDelete.checked ? '删除' : '应用';
+  button.value = form.confirmDelete.checked ? 'Delete' : 'Apply';
   button.disabled = false;
 }
 function openBox(cmd,title,height,width,load,func,id) {
