@@ -54,7 +54,7 @@ if ($_POST['docker'] && ($display=='icons' || $display=='docker')) {
     $image = substr($icon,-4)=='.png' ? "<img src='$icon?".filemtime("$docroot{$info['icon']}")."' class='img'>" : (substr($icon,0,5)=='icon-' ? "<i class='$icon img'></i>" : "<i class='fa fa-$icon img'></i>");
     echo "<span class='outer solid apps $status'><span id='$id' class='hand'>$image</span><span class='inner'><span class='$update'>$name</span><br><i class='fa fa-$shape $status $color'></i><span class='state'>$status</span></span></span>";
   }
-  $none = count($containers) ? "没有正在运行的 Docker 容器" : "未定义 Docker 容器";
+  $none = count($containers) ? "没有正在运行的 Docker 容器" : "无 Docker 容器";
   echo "<span id='no_apps' style='display:none'>$none<br><br></span>";
   echo "</td><td></td></tr>";
 }
@@ -110,7 +110,7 @@ if ($_POST['vms'] && ($display=='icons' || $display=='vms')) {
     $image = substr($icon,-4)=='.png' ? "<img src='$icon' class='img'>" : (substr($icon,0,5)=='icon-' ? "<i class='$icon img'></i>" : "<i class='fa fa-$icon img'></i>");
     echo "<span class='outer solid vms $status'><span id='vm-$uuid' class='hand'>$image</span><span class='inner'>$vm<br><i class='fa fa-$shape $status $color'></i><span class='state'>$status</span></span></span>";
   }
-  $none = count($vms) ? "没有正在运行的虚拟机" : "未定义虚拟机";
+  $none = count($vms) ? "没有正在运行的虚拟机" : "无虚拟机";
   echo "<span id='no_vms' style='display:none'>$none<br><br></span>";
   echo "</td><td></td></tr>";
 }

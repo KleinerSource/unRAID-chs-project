@@ -89,7 +89,7 @@ if ($subaction) {
 if ($libvirt_running=='yes') $vms = $lv->get_domains();
 if (empty($vms)) {
   $msg = $libvirt_running=='yes'
-  ? '未定义虚拟机. 请从模板创建或添加 XML.'
+  ? '无虚拟机. 请从模板创建或添加 XML.'
   : 'Libvirt 没有运行. 转到设置选项卡, 然后单击启动.';
 }
 ?>

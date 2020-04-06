@@ -39,18 +39,22 @@ if (file_exists("/var/run/apcupsd.pid")) {
       $status[0] = $val ? (stripos($val,'online')===false ? "<td $red>$val</td>" : "<td $green>$val</td>") : "<td $orange>刷新...</td>";
       break;
     case 'BCHARGE':
-      $status[1] = strtok($val,' ')<=10 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      // $status[1] = strtok($val,' ')<=10 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      $status[1] = strtok($val,' ')<=10 ? "<td $red>" : "<td $green>".str_replace('Percent','%',$val)."</td>";
       break;
     case 'TIMELEFT':
-      $status[2] = strtok($val,' ')<=5 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      //$status[2] = strtok($val,' ')<=5 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      $status[2] = strtok($val,' ')<=5 ? "<td $red>" : "<td $green>".str_replace('Minutes','分钟',$val)."</td>";
       break;
     case 'NOMPOWER':
       $power = strtok($val,' ');
-      $status[3] = $power==0 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      //$status[3] = $power==0 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      $status[3] = $power==0 ? "<td $red>" : "<td $green>".str_replace('Watts','瓦特',$val)."</td>";
       break;
     case 'LOADPCT':
       $load = strtok($val,' ');
-      $status[5] = $load>=90 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      //$status[5] = $load>=90 ? "<td $red>$val</td>" : "<td $green>$val</td>";
+      $status[5] = $load>=90 ? "<td $red>" : "<td $green>".str_replace('Percent','%',$val)."</td>";
       break;
     }
     if ($all) {

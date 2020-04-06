@@ -45,7 +45,7 @@ $(function() {
 });
 </script>
 <table class="tablesorter shift ups" <?if (!file_exists("/var/run/apcupsd.pid")):?>style="display:none"<?endif;?>>
-<thead><tr><th>UPS Status</th><th>蓄电池</th><th>剩余运行时间</th><th>额定功率</th><th>UPS 负载</th><th>UPS 负载 %</th></tr></thead>
+<thead><tr><th>UPS 状态</th><th>蓄电池</th><th>剩余运行时间</th><th>额定功率</th><th>UPS 负载</th><th>UPS 负载 %</th></tr></thead>
 <tbody id="ups_summary"><tr><td colspan="6">&nbsp;</td></tr></tbody>
 </table>
 

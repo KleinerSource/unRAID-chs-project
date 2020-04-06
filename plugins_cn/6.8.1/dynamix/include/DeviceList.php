@@ -61,7 +61,10 @@ function device_info(&$disk,$online) {
   $ctrl = '';
   if ($var['fsState']=='Started' && $type!='Flash' && strpos($disk['status'],'_NP')===false) {
     $ctrl = " style='cursor:pointer' onclick=\"toggle_state('$type','$name','$action')\"";
-    $help .= "<br>Click to spin $action device";
+    if ($action=='up')
+    $help .= "<br>点击唤醒设备";
+    else
+    $help .= "<br>点击挂起设备";
   }
   $status = "<a class='info'><i ".($ctrl?"id='dev-$name' ":"")."class='fa fa-$orb orb $color-orb'$ctrl></i><span>$help</span></a>";
   $link = ($disk['type']=='Parity' && strpos($disk['status'],'_NP')===false) ||

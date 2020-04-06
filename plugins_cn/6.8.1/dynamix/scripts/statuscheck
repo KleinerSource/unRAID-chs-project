@@ -32,7 +32,7 @@ $error2 = 0;
 $error3 = 0;
 
 function plus($val, $word, $last) {
-  return $val>0 ? (($val || $last) ? ($val.' '.$word.($val!=1?'s':'').($last ?'':', ')) : '') : '';
+  return $val>0 ? (($val || $last) ? ($val.' '.$word.($val!=1?'':'').($last ?'':', ')) : '') : '';
 }
 function my_temp($value) {
   global $unraid;
