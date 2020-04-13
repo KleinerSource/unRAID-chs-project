@@ -208,7 +208,7 @@ foreach ($sPorts as $port) {
     } else echo "$port: bond down";
   } else {
     if ($link) {
-      $speed = file_get_contents("$int/速度");
+      $speed = file_get_contents("$int/speed");
       $duplex = file_get_contents("$int/duplex");
       echo "$port: $speed Mbps, $duplex duplex, mtu $mtu";
     } else echo "$port: 接口未连接";
