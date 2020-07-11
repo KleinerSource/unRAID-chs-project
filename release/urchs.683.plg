@@ -1,0 +1,59 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY title     "unRAID 简体中文汉化包">
+<!ENTITY name      "urchs.683">
+<!ENTITY author    "KleinerSource">
+<!ENTITY version   "v1.0">
+<!ENTITY github    "...">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;.plg">
+]>
+
+<PLUGIN name="&title;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.8.3" max="6.8.3" support="" icon="users">
+
+<CHANGES>
+###v1.0 beta
+- Initial Release
+</CHANGES>
+
+
+<!--
+The 'source' file.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
+<URL>https://raw.githubusercontent.com/KleinerSource/unRAID-chs-project/master/release/&name;-&version;-x86_64-1.txz</URL>
+</FILE>
+
+<!--
+The 'post-install' script
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "----------------------------------------------------"
+echo " unRaid Chinese Pakage"
+echo " &name; 安装完成."
+echo " 版本: &version;"
+echo " 注意: 卸载该插件回到原版的话 要重启才会生效 "
+echo " Copyright 2019-2020, KleinerSource"
+echo "----------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+rm -rf /boot/config/plugins/&name;
+echo ""
+echo "----------------------------------------------------"
+echo " unRaid Chinese Pakage"
+echo " &name; 卸载完成."
+echo " 注意: 需要重启才会生效 "
+echo " Copyright 2019-2020, KleinerSource"
+echo "----------------------------------------------------"
+echo ""
+</INLINE>
+</FILE> 
+</PLUGIN>
